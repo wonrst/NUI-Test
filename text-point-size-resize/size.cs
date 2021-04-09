@@ -19,6 +19,7 @@ using System;
 using System.Threading.Tasks;
 using Tizen.NUI;
 using Tizen.NUI.BaseComponents;
+using Tizen.NUI.Components;
 
 namespace TextComponentsTest
 {
@@ -68,10 +69,10 @@ namespace TextComponentsTest
             view.Add(label);
 
 
-            // PointSize of Label
-            TextLabel sizeLabel = new TextLabel
+            // Label for information
+            TextLabel dataLabel = new TextLabel
             {
-                Text = "PointSize : " + label.PointSize,
+                Text = "PointSize : " + label.PointSize + " Wrap : " + label.LineWrapMode,
                 WidthResizePolicy = ResizePolicyType.FillToParent,
                 HeightResizePolicy = ResizePolicyType.UseNaturalSize,
                 PointSize = 25.0f,
@@ -79,7 +80,7 @@ namespace TextComponentsTest
                 HorizontalAlignment = HorizontalAlignment.Begin,
                 VerticalAlignment = VerticalAlignment.Center,   // only single line
             };
-            view.Add(sizeLabel);
+            view.Add(dataLabel);
 
 
             // Normal field
@@ -103,11 +104,48 @@ namespace TextComponentsTest
             field.TextChanged += (s, e) =>
             {
                 label.PointSize = (float)field.Text.Length;
-                sizeLabel.Text = "PointSize : " + label.PointSize;
+                dataLabel.Text = "PointSize : " + label.PointSize + " Wrap : " + label.LineWrapMode;
                 Tizen.Log.Error("NUI", "label point size [" + label.PointSize + "] \n");
             };
 
             view.Add(field);
+
+
+            // Button Char wrap
+            Button charButton = new Button
+            {
+                Text = "LineWrapMode.Character",
+                WidthResizePolicy = ResizePolicyType.FillToParent,
+                HeightResizePolicy = ResizePolicyType.UseNaturalSize,
+            };
+
+            charButton.Clicked += (s, e) =>
+            {
+                label.LineWrapMode = LineWrapMode.Character;
+                dataLabel.Text = "PointSize : " + label.PointSize + " Wrap : " + label.LineWrapMode;
+                Tizen.Log.Error("NUI", "label line wrap mode [" + label.LineWrapMode + "] \n");
+            };
+
+            view.Add(charButton);
+
+
+            // Button Word wrap
+            Button wordButton = new Button
+            {
+                Text = "LineWrapMode.Word",
+                WidthResizePolicy = ResizePolicyType.FillToParent,
+                HeightResizePolicy = ResizePolicyType.UseNaturalSize,
+            };
+
+            wordButton.Clicked += (s, e) =>
+            {
+                label.LineWrapMode = LineWrapMode.Word;
+                dataLabel.Text = "PointSize : " + label.PointSize + " Wrap : " + label.LineWrapMode;
+                Tizen.Log.Error("NUI", "label line wrap mode [" + label.LineWrapMode + "] \n");
+            };
+
+
+            view.Add(wordButton);
 
 
             window.Add(view);
