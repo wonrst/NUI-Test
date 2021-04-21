@@ -60,8 +60,7 @@ namespace TextComponentsTest
             var minus_button = new Button
             {
                 Text = "-",
-                WidthResizePolicy = ResizePolicyType.UseNaturalSize,
-                HeightResizePolicy = ResizePolicyType.UseNaturalSize,
+                Size2D = new Size2D(50, 50),
             };
             minus_button.Clicked += (s, e) =>
             {
@@ -75,8 +74,7 @@ namespace TextComponentsTest
             var plus_button = new Button
             {
                 Text = "+",
-                WidthResizePolicy = ResizePolicyType.UseNaturalSize,
-                HeightResizePolicy = ResizePolicyType.UseNaturalSize,
+                Size2D = new Size2D(50, 50),
             };
             plus_button.Clicked += (s, e) =>
             {
