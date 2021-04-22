@@ -37,9 +37,10 @@ namespace TextComponentsTest
             TextLabel label = new TextLabel
             //TextEditor label = new TextEditor
             {
-                Text = "Hyphens wrap to multiple lines, staying inside of their container. I think other browsers are treating each hyphen as a soft wrap opportunity, and this is special behavior for hyphens and not for other characters.",
+                //Text = "Hyphens wrap to multiple lines, staying inside of their container. I think other browsers are treating each hyphen as a soft wrap opportunity, and this is special behavior for hyphens and not for other characters.",
                 //Text = "Photography",
                 //Text = "hyphenation",
+                Text = "Photography hyphenation",
 
 
                 // EnableMarkup = true,
@@ -49,14 +50,14 @@ namespace TextComponentsTest
                 //LineWrapMode = LineWrapMode.Word,
                 //LineWrapMode = LineWrapMode.Character,
 
-                Size2D = new Size2D(450, 450),
+                Size2D = new Size2D(480, 480),
                 PointSize = 25.0f,
                 BackgroundColor = Color.CadetBlue,
                 HorizontalAlignment = HorizontalAlignment.Begin,
                 //VerticalAlignment = VerticalAlignment.Center,   // only single line
                 //Ellipsis = false,
 
-                FontFamily = "Sans",
+                //FontFamily = "Ubuntu Mono",
             };
             view.Add(label);
 
@@ -67,7 +68,7 @@ namespace TextComponentsTest
                 Text = "PointSize : " + label.PointSize + " Wrap : " + label.LineWrapMode,
                 WidthResizePolicy = ResizePolicyType.FillToParent,
                 HeightResizePolicy = ResizePolicyType.UseNaturalSize,
-                PointSize = 25.0f,
+                PointSize = 15.0f,
                 BackgroundColor = Color.White,
                 HorizontalAlignment = HorizontalAlignment.Begin,
                 VerticalAlignment = VerticalAlignment.Center,   // only single line
@@ -83,7 +84,7 @@ namespace TextComponentsTest
                 HeightResizePolicy = ResizePolicyType.UseNaturalSize,
 
                 MaxLength = 200,
-                PointSize = 25.0f,
+                PointSize = 15.0f,
                 BackgroundColor = Color.White,
 
                 PlaceholderText = "Input Length = Label PointSize",
@@ -107,7 +108,7 @@ namespace TextComponentsTest
             Button charButton = new Button
             {
                 Text = "LineWrapMode.Character",
-                Size2D = new Size2D(450, 30),
+                Size2D = new Size2D(480, 30),
             };
             charButton.TextLabel.PointSize = 15;
 
@@ -124,7 +125,7 @@ namespace TextComponentsTest
             Button wordButton = new Button
             {
                 Text = "LineWrapMode.Word",
-                Size2D = new Size2D(450, 30),
+                Size2D = new Size2D(480, 30),
             };
             wordButton.TextLabel.PointSize = 15;
 
@@ -141,7 +142,7 @@ namespace TextComponentsTest
             Button hyphenButton = new Button
             {
                 Text = "LineWrapMode.Hyphenation",
-                Size2D = new Size2D(450, 30),
+                Size2D = new Size2D(480, 30),
             };
             hyphenButton.TextLabel.PointSize = 15;
 
@@ -158,7 +159,7 @@ namespace TextComponentsTest
             Button mixedButton = new Button
             {
                 Text = "LineWrapMode.Mixed",
-                Size2D = new Size2D(450, 30),
+                Size2D = new Size2D(480, 30),
             };
             mixedButton.TextLabel.PointSize = 15;
 
@@ -175,7 +176,7 @@ namespace TextComponentsTest
             Button longButton = new Button
             {
                 Text = "Long Text",
-                Size2D = new Size2D(450, 30),
+                Size2D = new Size2D(480, 30),
             };
             longButton.TextLabel.PointSize = 15;
 
@@ -192,13 +193,13 @@ namespace TextComponentsTest
             Button shortButton = new Button
             {
                 Text = "Short Text",
-                Size2D = new Size2D(450, 30),
+                Size2D = new Size2D(480, 30),
             };
             shortButton.TextLabel.PointSize = 15;
 
             shortButton.Clicked += (s, e) =>
             {
-                label.Text = "Photography";
+                label.Text = "Photography hyphenation";
 
                 Tizen.Log.Error("NUI", "Short Text \n");
             };
