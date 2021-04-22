@@ -38,6 +38,10 @@ namespace TextComponentsTest
             //TextEditor label = new TextEditor
             {
                 Text = "Hyphens wrap to multiple lines, staying inside of their container. I think other browsers are treating each hyphen as a soft wrap opportunity, and this is special behavior for hyphens and not for other characters.",
+                //Text = "Photography",
+                //Text = "hyphenation",
+
+
                 // EnableMarkup = true,
                 MultiLine = true,
 
@@ -45,11 +49,12 @@ namespace TextComponentsTest
                 //LineWrapMode = LineWrapMode.Word,
                 //LineWrapMode = LineWrapMode.Character,
 
-                Size2D = new Size2D(450, 300),
+                Size2D = new Size2D(450, 450),
                 PointSize = 25.0f,
                 BackgroundColor = Color.CadetBlue,
                 HorizontalAlignment = HorizontalAlignment.Begin,
                 //VerticalAlignment = VerticalAlignment.Center,   // only single line
+                //Ellipsis = false,
 
                 FontFamily = "Sans",
             };
@@ -102,9 +107,9 @@ namespace TextComponentsTest
             Button charButton = new Button
             {
                 Text = "LineWrapMode.Character",
-                WidthResizePolicy = ResizePolicyType.FillToParent,
-                HeightResizePolicy = ResizePolicyType.UseNaturalSize,
+                Size2D = new Size2D(450, 30),
             };
+            charButton.TextLabel.PointSize = 15;
 
             charButton.Clicked += (s, e) =>
             {
@@ -119,9 +124,9 @@ namespace TextComponentsTest
             Button wordButton = new Button
             {
                 Text = "LineWrapMode.Word",
-                WidthResizePolicy = ResizePolicyType.FillToParent,
-                HeightResizePolicy = ResizePolicyType.UseNaturalSize,
+                Size2D = new Size2D(450, 30),
             };
+            wordButton.TextLabel.PointSize = 15;
 
             wordButton.Clicked += (s, e) =>
             {
@@ -136,9 +141,9 @@ namespace TextComponentsTest
             Button hyphenButton = new Button
             {
                 Text = "LineWrapMode.Hyphenation",
-                WidthResizePolicy = ResizePolicyType.FillToParent,
-                HeightResizePolicy = ResizePolicyType.UseNaturalSize,
+                Size2D = new Size2D(450, 30),
             };
+            hyphenButton.TextLabel.PointSize = 15;
 
             hyphenButton.Clicked += (s, e) =>
             {
@@ -153,9 +158,9 @@ namespace TextComponentsTest
             Button mixedButton = new Button
             {
                 Text = "LineWrapMode.Mixed",
-                WidthResizePolicy = ResizePolicyType.FillToParent,
-                HeightResizePolicy = ResizePolicyType.UseNaturalSize,
+                Size2D = new Size2D(450, 30),
             };
+            mixedButton.TextLabel.PointSize = 15;
 
             mixedButton.Clicked += (s, e) =>
             {
@@ -164,6 +169,41 @@ namespace TextComponentsTest
                 Tizen.Log.Error("NUI", "label line wrap mode [" + label.LineWrapMode + "] \n");
             };
             view.Add(mixedButton);
+
+
+            // Long Text
+            Button longButton = new Button
+            {
+                Text = "Long Text",
+                Size2D = new Size2D(450, 30),
+            };
+            longButton.TextLabel.PointSize = 15;
+
+            longButton.Clicked += (s, e) =>
+            {
+                label.Text = "Hyphens wrap to multiple lines, staying inside of their container. I think other browsers are treating each hyphen as a soft wrap opportunity, and this is special behavior for hyphens and not for other characters.";
+
+                Tizen.Log.Error("NUI", "Long Text \n");
+            };
+            view.Add(longButton);
+                
+
+            // Short Text
+            Button shortButton = new Button
+            {
+                Text = "Short Text",
+                Size2D = new Size2D(450, 30),
+            };
+            shortButton.TextLabel.PointSize = 15;
+
+            shortButton.Clicked += (s, e) =>
+            {
+                label.Text = "Photography";
+
+                Tizen.Log.Error("NUI", "Short Text \n");
+            };
+            view.Add(shortButton);
+
 
 
             window.Add(view);
