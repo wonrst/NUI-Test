@@ -25,7 +25,7 @@ namespace TextComponentsTest
                 {
                     LinearOrientation = LinearLayout.Orientation.Vertical,
                     LinearAlignment = LinearLayout.Alignment.Begin,
-                    CellPadding = new Size2D(10, 10),
+                    CellPadding = new Size2D(5, 5),
                 },
                 WidthResizePolicy = ResizePolicyType.FillToParent,
                 HeightResizePolicy = ResizePolicyType.FillToParent,
@@ -53,7 +53,7 @@ namespace TextComponentsTest
                 PointSize = 25.0f,
                 BackgroundColor = Color.White,
                 HorizontalAlignment = HorizontalAlignment.Begin,
-                Size2D = new Size2D(480, 400),
+                Size2D = new Size2D(480, 250),
             };
             view.Add(editor);
 
@@ -63,9 +63,9 @@ namespace TextComponentsTest
             Button button = new Button
             {
                 Text = "Get Natural Size",
-                WidthResizePolicy = ResizePolicyType.FillToParent,
-                HeightResizePolicy = ResizePolicyType.UseNaturalSize,
+                Size2D = new Size2D(480, 30),
             };
+            button.TextLabel.PointSize = 15;
 
             button.Clicked += (s, e) =>
             {
@@ -104,9 +104,9 @@ namespace TextComponentsTest
             Button button2 = new Button
             {
                 Text = "Get Natural Size",
-                WidthResizePolicy = ResizePolicyType.FillToParent,
-                HeightResizePolicy = ResizePolicyType.UseNaturalSize,
+                Size2D = new Size2D(480, 30),
             };
+            button2.TextLabel.PointSize = 15;
 
             button2.Clicked += (s, e) =>
             {
@@ -115,6 +115,55 @@ namespace TextComponentsTest
             };
 
             view.Add(button2);
+
+
+
+            // Label for title
+            TextLabel label3 = new TextLabel
+            {
+                Text = "TextLabel",
+                WidthResizePolicy = ResizePolicyType.FillToParent,
+                HeightResizePolicy = ResizePolicyType.UseNaturalSize,
+                BackgroundColor = Color.CadetBlue,
+            };
+            view.Add(label3);
+
+
+            // TextLabel
+            TextLabel multiLabel = new TextLabel
+            {
+                Text = "Lorem ipsum dolor sit amet, \nconsectetur adipiscing elit, \nsed do eiusmod \ntempor \nincididunt ut \nlabore et \ndolore magna \naliqua.",
+                //Text = "",
+                MultiLine = true,
+                PointSize = 25.0f,
+                BackgroundColor = Color.White,
+                HorizontalAlignment = HorizontalAlignment.Begin,
+                Size2D = new Size2D(480, 250),
+            };
+            view.Add(multiLabel);
+            //window.Add(multiLabel);
+
+
+            // Button -> multiLabel.GetNaturalSize()
+            Button button3 = new Button
+            {
+                Text = "Get Natural Size",
+                Size2D = new Size2D(480, 30),
+            };
+            button3.TextLabel.PointSize = 15;
+
+            button3.Clicked += (s, e) =>
+            {
+                Tizen.Log.Fatal("NUI", "Label Size W : " + multiLabel.Size.Width + " H : " + multiLabel.Size.Height + "\n");
+                //multiLabel.Text = "Hello";
+                var naturalSize = multiLabel.GetNaturalSize();
+                Tizen.Log.Fatal("NUI", "Label Get Natural Size W : " + naturalSize.Width + " H : " + naturalSize.Height + "\n");
+                Tizen.Log.Fatal("NUI", "Label Size W : " + multiLabel.Size.Width + " H : " + multiLabel.Size.Height + "\n");
+                Tizen.Log.Fatal("NUI", "Label Natural Size W : " + multiLabel.NaturalSize.Width + " H : " + multiLabel.NaturalSize.Height + "\n");
+            };
+
+            view.Add(button3);
+
 
 
 
