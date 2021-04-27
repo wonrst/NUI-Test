@@ -37,13 +37,10 @@ namespace TextComponentsTest
             TextLabel label = new TextLabel
             //TextEditor label = new TextEditor
             {
-                //Text = "Hyphens wrap to multiple lines, staying inside of their container. I think other browsers are treating each hyphen as a soft wrap opportunity, and this is special behavior for hyphens and not for other characters.",
+                Text = "Hyphens wrap to multiple lines, staying inside of their container. I think other browsers are treating each hyphen as a soft wrap opportunity, and this is special behavior for hyphens and not for other characters.",
                 //Text = "Photography",
                 //Text = "hyphenation",
-                Text = "Photography hyphenation",
-
-
-                // EnableMarkup = true,
+                //Text = "Photography hyphenation Photography hyphenation Photography hyphenation Photography hyphenation Photography hyphenation Photography hyphenation Photography hyphenation Photography hyphenation Photography hyphenation Photography hyphenation Photography hyphenation Photography hyphenation ",
                 MultiLine = true,
 
                 LineWrapMode = LineWrapMode.Hyphenation,
@@ -52,6 +49,7 @@ namespace TextComponentsTest
 
                 Size2D = new Size2D(480, 480),
                 PointSize = 25.0f,
+                //PointSize = 35.0f,
                 BackgroundColor = Color.CadetBlue,
                 HorizontalAlignment = HorizontalAlignment.Begin,
                 //VerticalAlignment = VerticalAlignment.Center,   // only single line
