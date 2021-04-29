@@ -16,7 +16,7 @@ namespace HelloWorldTest
         public void Initialize()
         {
             Window window = Window.Instance;
-            window.BackgroundColor = Color.White;
+            window.BackgroundColor = Color.Black;
 
             TextLabel label = new TextLabel("hello <a href='https://www.naver.com'>naver</a>thisisisi<b>kknd</b>Hello hihi <a href='https://google.com'>google</a>hihi <b>wonrst..</b>!!! <a href='www.tizen.org'>tizen</a> !!!");
             label.Position2D = new Position2D(10, 50);
