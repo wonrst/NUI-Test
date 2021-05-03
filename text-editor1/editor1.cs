@@ -139,7 +139,7 @@ namespace TextComponentsTest
                 Text = "Please, input any sentence.",
                 WidthSpecification = -1,
                 HeightSpecification = -2,
-                BackgroundColor = Color.Blue,
+                BackgroundColor = Color.White,
                 PointSize = 15.0f,
                 VerticalAlignment = VerticalAlignment.Center,
                 MaxLength = 999,
@@ -150,7 +150,7 @@ namespace TextComponentsTest
             {
                 WidthSpecification = -1,
                 HeightSpecification = 2,
-                BackgroundColor = Color.Purple,
+                BackgroundColor = Color.Gray,
                 Margin = new Extents(0, 0, 0, 5),
             };
             bottomVerView.Add(underline2);
@@ -158,11 +158,12 @@ namespace TextComponentsTest
 
 
             // Relative Bottom View
-            RelativeLayout.SetTopTarget(bottomView, mainView);
-            RelativeLayout.SetBottomTarget(bottomView, mainView);
-            RelativeLayout.SetLeftTarget(bottomView, mainView);
-            RelativeLayout.SetRightTarget(bottomView, mainView);
+            //RelativeLayout.SetTopTarget(bottomView, mainView);
+            //RelativeLayout.SetBottomTarget(bottomView, mainView);
+            //RelativeLayout.SetLeftTarget(bottomView, mainView);
+            //RelativeLayout.SetRightTarget(bottomView, mainView);
 
+            RelativeLayout.SetTopRelativeOffset(bottomView, 1.0f);
             RelativeLayout.SetBottomRelativeOffset(bottomView, 1.0f);
             RelativeLayout.SetVerticalAlignment(bottomView, RelativeLayout.Alignment.End);
 
@@ -190,10 +191,35 @@ namespace TextComponentsTest
                 int wid = window.Size.Width;
                 Tizen.Log.Fatal("NUI", "window : " + window.Size.Width + " " + window.Size.Height + "\n");
 
+                // Relative Center View
+                RelativeLayout.SetTopTarget(centerView, topView);
+                RelativeLayout.SetBottomTarget(centerView, bottomView);
+                RelativeLayout.SetTopRelativeOffset(centerView, 1.0f);
+                RelativeLayout.SetBottomRelativeOffset(centerView, 0.0f);
 
+                //RelativeLayout.SetVerticalAlignment(centerView, RelativeLayout.Alignment.Start);
+                RelativeLayout.SetFillVertical(centerView, true);
             };
             
+            centerView.FocusGained += (s, e) =>
+            {
+                underline.BackgroundColor = Color.Cyan;
+            };
 
+            centerView.FocusLost += (s, e) =>
+            {
+                underline.BackgroundColor = Color.Gray;
+            };
+
+            field.FocusGained += (s, e) =>
+            {
+                underline2.BackgroundColor = Color.Cyan;
+            };
+
+            field.FocusLost += (s, e) =>
+            {
+                underline2.BackgroundColor = Color.Gray;
+            };
 
             InputMethodContext ime = centerView.GetInputMethodContext();
             ime.StatusChanged += Ime_StatusChanged;
