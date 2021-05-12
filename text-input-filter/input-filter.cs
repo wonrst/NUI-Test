@@ -37,6 +37,7 @@ namespace TextComponentsTest
             {
                 // Text = "Text Field",
                 // EnableMarkup = true,
+                Text = "01234",
                 WidthResizePolicy = ResizePolicyType.FillToParent,
                 HeightResizePolicy = ResizePolicyType.UseNaturalSize,
 
@@ -70,10 +71,10 @@ namespace TextComponentsTest
         {
             Tizen.Log.Fatal("NUI", "Field Text Changed : " + e.TextField.Text + "\n");
             //string result = Regex.Replace(e.TextField.Text, @"[^\w]", "");
-            string result = Regex.Replace(e.TextField.Text, "[A-Za-z]", "");
+            //string result = Regex.Replace(e.TextField.Text, "[\\W_]", "");
 
-            Tizen.Log.Fatal("NUI", "result : " + result + "\n");
-            e.TextField.Text = result;
+            //Tizen.Log.Fatal("NUI", "result : " + result + "\n");
+            //e.TextField.Text = result;
         }
 
         public void onTextEditorTextChanged(object sender, TextEditor.TextChangedEventArgs e)
