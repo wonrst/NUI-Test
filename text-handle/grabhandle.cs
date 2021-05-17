@@ -2,6 +2,7 @@ using System;
 using System.Threading.Tasks;
 using Tizen.NUI;
 using Tizen.NUI.BaseComponents;
+using Tizen.NUI.Components;
 
 namespace TextComponentsTest
 {
@@ -24,7 +25,7 @@ namespace TextComponentsTest
                 {
                     LinearOrientation = LinearLayout.Orientation.Vertical,
                     LinearAlignment = LinearLayout.Alignment.Begin,
-                    //CellPadding = new Size2D(10, 10),
+                    CellPadding = new Size2D(10, 10),
                 },
                 WidthResizePolicy = ResizePolicyType.FillToParent,
                 HeightResizePolicy = ResizePolicyType.FillToParent,
@@ -36,16 +37,17 @@ namespace TextComponentsTest
             // Normal field
             TextField field = new TextField
             {
-                Text = "EnableGrabHandle = false",
+                Text = "Text Field",
 
-                Size2D = new Size2D(400, 50),               
+                Size2D = new Size2D(480, 100),               
 
                 MaxLength = 200,
                 BackgroundColor = Color.White,
+                VerticalAlignment = VerticalAlignment.Center,
 
-                EnableGrabHandle = false,
-                //EnableSelection = false,
-                EnableGrabHandlePopup = false,
+                EnableGrabHandle = true,
+                EnableGrabHandlePopup = true,
+                EnableSelection = true,
 
                 PointSize = 20.0f,
             };
@@ -55,94 +57,96 @@ namespace TextComponentsTest
             // editor
             TextEditor editor = new TextEditor
             {
-                Text = "(editor)EnableSelection = false",
+                Text = "Text Editor",
 
-                Size2D = new Size2D(410, 50),
+                Size2D = new Size2D(480, 100),
 
                 PointSize = 20.0f,
                 BackgroundColor = Color.White,
 
-                // Need to implements
-                EnableGrabHandle = false,
-                EnableGrabHandlePopup = false,
-                //EnableSelection = false,
+                EnableGrabHandle = true,
+                EnableGrabHandlePopup = true,
+                EnableSelection = true,
             };
             view.Add(editor);
 
 
-            // Normal field
-            TextField field2 = new TextField
+            var button1 = new Button
             {
-                Text = "EnableGrabHandle = false",
-                
-                Size2D = new Size2D(420, 50),               
-
-                MaxLength = 200,
-                BackgroundColor = Color.White,
-
-                EnableGrabHandle = false,
-                EnableSelection = false,
-
-                PointSize = 20.0f,
+                Text = "EnableGrabHandle True",
+                WidthResizePolicy = ResizePolicyType.FillToParent,
+                HeightResizePolicy = ResizePolicyType.UseNaturalSize,
             };
-            view.Add(field2);
-
-
-            // Normal field
-            TextField field3 = new TextField
+            button1.Clicked += (s, e) =>
             {
-                Text = "!handle !selection",
-                
-                Size2D = new Size2D(430, 50),
-                
-                MaxLength = 200,
-                BackgroundColor = Color.White,
-
-                EnableGrabHandle = false,
-                EnableSelection = false,
-
-                PointSize = 20.0f,
+                field.EnableGrabHandle = !field.EnableGrabHandle;
+                editor.EnableGrabHandle = !editor.EnableGrabHandle;
+                button1.Text = "EnableGrabHandle " + field.EnableGrabHandle;
             };
-            view.Add(field3);
+            view.Add(button1);
 
 
-            // Control field
-            TextField field4 = new TextField
+            var button2 = new Button
             {
-                // Text = "!handle !selection",
-                Size2D = new Size2D(440, 50),
-               
-                MaxLength = 200,
-                BackgroundColor = Color.White,
-
-                //EnableGrabHandle = false,
-                //EnableSelection = false,
-
-                PointSize = 20.0f,
+                Text = "EnableGrabHandlePopup True",
+                WidthResizePolicy = ResizePolicyType.FillToParent,
+                HeightResizePolicy = ResizePolicyType.UseNaturalSize,
             };
-            view.Add(field4);
-
-            field4.TextChanged += (s, e) =>
+            button2.Clicked += (s, e) =>
             {
-                //Tizen.Log.Fatal("NUI", "field4 Text Changed : " + e.TextField.Text + "\n");
-
-                //field3.EnableGrabHandle = false;
-                //field3.EnableSelection = false;
-
-                if (field4.Text.Length %2 == 0)
-                {
-                    field3.EnableGrabHandle = false;
-                    field3.EnableSelection = false;
-                }
-                else
-                {
-                    field3.EnableGrabHandle = true;
-                    field3.EnableSelection = true;
-                }
-
-                Tizen.Log.Fatal("NUI", "Field 3 handle : " + field3.EnableGrabHandle + ", sel : " + field3.EnableSelection + "\n");
+                field.EnableGrabHandlePopup = !field.EnableGrabHandlePopup;
+                editor.EnableGrabHandlePopup = !editor.EnableGrabHandlePopup;
+                button2.Text = "EnableGrabHandlePopup " + field.EnableGrabHandlePopup;
             };
+            view.Add(button2);
 
+
+            var button3 = new Button
+            {
+                Text = "EnableSelection True",
+                WidthResizePolicy = ResizePolicyType.FillToParent,
+                HeightResizePolicy = ResizePolicyType.UseNaturalSize,
+            };
+            button3.Clicked += (s, e) =>
+            {
+                field.EnableSelection = !field.EnableSelection;
+                editor.EnableSelection = !editor.EnableSelection;
+                button3.Text = "EnableSelection " + field.EnableSelection;
+            };
+            view.Add(button3);
+
+
+            var button4 = new Button
+            {
+                Text = "Get handle image",
+                WidthResizePolicy = ResizePolicyType.FillToParent,
+                HeightResizePolicy = ResizePolicyType.UseNaturalSize,
+            };
+            button4.Clicked += (s, e) =>
+            {
+                Tizen.Log.Fatal("NUI", "Field handle image : " + field.GrabHandleImage + "\n");
+
+                string left, right;
+                field.SelectionHandleImageLeft.Find(0, "filename").Get(out left);
+                field.SelectionHandleImageLeft.Find(0, "filename").Get(out right);
+
+                Tizen.Log.Fatal("NUI", "Field handle left : " + left + "\n");
+                Tizen.Log.Fatal("NUI", "Field handle right : " + right + "\n");
+            };
+            view.Add(button4);
+
+            /* Image set
+
+            field.GrabHandleImage = "handle_down.png";
+
+            PropertyMap imageLeftMap = new PropertyMap();
+            imageLeftMap.Add("filename", new PropertyValue("handle_downleft.png"));
+            field.SelectionHandleImageLeft = imageLeftMap;
+
+            PropertyMap imageRightMap = new PropertyMap();
+            imageRightMap.Add("filename", new PropertyValue("handle_downright.png"));
+            field.SelectionHandleImageRight = imageRightMap;
+            */
         }
 
         [STAThread]
