@@ -63,9 +63,9 @@ namespace TextComponentsTest
                 BackgroundColor = Color.White,
 
                 // Need to implements
-                // EnableGrabHandle = false,
-                // EnableGrabHandlePopup = false,
-                EnableSelection = false,
+                EnableGrabHandle = false,
+                EnableGrabHandlePopup = false,
+                //EnableSelection = false,
             };
             view.Add(editor);
 
