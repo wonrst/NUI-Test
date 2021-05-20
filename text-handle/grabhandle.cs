@@ -71,6 +71,26 @@ namespace TextComponentsTest
             view.Add(editor);
 
 
+            // Normal field
+            TextField field2 = new TextField
+            {
+                Text = "Text Field Test for Grab Handle",
+
+                Size2D = new Size2D(480, 100),               
+
+                MaxLength = 200,
+                BackgroundColor = Color.White,
+                VerticalAlignment = VerticalAlignment.Center,
+
+                EnableGrabHandle = true,
+                EnableGrabHandlePopup = true,
+                EnableSelection = true,
+
+                PointSize = 20.0f,
+            };
+            view.Add(field2);
+
+
             var button1 = new Button
             {
                 Text = "EnableGrabHandle True",
