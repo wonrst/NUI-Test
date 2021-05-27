@@ -8,6 +8,7 @@ namespace TextComponentsTest
 {
     class Example : NUIApplication
     {
+        public TextField field;
         protected override void OnCreate()
         {
             base.OnCreate();
@@ -27,45 +28,27 @@ namespace TextComponentsTest
                     LinearAlignment = LinearLayout.Alignment.Begin,
                     CellPadding = new Size2D(10, 10),
                 },
-                WidthResizePolicy = ResizePolicyType.FillToParent,
-                HeightResizePolicy = ResizePolicyType.FillToParent,
+                WidthSpecification = LayoutParamPolicies.MatchParent,
+                HeightSpecification = LayoutParamPolicies.MatchParent,
                 BackgroundColor = Color.Black,
             };
 
             // Label for title
-            TextLabel titleLabel = new TextLabel
-            {
-                Text = "TextField : ",
-                WidthResizePolicy = ResizePolicyType.FillToParent,
-                HeightResizePolicy = ResizePolicyType.UseNaturalSize,
-                BackgroundColor = Color.CadetBlue,
-            };
+            TextLabel titleLabel = newTextLabel("TextField : ", 20.0f);
+            titleLabel.BackgroundColor = Color.CadetBlue;
             view.Add(titleLabel);
 
+            // For focus test
+            bool isFocused = false;
 
-            // Field for Test
-            bool isFocused = false;;
-            TextField field = new TextField
-            {
-                Text = "Text Field Cursor Test",
-                // EnableMarkup = true,
-                WidthResizePolicy = ResizePolicyType.FillToParent,
-                HeightResizePolicy = ResizePolicyType.UseNaturalSize,
 
-                MaxLength = 50,
-                PointSize = 25.0f,
-                BackgroundColor = Color.White,
-
-                HorizontalAlignment = HorizontalAlignment.Begin,
-                VerticalAlignment = VerticalAlignment.Center,   // only single line
-            };
-
-            // field.TextChanged += onTextFieldTextChanged;
+            // Main TextField
+            field = newTextField("Text Field Cursor Test", 25.0f);
+            field.HeightSpecification = 80;
             field.TextChanged += (s, e) =>
             {
                 Tizen.Log.Error("NUI", "Field Text Changed[" + e.TextField.Text + "] \n");
             };
-
             view.Add(field);
 
 
@@ -79,57 +62,19 @@ namespace TextComponentsTest
 
 
             // Selection
-            TextLabel selectionLabel = new TextLabel
-            {
-                Text = "Selection Length : " + (int)(field.SelectedTextEnd - field.SelectedTextStart),
-                WidthResizePolicy = ResizePolicyType.FillToParent,
-                HeightResizePolicy = ResizePolicyType.UseNaturalSize,
-                PointSize = 20.0f,
-                BackgroundColor = Color.White,
-                HorizontalAlignment = HorizontalAlignment.Begin,
-                VerticalAlignment = VerticalAlignment.Center,   // only single line
-            };
+            TextLabel selectionLabel = newTextLabel("Selection Length : " + (int)(field.SelectedTextEnd - field.SelectedTextStart), 20.0f);
             view.Add(selectionLabel);
 
-
             // Cursor Position
-            TextLabel cursorPosLabel = new TextLabel
-            {
-                Text = "Cursor Position : " + field.PrimaryCursorPosition,
-                WidthResizePolicy = ResizePolicyType.FillToParent,
-                HeightResizePolicy = ResizePolicyType.UseNaturalSize,
-                PointSize = 20.0f,
-                BackgroundColor = Color.White,
-                HorizontalAlignment = HorizontalAlignment.Begin,
-                VerticalAlignment = VerticalAlignment.Center,   // only single line
-            };
+            TextLabel cursorPosLabel = newTextLabel("Cursor Position : " + field.PrimaryCursorPosition, 20.0f);
             view.Add(cursorPosLabel);
 
-
             // Is Focused
-            TextLabel isFocusedLabel = new TextLabel
-            {
-                Text = "Is Focused : " + isFocused,
-                WidthResizePolicy = ResizePolicyType.FillToParent,
-                HeightResizePolicy = ResizePolicyType.UseNaturalSize,
-                PointSize = 20.0f,
-                BackgroundColor = Color.White,
-                HorizontalAlignment = HorizontalAlignment.Begin,
-                VerticalAlignment = VerticalAlignment.Center,   // only single line
-            };
+            TextLabel isFocusedLabel = newTextLabel("Is Focused : " + isFocused, 20.0f);
             view.Add(isFocusedLabel);
 
             // Selected text label
-            TextLabel selectedLabel = new TextLabel
-            {
-                Text = "Selected Text : " + field.SelectedText,
-                WidthResizePolicy = ResizePolicyType.FillToParent,
-                HeightResizePolicy = ResizePolicyType.UseNaturalSize,
-                PointSize = 20.0f,
-                BackgroundColor = Color.White,
-                HorizontalAlignment = HorizontalAlignment.Begin,
-                VerticalAlignment = VerticalAlignment.Center,   // only single line
-            };
+            TextLabel selectedLabel = newTextLabel("Selected Text : " + field.SelectedText, 20.0f);
             view.Add(selectedLabel);
 
 
@@ -147,53 +92,148 @@ namespace TextComponentsTest
             };
 
 
-            // Select 5 characters
-            Button selectButton = new Button
+            // Start test
+            View HorView = newHorView();
+            view.Add(HorView);
+
+            TextField start = newTextField("5", 20.0f);
+            HorView.Add(start);
+
+            Button startButton = newButton("Selected Start");
+            startButton.Clicked += (s, e) =>
             {
-                Text = "Select 5 characters",
-                WidthResizePolicy = ResizePolicyType.FillToParent,
-                HeightResizePolicy = ResizePolicyType.UseNaturalSize,
+                printLog(false);
+                field.SelectedTextStart = Int32.Parse(start.Text);
+                printLog(true);
             };
-            selectButton.Clicked += (s, e) =>
+            HorView.Add(startButton);
+
+
+            // End test
+            View HorView2 = newHorView();
+            view.Add(HorView2);
+
+            TextField end = newTextField("10", 20.0f);
+            HorView2.Add(end);
+
+            Button endButton = newButton("Selected End");
+            endButton.Clicked += (s, e) =>
             {
-                field.SelectedTextStart = 5;
-                field.SelectedTextEnd = 10;
+                printLog(false);
+                field.SelectedTextEnd = Int32.Parse(end.Text);
+                printLog(true);
             };
-            view.Add(selectButton);
+            HorView2.Add(endButton);
+
+
+            // Select Range test
+            View HorView3 = newHorView();
+            view.Add(HorView3);
+
+            TextField startSel = newTextField("10", 20.0f);
+            HorView3.Add(startSel);
+
+            TextField endSel = newTextField("15", 20.0f);
+            HorView3.Add(endSel);
+
+            Button selButton = newButton("Selected");
+            selButton.Clicked += (s, e) =>
+            {
+                printLog(false);
+                field.SelectedTextStart = Int32.Parse(startSel.Text);
+                field.SelectedTextEnd = Int32.Parse(endSel.Text);
+                printLog(true);
+            };
+            HorView3.Add(selButton);
+
+
+            // Cursor test
+            View HorView4 = newHorView();
+            view.Add(HorView4);
+
+            TextField cursor = newTextField("3", 20.0f);
+            HorView4.Add(cursor);
+
+            Button curButton = newButton("Cursor");
+            curButton.Clicked += (s, e) =>
+            {
+                printLog(false);
+                field.PrimaryCursorPosition = Int32.Parse(cursor.Text);
+                printLog(true);
+            };
+            HorView4.Add(curButton);
+
+
+            // All test, cursor, start, end
+            View HorView5 = newHorView();
+            view.Add(HorView5);
+
+            TextField cSel = newTextField("5", 20.0f);
+            HorView5.Add(cSel);
+
+            TextField sSel = newTextField("10", 20.0f);
+            HorView5.Add(sSel);
+
+            TextField eSel = newTextField("15", 20.0f);
+            HorView5.Add(eSel);
+
+            Button allButton = newButton("All");
+            allButton.Clicked += (s, e) =>
+            {
+                printLog(false);
+                field.PrimaryCursorPosition = Int32.Parse(cSel.Text);
+                field.SelectedTextStart = Int32.Parse(sSel.Text);
+                field.SelectedTextEnd = Int32.Parse(eSel.Text);
+                printLog(true);
+            };
+            HorView5.Add(allButton);
+
+
+            // All test 2 for compare with All test 1
+            View HorView6 = newHorView();
+            view.Add(HorView6);
+
+            TextField cSel2 = newTextField("6", 20.0f);
+            HorView6.Add(cSel2);
+
+            TextField sSel2 = newTextField("15", 20.0f);
+            HorView6.Add(sSel2);
+
+            TextField eSel2 = newTextField("20", 20.0f);
+            HorView6.Add(eSel2);
+
+            Button allButton2 = newButton("All 2");
+            allButton2.Clicked += (s, e) =>
+            {
+                printLog(false);
+                field.PrimaryCursorPosition = Int32.Parse(cSel2.Text);
+                field.SelectedTextStart = Int32.Parse(sSel2.Text);
+                field.SelectedTextEnd = Int32.Parse(eSel2.Text);
+                printLog(true);
+            };
+            HorView6.Add(allButton2);
+
 
             // Deselect
-            Button deselectButton = new Button
-            {
-                Text = "Deselect",
-                WidthResizePolicy = ResizePolicyType.FillToParent,
-                HeightResizePolicy = ResizePolicyType.UseNaturalSize,
-            };
+            Button deselectButton = newButton("Deselect");
             deselectButton.Clicked += (s, e) =>
             {
                 // How?
             };
             view.Add(deselectButton);
 
+
             // Cursor position + 1
-            Button cursorButton = new Button
-            {
-                Text = "Cursor position + 1",
-                WidthResizePolicy = ResizePolicyType.FillToParent,
-                HeightResizePolicy = ResizePolicyType.UseNaturalSize,
-            };
+            Button cursorButton = newButton("Cursor position + 1");
             cursorButton.Clicked += (s, e) =>
             {
                 field.PrimaryCursorPosition += 1;
             };
             view.Add(cursorButton);
 
+
             // Get Selected Text
-            Button selectedButton = new Button
-            {
-                Text = "Get Selected Text",
-                WidthResizePolicy = ResizePolicyType.FillToParent,
-                HeightResizePolicy = ResizePolicyType.UseNaturalSize,
-            };
+            Button selectedButton = newButton("Get Selected Text");
             selectedButton.Clicked += (s, e) =>
             {
                 selectedLabel.Text = "Selected Text : " + field.SelectedText;
@@ -222,6 +262,77 @@ namespace TextComponentsTest
 
             window.Add(view);
         }
+
+        public void printLog(bool after)
+        {
+            if (after)
+                Tizen.Log.Fatal("NUI", "after cur[" + field.PrimaryCursorPosition + "] start[" + field.SelectedTextStart + "] end[" + field.SelectedTextEnd + "] \n");
+            else
+                Tizen.Log.Fatal("NUI", "before cur[" + field.PrimaryCursorPosition + "] start[" + field.SelectedTextStart + "] end[" + field.SelectedTextEnd + "] \n");
+        }
+
+        public Button newButton(string text)
+        {
+            Button button = new Button
+            {
+                Text = text,
+                WidthSpecification = LayoutParamPolicies.MatchParent,
+                HeightSpecification = LayoutParamPolicies.MatchParent,
+            };
+            button.TextLabel.PointSize = 15.0f;
+            return button;
+        }
+
+        public TextField newTextField(string text, float size)
+        {
+            TextField textField = new TextField
+            {
+                Text = text,
+                WidthSpecification = LayoutParamPolicies.MatchParent,
+                HeightSpecification = LayoutParamPolicies.MatchParent,
+
+                MaxLength = 50,
+                PointSize = size,
+                BackgroundColor = Color.White,
+
+                HorizontalAlignment = HorizontalAlignment.Begin,
+                VerticalAlignment = VerticalAlignment.Center,
+            };
+            return textField;
+        }
+
+        public TextLabel newTextLabel(string text, float size)
+        {
+            TextLabel textLabel = new TextLabel
+            {
+                Text = text,
+                WidthSpecification = LayoutParamPolicies.MatchParent,
+                HeightSpecification = LayoutParamPolicies.WrapContent,
+                PointSize = size,
+                BackgroundColor = Color.White,
+                HorizontalAlignment = HorizontalAlignment.Begin,
+                VerticalAlignment = VerticalAlignment.Center,   // only single line
+            };
+            return textLabel;
+        }
+
+        public View newHorView()
+        {
+            View view = new View
+            {
+                Layout = new LinearLayout()
+                {
+                    LinearOrientation = LinearLayout.Orientation.Horizontal,
+                    LinearAlignment = LinearLayout.Alignment.Begin,
+                    CellPadding = new Size2D(10, 10),
+                },
+                WidthSpecification = LayoutParamPolicies.MatchParent,
+                HeightSpecification = 40,
+                BackgroundColor = Color.Black,
+            };
+            return view;
+        }
+
 
         public void onTextFieldTextChanged(object sender, TextField.TextChangedEventArgs e)
         {
