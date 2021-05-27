@@ -233,9 +233,12 @@ namespace TextComponentsTest
 
 
             // Get Selected Text
-            Button selectedButton = newButton("Get Selected Text");
+            Button selectedButton = newButton("Get Data");
             selectedButton.Clicked += (s, e) =>
-            {
+            {                
+                selectionLabel.Text = "Selection Length : " + (int)(field.SelectedTextEnd - field.SelectedTextStart);
+                cursorPosLabel.Text = "Cursor Position : " + field.PrimaryCursorPosition;
+                isFocusedLabel.Text = "Is Focused : " + isFocused;
                 selectedLabel.Text = "Selected Text : " + field.SelectedText;
             };
             view.Add(selectedButton);
@@ -245,20 +248,10 @@ namespace TextComponentsTest
 
 
             // TextField for focus
-            TextField focusField = new TextField
-            {
-                Text = "",
-                PointSize = 25.0f,
-                BackgroundColor = Color.White,
-                HorizontalAlignment = HorizontalAlignment.Begin,
-                WidthResizePolicy = ResizePolicyType.FillToParent,
-                HeightResizePolicy = ResizePolicyType.UseNaturalSize,
-
-                PlaceholderText = "Check Is Focused",
-                PlaceholderTextFocused = "Check Is Focused",
-            };
+            TextField focusField = newTextField("", 20.0f);
+            focusField.PlaceholderText = "Check Is Focused";
+            focusField.PlaceholderTextFocused = "Check Is Focused";
             view.Add(focusField);
-
 
             window.Add(view);
         }
