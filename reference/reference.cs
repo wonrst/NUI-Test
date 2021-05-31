@@ -26,8 +26,8 @@ namespace TextComponentsTest
                     LinearAlignment = LinearLayout.Alignment.Begin,
                     CellPadding = new Size2D(10, 10),
                 },
-                WidthResizePolicy = ResizePolicyType.FillToParent,
-                HeightResizePolicy = ResizePolicyType.FillToParent,
+                WidthSpecification = LayoutParamPolicies.MatchParent,
+                HeightSpecification = LayoutParamPolicies.MatchParent,
                 BackgroundColor = Color.Black,
             };
 
@@ -71,7 +71,8 @@ namespace TextComponentsTest
             {
                 // Text = "Text Field",
                 // EnableMarkup = true,
-                WidthSpecification = LayoutParamPolicies.MatchParent,
+                //WidthSpecification = LayoutParamPolicies.MatchParent,
+                WidthSpecification = 200,
                 HeightSpecification = LayoutParamPolicies.WrapContent,
 
                 MaxLength = 20,
