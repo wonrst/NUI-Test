@@ -43,16 +43,22 @@ namespace TextComponentsTest
 
 
             // Main TextField
-            field = newTextField("Text Field Cursor Test", 25.0f);
+            field = newTextField("Text Field Cursor Test This is long long text content because I need very long text.. scrollable text components", 25.0f);
+            field.Text = "Text Field Cursor Test";
             field.HeightSpecification = 80;
+            field.HorizontalAlignment = HorizontalAlignment.Center;
+            //field.EnableSelection = false;
             field.TextChanged += (s, e) =>
             {
                 Tizen.Log.Error("NUI", "Field Text Changed[" + e.TextField.Text + "] \n");
             };
             view.Add(field);
 
+            // TODO: Set Selection Range at OnInitialize
+            // field.SelectedTextStart = 3;
+            // field.SelectedTextEnd = 12;
 
-            // Jsut divider
+            // Just divider
             View divider = new View
             {
                 Size2D = new Size2D(480, 3),
@@ -284,7 +290,7 @@ namespace TextComponentsTest
                 WidthSpecification = LayoutParamPolicies.MatchParent,
                 HeightSpecification = LayoutParamPolicies.MatchParent,
 
-                MaxLength = 50,
+                MaxLength = 500,
                 PointSize = size,
                 BackgroundColor = Color.White,
 
@@ -297,7 +303,7 @@ namespace TextComponentsTest
         public TextLabel newTextLabel(string text, float size)
         {
             TextLabel textLabel = new TextLabel
-            {
+            {                
                 Text = text,
                 WidthSpecification = LayoutParamPolicies.MatchParent,
                 HeightSpecification = LayoutParamPolicies.WrapContent,
