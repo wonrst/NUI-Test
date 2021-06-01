@@ -21,9 +21,9 @@ namespace HelloWorldTest
             TextField entry1 = new TextField
             {
                 HorizontalAlignment = HorizontalAlignment.Begin,
-                VerticalAlignment = VerticalAlignment.Center,
-                HeightResizePolicy = ResizePolicyType.UseNaturalSize,
-                WidthResizePolicy = ResizePolicyType.FillToParent,
+                //VerticalAlignment = VerticalAlignment.Center,
+                WidthSpecification = LayoutParamPolicies.WrapContent,
+                HeightSpecification = LayoutParamPolicies.MatchParent,
                 PlaceholderText = "Placeholder a looooooooooooooooooooooooooooooooooooooooooooooooooong text",
                 PlaceholderTextColor = Color.Gray,
                 TextColor = Color.Blue,
@@ -52,7 +52,7 @@ namespace HelloWorldTest
 
             window.Add(new TextField
             {
-                WidthResizePolicy = ResizePolicyType.FillToParent,
+                WidthSpecification = LayoutParamPolicies.MatchParent,
                 PlaceholderText = "Password",
                 InputMethodSettings = (new InputMethod
                 {
@@ -76,7 +76,7 @@ namespace HelloWorldTest
 
             var textChangedTest = new TextField
             {
-                WidthResizePolicy = ResizePolicyType.FillToParent,
+                WidthSpecification = LayoutParamPolicies.MatchParent,
                 PlaceholderText = "Red : N > 10",
                 MaxLength = 20,
                 InputMethodSettings = (new InputMethod

@@ -26,8 +26,8 @@ namespace TextComponentsTest
                     LinearAlignment = LinearLayout.Alignment.Begin,
                     CellPadding = new Size2D(10, 10),
                 },
-                WidthResizePolicy = ResizePolicyType.FillToParent,
-                HeightResizePolicy = ResizePolicyType.FillToParent,
+                WidthSpecification = LayoutParamPolicies.MatchParent,
+                HeightSpecification = LayoutParamPolicies.MatchParent,
                 BackgroundColor = Color.Black,
             };
 
@@ -36,8 +36,8 @@ namespace TextComponentsTest
             TextLabel titleLabel = new TextLabel
             {
                 Text = " /* Text Label PropertyMap Test */ ",
-                WidthResizePolicy = ResizePolicyType.FillToParent,
-                HeightResizePolicy = ResizePolicyType.UseNaturalSize,
+                WidthSpecification = LayoutParamPolicies.MatchParent,
+                HeightSpecification = LayoutParamPolicies.WrapContent,
                 PointSize = 12.0f,
                 BackgroundColor = Color.CadetBlue,
             };
@@ -49,8 +49,8 @@ namespace TextComponentsTest
             TextLabel fontStyleLabel = new TextLabel
             {
                 Text = "FontStyle Lorem ipsum dolor",
-                WidthResizePolicy = ResizePolicyType.FillToParent,
-                HeightResizePolicy = ResizePolicyType.UseNaturalSize,
+                WidthSpecification = LayoutParamPolicies.MatchParent,
+                HeightSpecification = LayoutParamPolicies.WrapContent,
                 PointSize = 25.0f,
                 BackgroundColor = Color.White,
                 HorizontalAlignment = HorizontalAlignment.Begin,
@@ -72,8 +72,8 @@ namespace TextComponentsTest
             TextLabel underlineLabel = new TextLabel
             {
                 Text = "Underline Lorem ipsum dolor",
-                WidthResizePolicy = ResizePolicyType.FillToParent,
-                HeightResizePolicy = ResizePolicyType.UseNaturalSize,
+                WidthSpecification = LayoutParamPolicies.MatchParent,
+                HeightSpecification = LayoutParamPolicies.WrapContent,
                 PointSize = 25.0f,
                 BackgroundColor = Color.White,
                 HorizontalAlignment = HorizontalAlignment.Begin,
@@ -94,8 +94,8 @@ namespace TextComponentsTest
             TextLabel shadowLabel = new TextLabel
             {
                 Text = "Shadow Lorem ipsum dolor",
-                WidthResizePolicy = ResizePolicyType.FillToParent,
-                HeightResizePolicy = ResizePolicyType.UseNaturalSize,
+                WidthSpecification = LayoutParamPolicies.MatchParent,
+                HeightSpecification = LayoutParamPolicies.WrapContent,
                 PointSize = 25.0f,
                 BackgroundColor = Color.White,
                 HorizontalAlignment = HorizontalAlignment.Begin,
@@ -115,8 +115,8 @@ namespace TextComponentsTest
             TextLabel outlineLabel = new TextLabel
             {
                 Text = "Outline Lorem ipsum dolor",
-                WidthResizePolicy = ResizePolicyType.FillToParent,
-                HeightResizePolicy = ResizePolicyType.UseNaturalSize,
+                WidthSpecification = LayoutParamPolicies.MatchParent,
+                HeightSpecification = LayoutParamPolicies.WrapContent,
                 PointSize = 25.0f,
                 BackgroundColor = Color.White,
                 HorizontalAlignment = HorizontalAlignment.Begin,
@@ -136,8 +136,8 @@ namespace TextComponentsTest
             TextLabel titleLabel2 = new TextLabel
             {
                 Text = " /* Text Field PropertyMap Test */ ",
-                WidthResizePolicy = ResizePolicyType.FillToParent,
-                HeightResizePolicy = ResizePolicyType.UseNaturalSize,
+                WidthSpecification = LayoutParamPolicies.MatchParent,
+                HeightSpecification = LayoutParamPolicies.WrapContent,
                 PointSize = 12.0f,
                 BackgroundColor = Color.CadetBlue,
             };
@@ -148,8 +148,8 @@ namespace TextComponentsTest
             // HiddenInputSettings
             TextField passwordField = new TextField
             {
-                WidthResizePolicy = ResizePolicyType.FillToParent,
-                HeightResizePolicy = ResizePolicyType.UseNaturalSize,
+                WidthSpecification = LayoutParamPolicies.MatchParent,
+                HeightSpecification = LayoutParamPolicies.WrapContent,
 
                 MaxLength = 20,
                 PointSize = 25.0f,
@@ -173,8 +173,8 @@ namespace TextComponentsTest
             // Placeholder
             TextField placeholderField = new TextField
             {
-                WidthResizePolicy = ResizePolicyType.FillToParent,
-                HeightResizePolicy = ResizePolicyType.UseNaturalSize,
+                WidthSpecification = LayoutParamPolicies.MatchParent,
+                HeightSpecification = LayoutParamPolicies.WrapContent,
 
                 PointSize = 25.0f,
                 BackgroundColor = Color.White,
@@ -196,8 +196,8 @@ namespace TextComponentsTest
             TextField selectionHandleField = new TextField
             {
                 Text = "Selection Handle Image L, R",
-                WidthResizePolicy = ResizePolicyType.FillToParent,
-                HeightResizePolicy = ResizePolicyType.UseNaturalSize,
+                WidthSpecification = LayoutParamPolicies.MatchParent,
+                HeightSpecification = LayoutParamPolicies.WrapContent,
 
                 PointSize = 25.0f,
                 BackgroundColor = Color.White,

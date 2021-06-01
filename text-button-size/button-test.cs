@@ -27,8 +27,8 @@ namespace TextComponentsTest
                     LinearAlignment = LinearLayout.Alignment.Begin,
                     CellPadding = new Size2D(10, 10),
                 },
-                WidthResizePolicy = ResizePolicyType.FillToParent,
-                HeightResizePolicy = ResizePolicyType.FillToParent,
+                WidthSpecification = LayoutParamPolicies.MatchParent,
+                HeightSpecification = LayoutParamPolicies.MatchParent,
                 BackgroundColor = Color.Black,
             };
 
@@ -37,10 +37,8 @@ namespace TextComponentsTest
 
             var button = new Button
             {
-                WidthResizePolicy = ResizePolicyType.FillToParent,
-                HeightResizePolicy = ResizePolicyType.UseNaturalSize,
-                //WidthResizePolicy = ResizePolicyType.FitToChildren,
-                //HeightResizePolicy = ResizePolicyType.FitToChildren,
+                WidthSpecification = LayoutParamPolicies.MatchParent,
+                HeightSpecification = LayoutParamPolicies.WrapContent,
                 BackgroundColor = Color.CadetBlue,
             };
 
@@ -58,8 +56,8 @@ namespace TextComponentsTest
                 // Text = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
                 // EnableMarkup = true,
                 MultiLine = true,
-                WidthResizePolicy = ResizePolicyType.FillToParent,
-                HeightResizePolicy = ResizePolicyType.UseNaturalSize,
+                WidthSpecification = LayoutParamPolicies.MatchParent,
+                HeightSpecification = LayoutParamPolicies.WrapContent,
                 PointSize = 25.0f,
                 BackgroundColor = Color.White,
                 HorizontalAlignment = HorizontalAlignment.Begin,
@@ -76,8 +74,8 @@ namespace TextComponentsTest
             // FillToParent
             var noLayoutBtn1 = new Button
             {
-                WidthResizePolicy = ResizePolicyType.FillToParent,
-                HeightResizePolicy = ResizePolicyType.UseNaturalSize,
+                WidthSpecification = LayoutParamPolicies.MatchParent,
+                HeightSpecification = LayoutParamPolicies.WrapContent,
                 BackgroundColor = Color.CadetBlue,
                 Position2D = new Position2D(0, 300),
                 Text = "FillToParent",
@@ -87,8 +85,8 @@ namespace TextComponentsTest
             // FillToParent
             var noLayoutBtn2 = new Button
             {
-                WidthResizePolicy = ResizePolicyType.FillToParent,
-                HeightResizePolicy = ResizePolicyType.UseNaturalSize,
+                WidthSpecification = LayoutParamPolicies.MatchParent,
+                HeightSpecification = LayoutParamPolicies.WrapContent,
                 BackgroundColor = Color.CadetBlue,
                 Position2D = new Position2D(0, 400),
                 Text = "FillToParent Loooooooooooooooooooooooooooong text",
@@ -98,8 +96,8 @@ namespace TextComponentsTest
             // FitToChildren
             var noLayoutBtn3 = new Button
             {
-                WidthResizePolicy = ResizePolicyType.FitToChildren,
-                HeightResizePolicy = ResizePolicyType.FitToChildren,
+                WidthSpecification = LayoutParamPolicies.WrapContent,
+                HeightSpecification = LayoutParamPolicies.WrapContent,
                 BackgroundColor = Color.CadetBlue,
                 Position2D = new Position2D(0, 500),
                 Text = "FitToChildren",
@@ -109,8 +107,8 @@ namespace TextComponentsTest
             // FitToChildren
             var noLayoutBtn4 = new Button
             {
-                WidthResizePolicy = ResizePolicyType.FitToChildren,
-                HeightResizePolicy = ResizePolicyType.FitToChildren,
+                WidthSpecification = LayoutParamPolicies.WrapContent,
+                HeightSpecification = LayoutParamPolicies.WrapContent,
                 BackgroundColor = Color.CadetBlue,
                 Position2D = new Position2D(0, 600),
                 Text = "FitToChildren Loooooooooooooooooooooooooooong text",

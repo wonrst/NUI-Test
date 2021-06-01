@@ -46,6 +46,7 @@ namespace TextComponentsTest
 
             button.Text = "Loooooooooooooo\noooooooooooooong text";
             button.TextLabel.MultiLine = true;
+            button.TextLabel.WidthSpecification = LayoutParamPolicies.MatchParent;
 
             view.Add(button);
 
@@ -54,6 +55,7 @@ namespace TextComponentsTest
                 Text = "First\r\nSecond"
             };
             twoLineBtn.TextLabel.MultiLine = true;
+            twoLineBtn.TextLabel.WidthSpecification = LayoutParamPolicies.MatchParent;
             view.Add(twoLineBtn);
 
 
@@ -64,6 +66,7 @@ namespace TextComponentsTest
                 WidthResizePolicy = ResizePolicyType.FillToParent,
             };
             twolineLabel.MultiLine = true;
+            twoLineBtn.TextLabel.WidthSpecification = LayoutParamPolicies.MatchParent;
             view.Add(twolineLabel);
 
             Tizen.Log.Error("NUI", "label default [" + twolineLabel.WidthResizePolicy + " " + twolineLabel.HeightResizePolicy + "] \n");
@@ -77,6 +80,7 @@ namespace TextComponentsTest
             };
             multilineLabel.MultiLine = true;
             multilineLabel.Ellipsis = false;
+            multilineLabel.WidthSpecification = LayoutParamPolicies.MatchParent;
             //multilineLabel.WidthResizePolicy = ResizePolicyType.FillToParent;
 
             Tizen.Log.Error("NUI", "multiline Label label default [" + multilineLabel.WidthResizePolicy + " " + multilineLabel.HeightResizePolicy + "] \n");
@@ -93,9 +97,9 @@ namespace TextComponentsTest
             };
             multiLineButton.TextLabel.MultiLine = true;
             multiLineButton.TextLabel.Ellipsis = false;
-            multiLineButton.TextLabel.WidthResizePolicy = ResizePolicyType.FillToParent;
+            //multiLineButton.TextLabel.WidthResizePolicy = ResizePolicyType.FillToParent;
 
-            //multiLineButton.TextLabel.WidthSpecification = LayoutParamPolicies.MatchParent;
+            multiLineButton.TextLabel.WidthSpecification = LayoutParamPolicies.MatchParent;
             //multiLineButton.TextLabel.HeightSpecification = LayoutParamPolicies.WrapContent;
 
 
@@ -115,6 +119,7 @@ namespace TextComponentsTest
             };
             multilineLabel2.MultiLine = true;
             multilineLabel2.Ellipsis = false;
+            multilineLabel2.WidthSpecification = LayoutParamPolicies.MatchParent;
 
             Tizen.Log.Error("NUI", "multiline Label2 label default [" + multilineLabel2.WidthResizePolicy + " " + multilineLabel2.HeightResizePolicy + "] \n");
 
