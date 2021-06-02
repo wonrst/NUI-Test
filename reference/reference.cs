@@ -30,6 +30,7 @@ namespace TextComponentsTest
                 HeightSpecification = LayoutParamPolicies.MatchParent,
                 BackgroundColor = Color.Black,
             };
+            window.Add(view);
 
 
             // Normal label
@@ -86,6 +87,7 @@ namespace TextComponentsTest
                 HorizontalAlignment = HorizontalAlignment.Begin,
                 VerticalAlignment = VerticalAlignment.Center,   // only single line
             };
+            setHandle(field);
 
             // field.TextChanged += onTextFieldTextChanged;
             field.TextChanged += (s, e) =>
@@ -112,6 +114,7 @@ namespace TextComponentsTest
                 PlaceholderTextFocused = "Input Password",
                 // InputMethodSettings = (new InputMethod{PanelLayout = InputMethod.PanelLayoutType.Password}).OutputMap,
             };
+            setHandle(passwordField);
 
             var inputMethod = new InputMethod();
             inputMethod.PanelLayout = InputMethod.PanelLayoutType.Password;
@@ -138,6 +141,7 @@ namespace TextComponentsTest
 
                 HorizontalAlignment = HorizontalAlignment.Begin,   // there is no VerticalAlignment in TextEditor
             };
+            setHandle(editor);
 
             // FIXME
             float height = editor.GetHeightForWidth(480);
@@ -150,9 +154,6 @@ namespace TextComponentsTest
             };
 
             view.Add(editor);
-
-
-            window.Add(view);
         }
 
         public void onTextFieldTextChanged(object sender, TextField.TextChangedEventArgs e)
@@ -163,6 +164,32 @@ namespace TextComponentsTest
         public void onTextEditorTextChanged(object sender, TextEditor.TextChangedEventArgs e)
         {
             Tizen.Log.Fatal("NUI", "Editor Text Changed : " + e.TextEditor.Text + "\n");
+        }
+
+        public void setHandle(TextField field)
+        {
+            field.GrabHandleImage = "images/handle_down.png";
+
+            PropertyMap imageLeftMap = new PropertyMap();
+            imageLeftMap.Add("filename", new PropertyValue("images/handle_downleft.png"));
+            field.SelectionHandleImageLeft = imageLeftMap;
+
+            PropertyMap imageRightMap = new PropertyMap();
+            imageRightMap.Add("filename", new PropertyValue("images/handle_downright.png"));
+            field.SelectionHandleImageRight = imageRightMap;
+        }
+
+        public void setHandle(TextEditor editor)
+        {
+            editor.GrabHandleImage = "images/handle_down.png";
+
+            PropertyMap imageLeftMap = new PropertyMap();
+            imageLeftMap.Add("filename", new PropertyValue("images/handle_downleft.png"));
+            editor.SelectionHandleImageLeft = imageLeftMap;
+
+            PropertyMap imageRightMap = new PropertyMap();
+            imageRightMap.Add("filename", new PropertyValue("images/handle_downright.png"));
+            editor.SelectionHandleImageRight = imageRightMap;
         }
 
         [STAThread]
