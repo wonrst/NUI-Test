@@ -27,8 +27,8 @@ namespace TextComponentsTest
                     LinearAlignment = LinearLayout.Alignment.Begin,
                     CellPadding = new Size2D(10, 10),
                 },
-                WidthResizePolicy = ResizePolicyType.FillToParent,
-                HeightResizePolicy = ResizePolicyType.FillToParent,
+                WidthSpecification = LayoutParamPolicies.MatchParent,
+                HeightSpecification = LayoutParamPolicies.MatchParent,
                 BackgroundColor = Color.Yellow,
             };
 
@@ -37,10 +37,8 @@ namespace TextComponentsTest
 
             var button = new Button
             {
-                WidthResizePolicy = ResizePolicyType.FillToParent,
-                HeightResizePolicy = ResizePolicyType.UseNaturalSize,
-                //WidthResizePolicy = ResizePolicyType.FitToChildren,
-                //HeightResizePolicy = ResizePolicyType.FitToChildren,
+                WidthSpecification = LayoutParamPolicies.MatchParent,
+                HeightSpecification = LayoutParamPolicies.WrapContent,
                 BackgroundColor = Color.CadetBlue,
             };
 
@@ -63,13 +61,13 @@ namespace TextComponentsTest
             {
                 Text = "First\r\nSecond",
                 BackgroundColor = Color.Red,
-                WidthResizePolicy = ResizePolicyType.FillToParent,
+                WidthSpecification = LayoutParamPolicies.MatchParent,
             };
             twolineLabel.MultiLine = true;
             twoLineBtn.TextLabel.WidthSpecification = LayoutParamPolicies.MatchParent;
             view.Add(twolineLabel);
 
-            Tizen.Log.Error("NUI", "label default [" + twolineLabel.WidthResizePolicy + " " + twolineLabel.HeightResizePolicy + "] \n");
+            Tizen.Log.Error("NUI", "label default [" + twolineLabel.WidthSpecification + " " + twolineLabel.HeightSpecification + "] \n");
 
 
 
@@ -81,9 +79,8 @@ namespace TextComponentsTest
             multilineLabel.MultiLine = true;
             multilineLabel.Ellipsis = false;
             multilineLabel.WidthSpecification = LayoutParamPolicies.MatchParent;
-            //multilineLabel.WidthResizePolicy = ResizePolicyType.FillToParent;
 
-            Tizen.Log.Error("NUI", "multiline Label label default [" + multilineLabel.WidthResizePolicy + " " + multilineLabel.HeightResizePolicy + "] \n");
+            Tizen.Log.Error("NUI", "multiline Label label default [" + multilineLabel.WidthSpecification + " " + multilineLabel.HeightSpecification + "] \n");
 
             view.Add(multilineLabel);
 
@@ -97,7 +94,6 @@ namespace TextComponentsTest
             };
             multiLineButton.TextLabel.MultiLine = true;
             multiLineButton.TextLabel.Ellipsis = false;
-            //multiLineButton.TextLabel.WidthResizePolicy = ResizePolicyType.FillToParent;
 
             multiLineButton.TextLabel.WidthSpecification = LayoutParamPolicies.MatchParent;
             //multiLineButton.TextLabel.HeightSpecification = LayoutParamPolicies.WrapContent;
@@ -105,7 +101,7 @@ namespace TextComponentsTest
 
             view.Add(multiLineButton);
 
-            Tizen.Log.Error("NUI", "multiLine Button label default [" + multiLineButton.TextLabel.WidthResizePolicy + " " + multiLineButton.TextLabel.HeightResizePolicy + "] \n");
+            Tizen.Log.Error("NUI", "multiLine Button label default [" + multiLineButton.TextLabel.WidthSpecification + " " + multiLineButton.TextLabel.HeightSpecification + "] \n");
 
             window.Add(view);
 
@@ -121,7 +117,7 @@ namespace TextComponentsTest
             multilineLabel2.Ellipsis = false;
             multilineLabel2.WidthSpecification = LayoutParamPolicies.MatchParent;
 
-            Tizen.Log.Error("NUI", "multiline Label2 label default [" + multilineLabel2.WidthResizePolicy + " " + multilineLabel2.HeightResizePolicy + "] \n");
+            Tizen.Log.Error("NUI", "multiline Label2 label default [" + multilineLabel2.WidthSpecification + " " + multilineLabel2.HeightSpecification + "] \n");
 
             window.Add(multilineLabel2);
 

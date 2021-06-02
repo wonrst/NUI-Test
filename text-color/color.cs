@@ -26,8 +26,8 @@ namespace TextComponentsTest
                     LinearAlignment = LinearLayout.Alignment.Begin,
                     CellPadding = new Size2D(10, 10),
                 },
-                WidthResizePolicy = ResizePolicyType.FillToParent,
-                HeightResizePolicy = ResizePolicyType.FillToParent,
+                WidthSpecification = LayoutParamPolicies.MatchParent,
+                HeightSpecification = LayoutParamPolicies.MatchParent,
                 BackgroundColor = Color.Black,
             };
             window.Add(view);
@@ -60,7 +60,7 @@ namespace TextComponentsTest
                 //HeightSpecification = LayoutParamPolicies.WrapContent,
                 //HeightSpecification = 100,
 
-                WidthResizePolicy = ResizePolicyType.FillToParent,
+                WidthSpecification = LayoutParamPolicies.MatchParent,
                 SizeHeight = 100,
 
                 MaxLength = 200,
@@ -87,8 +87,6 @@ namespace TextComponentsTest
             
 
             label.Text = field.Text;
-
-            
         }
 
 

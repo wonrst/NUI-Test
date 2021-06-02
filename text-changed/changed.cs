@@ -26,8 +26,8 @@ namespace TextComponentsTest
                     LinearAlignment = LinearLayout.Alignment.Begin,
                     CellPadding = new Size2D(10, 10),
                 },
-                WidthResizePolicy = ResizePolicyType.FillToParent,
-                HeightResizePolicy = ResizePolicyType.FillToParent,
+                WidthSpecification = LayoutParamPolicies.MatchParent,
+                HeightSpecification = LayoutParamPolicies.MatchParent,
                 BackgroundColor = Color.Black,
             };
 
@@ -35,7 +35,8 @@ namespace TextComponentsTest
             TextField field = new TextField
             {
                 Text = "Text Field Changed",
-                Size2D = new Size2D(480, 100),
+                WidthSpecification = LayoutParamPolicies.MatchParent,
+                HeightSpecification = LayoutParamPolicies.WrapContent,
 
                 MaxLength = 20,
                 PointSize = 25.0f,
@@ -55,7 +56,8 @@ namespace TextComponentsTest
             TextEditor editor = new TextEditor
             {
                 Text = "Text Editor Changed",
-                Size2D = new Size2D(480, 100),
+                WidthSpecification = LayoutParamPolicies.MatchParent,
+                HeightSpecification = LayoutParamPolicies.WrapContent,
 
                 PointSize = 25.0f,
                 BackgroundColor = Color.White,
@@ -74,7 +76,8 @@ namespace TextComponentsTest
             TextField field2 = new TextField
             {
                 Text = "Text Field",
-                Size2D = new Size2D(480, 100),
+                WidthSpecification = LayoutParamPolicies.MatchParent,
+                HeightSpecification = LayoutParamPolicies.WrapContent,
 
                 MaxLength = 20,
                 PointSize = 25.0f,
@@ -93,7 +96,8 @@ namespace TextComponentsTest
             TextEditor editor2 = new TextEditor
             {
                 Text = "Text Editor",
-                Size2D = new Size2D(480, 100),
+                WidthSpecification = LayoutParamPolicies.MatchParent,
+                HeightSpecification = 300,
 
                 PointSize = 25.0f,
                 BackgroundColor = Color.White,

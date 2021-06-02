@@ -27,8 +27,8 @@ namespace TextComponentsTest
                     LinearAlignment = LinearLayout.Alignment.Begin,
                     CellPadding = new Size2D(10, 10),
                 },
-                WidthResizePolicy = ResizePolicyType.FillToParent,
-                HeightResizePolicy = ResizePolicyType.FillToParent,
+                WidthSpecification = LayoutParamPolicies.MatchParent,
+                HeightSpecification = LayoutParamPolicies.MatchParent,
                 BackgroundColor = Color.Black,
             };
             window.Add(view);
@@ -52,6 +52,7 @@ namespace TextComponentsTest
                 PointSize = 20.0f,
             };
             view.Add(field);
+            setHandle(field);
 
 
             // editor
@@ -69,6 +70,7 @@ namespace TextComponentsTest
                 EnableSelection = true,
             };
             view.Add(editor);
+            setHandle(editor);
 
 
             // Normal field
@@ -89,13 +91,14 @@ namespace TextComponentsTest
                 PointSize = 20.0f,
             };
             view.Add(field2);
+            setHandle(field2);
 
 
             var button1 = new Button
             {
                 Text = "EnableGrabHandle True",
-                WidthResizePolicy = ResizePolicyType.FillToParent,
-                HeightResizePolicy = ResizePolicyType.UseNaturalSize,
+                WidthSpecification = LayoutParamPolicies.MatchParent,
+                HeightSpecification = LayoutParamPolicies.WrapContent,
             };
             button1.Clicked += (s, e) =>
             {
@@ -109,8 +112,8 @@ namespace TextComponentsTest
             var button2 = new Button
             {
                 Text = "EnableGrabHandlePopup True",
-                WidthResizePolicy = ResizePolicyType.FillToParent,
-                HeightResizePolicy = ResizePolicyType.UseNaturalSize,
+                WidthSpecification = LayoutParamPolicies.MatchParent,
+                HeightSpecification = LayoutParamPolicies.WrapContent,
             };
             button2.Clicked += (s, e) =>
             {
@@ -124,8 +127,8 @@ namespace TextComponentsTest
             var button3 = new Button
             {
                 Text = "EnableSelection True",
-                WidthResizePolicy = ResizePolicyType.FillToParent,
-                HeightResizePolicy = ResizePolicyType.UseNaturalSize,
+                WidthSpecification = LayoutParamPolicies.MatchParent,
+                HeightSpecification = LayoutParamPolicies.WrapContent,
             };
             button3.Clicked += (s, e) =>
             {
@@ -139,8 +142,8 @@ namespace TextComponentsTest
             var button4 = new Button
             {
                 Text = "Get handle image",
-                WidthResizePolicy = ResizePolicyType.FillToParent,
-                HeightResizePolicy = ResizePolicyType.UseNaturalSize,
+                WidthSpecification = LayoutParamPolicies.MatchParent,
+                HeightSpecification = LayoutParamPolicies.WrapContent,
             };
             button4.Clicked += (s, e) =>
             {
@@ -154,19 +157,32 @@ namespace TextComponentsTest
                 Tizen.Log.Fatal("NUI", "Field handle right : " + right + "\n");
             };
             view.Add(button4);
+        }
 
-            /* Image set
-
-            field.GrabHandleImage = "handle_down.png";
+        public void setHandle(TextField field)
+        {
+            field.GrabHandleImage = "images/handle_down.png";
 
             PropertyMap imageLeftMap = new PropertyMap();
-            imageLeftMap.Add("filename", new PropertyValue("handle_downleft.png"));
+            imageLeftMap.Add("filename", new PropertyValue("images/handle_downleft.png"));
             field.SelectionHandleImageLeft = imageLeftMap;
 
             PropertyMap imageRightMap = new PropertyMap();
-            imageRightMap.Add("filename", new PropertyValue("handle_downright.png"));
+            imageRightMap.Add("filename", new PropertyValue("images/handle_downright.png"));
             field.SelectionHandleImageRight = imageRightMap;
-            */
+        }
+
+        public void setHandle(TextEditor editor)
+        {
+            editor.GrabHandleImage = "images/handle_down.png";
+
+            PropertyMap imageLeftMap = new PropertyMap();
+            imageLeftMap.Add("filename", new PropertyValue("images/handle_downleft.png"));
+            editor.SelectionHandleImageLeft = imageLeftMap;
+
+            PropertyMap imageRightMap = new PropertyMap();
+            imageRightMap.Add("filename", new PropertyValue("images/handle_downright.png"));
+            editor.SelectionHandleImageRight = imageRightMap;
         }
 
         [STAThread]

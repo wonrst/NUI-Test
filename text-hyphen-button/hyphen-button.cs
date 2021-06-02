@@ -27,8 +27,8 @@ namespace TextComponentsTest
                     LinearAlignment = LinearLayout.Alignment.Begin,
                     CellPadding = new Size2D(10, 10),
                 },
-                WidthResizePolicy = ResizePolicyType.FillToParent,
-                HeightResizePolicy = ResizePolicyType.FillToParent,
+                WidthSpecification = LayoutParamPolicies.MatchParent,
+                HeightSpecification = LayoutParamPolicies.MatchParent,
                 BackgroundColor = Color.Black,
             };
 
@@ -42,21 +42,18 @@ namespace TextComponentsTest
 
             mainButton.TextLabel.LineWrapMode = LineWrapMode.Hyphenation;
             mainButton.TextLabel.MultiLine = true;
-            //mainButton.TextLabel.Size2D = new Size2D(480, 480);
+            // mainButton.TextLabel.Size2D = new Size2D(480, 480);
 
-            mainButton.TextLabel.WidthResizePolicy = ResizePolicyType.FillToParent;
-            //mainButton.TextLabel.HeightResizePolicy = ResizePolicyType.FillToParent;
-            
-            //mainButton.TextLabel.WidthSpecification = LayoutParamPolicies.MatchParent;
-            //mainButton.TextLabel.HeightSpecification = LayoutParamPolicies.WrapContent;
+            mainButton.TextLabel.WidthSpecification = LayoutParamPolicies.MatchParent;
+            // mainButton.TextLabel.HeightSpecification = LayoutParamPolicies.WrapContent;
 
 
             // Label for information
             TextLabel dataLabel = new TextLabel
             {
                 Text = "PointSize : " + mainButton.TextLabel.PointSize + " Wrap : " + mainButton.TextLabel.LineWrapMode,
-                WidthResizePolicy = ResizePolicyType.FillToParent,
-                HeightResizePolicy = ResizePolicyType.UseNaturalSize,
+                WidthSpecification = LayoutParamPolicies.MatchParent,
+                HeightSpecification = LayoutParamPolicies.WrapContent,
                 PointSize = 15.0f,
                 BackgroundColor = Color.White,
                 HorizontalAlignment = HorizontalAlignment.Begin,
@@ -69,8 +66,8 @@ namespace TextComponentsTest
             TextField field = new TextField
             {
                 // EnableMarkup = true,
-                WidthResizePolicy = ResizePolicyType.FillToParent,
-                HeightResizePolicy = ResizePolicyType.UseNaturalSize,
+                WidthSpecification = LayoutParamPolicies.MatchParent,
+                HeightSpecification = LayoutParamPolicies.WrapContent,
 
                 MaxLength = 200,
                 PointSize = 15.0f,
@@ -193,7 +190,6 @@ namespace TextComponentsTest
                 Tizen.Log.Error("NUI", "Short Text \n");
             };
             view.Add(shortButton);
-
 
 
             window.Add(view);

@@ -27,8 +27,8 @@ namespace TextComponentsTest
                     LinearAlignment = LinearLayout.Alignment.Begin,
                     CellPadding = new Size2D(10, 10),
                 },
-                WidthResizePolicy = ResizePolicyType.FillToParent,
-                HeightResizePolicy = ResizePolicyType.FillToParent,
+                WidthSpecification = LayoutParamPolicies.MatchParent,
+                HeightSpecification = LayoutParamPolicies.MatchParent,
                 BackgroundColor = Color.Black,
             };
 
@@ -56,8 +56,8 @@ namespace TextComponentsTest
             TextLabel dataLabel = new TextLabel
             {
                 Text = "PointSize : " + label.PointSize + " Wrap : " + label.LineWrapMode,
-                WidthResizePolicy = ResizePolicyType.FillToParent,
-                HeightResizePolicy = ResizePolicyType.UseNaturalSize,
+                WidthSpecification = LayoutParamPolicies.MatchParent,
+                HeightSpecification = LayoutParamPolicies.WrapContent,
                 PointSize = 25.0f,
                 BackgroundColor = Color.White,
                 HorizontalAlignment = HorizontalAlignment.Begin,
@@ -70,8 +70,8 @@ namespace TextComponentsTest
             TextField field = new TextField
             {
                 // EnableMarkup = true,
-                WidthResizePolicy = ResizePolicyType.FillToParent,
-                HeightResizePolicy = ResizePolicyType.UseNaturalSize,
+                WidthSpecification = LayoutParamPolicies.MatchParent,
+                HeightSpecification = LayoutParamPolicies.WrapContent,
 
                 MaxLength = 200,
                 PointSize = 25.0f,
@@ -98,8 +98,8 @@ namespace TextComponentsTest
             Button charButton = new Button
             {
                 Text = "LineWrapMode.Character",
-                WidthResizePolicy = ResizePolicyType.FillToParent,
-                HeightResizePolicy = ResizePolicyType.UseNaturalSize,
+                WidthSpecification = LayoutParamPolicies.MatchParent,
+                HeightSpecification = LayoutParamPolicies.WrapContent,
             };
 
             charButton.Clicked += (s, e) =>
@@ -116,8 +116,8 @@ namespace TextComponentsTest
             Button wordButton = new Button
             {
                 Text = "LineWrapMode.Word",
-                WidthResizePolicy = ResizePolicyType.FillToParent,
-                HeightResizePolicy = ResizePolicyType.UseNaturalSize,
+                WidthSpecification = LayoutParamPolicies.MatchParent,
+                HeightSpecification = LayoutParamPolicies.WrapContent,
             };
 
             wordButton.Clicked += (s, e) =>
