@@ -79,9 +79,6 @@ namespace TextComponentsTest
 
         public void setTextAlignment(TextLabel label)
         {
-            float h = label.GetHeightForWidth(label.Size2D.Width);
-            Tizen.Log.Error("NUI", "label h " + h + " \n");
-
             int lineCount = label.LineCount;
             Tizen.Log.Error("NUI", "label LineCount " + lineCount + " \n");
 
