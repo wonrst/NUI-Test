@@ -282,6 +282,19 @@ namespace TextComponentsTest
             return button;
         }
 
+        public void setHandle(TextField field)
+        {
+            field.GrabHandleImage = "images/handle_down.png";
+
+            PropertyMap imageLeftMap = new PropertyMap();
+            imageLeftMap.Add("filename", new PropertyValue("images/handle_downleft.png"));
+            field.SelectionHandleImageLeft = imageLeftMap;
+
+            PropertyMap imageRightMap = new PropertyMap();
+            imageRightMap.Add("filename", new PropertyValue("images/handle_downright.png"));
+            field.SelectionHandleImageRight = imageRightMap;
+        }
+
         public TextField newTextField(string text, float size)
         {
             TextField textField = new TextField
@@ -297,6 +310,8 @@ namespace TextComponentsTest
                 HorizontalAlignment = HorizontalAlignment.Begin,
                 VerticalAlignment = VerticalAlignment.Center,
             };
+            setHandle(textField);
+
             return textField;
         }
 
