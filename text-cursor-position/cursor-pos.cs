@@ -34,7 +34,7 @@ namespace TextComponentsTest
             };
 
             // Label for title
-            TextLabel titleLabel = newTextLabel("TextField : ", 20.0f);
+            TextLabel titleLabel = newTextLabel("TextField : ", 15.0f);
             titleLabel.BackgroundColor = Color.CadetBlue;
             view.Add(titleLabel);
 
@@ -68,19 +68,19 @@ namespace TextComponentsTest
 
 
             // Selection
-            TextLabel selectionLabel = newTextLabel("Selection Length : " + (int)(field.SelectedTextEnd - field.SelectedTextStart), 20.0f);
+            TextLabel selectionLabel = newTextLabel("Selection Length : " + (int)(field.SelectedTextEnd - field.SelectedTextStart), 15.0f);
             view.Add(selectionLabel);
 
             // Cursor Position
-            TextLabel cursorPosLabel = newTextLabel("Cursor Position : " + field.PrimaryCursorPosition, 20.0f);
+            TextLabel cursorPosLabel = newTextLabel("Cursor Position : " + field.PrimaryCursorPosition, 15.0f);
             view.Add(cursorPosLabel);
 
             // Is Focused
-            TextLabel isFocusedLabel = newTextLabel("Is Focused : " + isFocused, 20.0f);
+            TextLabel isFocusedLabel = newTextLabel("Is Focused : " + isFocused, 15.0f);
             view.Add(isFocusedLabel);
 
             // Selected text label
-            TextLabel selectedLabel = newTextLabel("Selected Text : " + field.SelectedText, 20.0f);
+            TextLabel selectedLabel = newTextLabel("Selected Text : " + field.SelectedText, 15.0f);
             view.Add(selectedLabel);
 
 
@@ -220,13 +220,22 @@ namespace TextComponentsTest
             HorView6.Add(allButton2);
 
 
-            // Deselect
-            Button deselectButton = newButton("Deselect");
-            deselectButton.Clicked += (s, e) =>
+            // Whole Select
+            Button wholeSelectButton = newButton("Select Whole");
+            wholeSelectButton.Clicked += (s, e) =>
             {
-                // How?
+                field.SelectWholeText();
             };
-            view.Add(deselectButton);
+            view.Add(wholeSelectButton);
+
+
+            // Deselect
+            Button noneSelectButton = newButton("Select None");
+            noneSelectButton.Clicked += (s, e) =>
+            {
+                field.SelectNone();
+            };
+            view.Add(noneSelectButton);
 
 
             // Cursor position + 1
