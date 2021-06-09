@@ -36,59 +36,66 @@ namespace TextComponentsTest
             // Normal label
             TextLabel label = new TextLabel
             {
-                Text = "",
-                // Text = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
-                // EnableMarkup = true,
+                Text = "Text Label",
                 MultiLine = true,
                 WidthSpecification = LayoutParamPolicies.MatchParent,
-                //HeightSpecification = LayoutParamPolicies.WrapContent,
                 HeightSpecification = 100,
                 PointSize = 25.0f,
                 BackgroundColor = Color.White,
-                HorizontalAlignment = HorizontalAlignment.Begin,
-                VerticalAlignment = VerticalAlignment.Center,   // only single line
             };
             view.Add(label);
+            label.TextColor = Color.Green; // works fine
 
 
             // Normal field
             TextField field = new TextField
             {
-                // Text = "Text Field",
-                // EnableMarkup = true,
-                //WidthSpecification = LayoutParamPolicies.MatchParent,
-                //HeightSpecification = LayoutParamPolicies.WrapContent,
-                //HeightSpecification = 100,
-
+                Text = "Text Field",
                 WidthSpecification = LayoutParamPolicies.MatchParent,
                 SizeHeight = 100,
 
                 MaxLength = 200,
                 PointSize = 25.0f,
                 BackgroundColor = Color.Yellow,
-
-                HorizontalAlignment = HorizontalAlignment.Begin,
-                VerticalAlignment = VerticalAlignment.Center,   // only single line
             };
-
-            //field.TextColor = Color.Blue;
-            field.Text = "Update from code";
-            field.TextColor = Color.Blue;
-
             view.Add(field);
-            
+
+            //field.TextColor = Color.Blue; // works fine
+            field.Text = "Update from code";
+            //field.TextColor = Color.Blue; // doesn't work
+
+
             field.TextChanged += (s, e) =>
             {
                 Tizen.Log.Error("NUI", "Field Text Changed[" + e.TextField.Text + "] \n");
+
+                field.InputColor = Color.Red;
                 label.Text = field.Text;
-                //field.InputColor = Color.Blue;
-                //e.TextField.InputColor = Color.Blue;
             };
-            
 
-            label.Text = field.Text;
+
+            TextEditor editor = new TextEditor
+            {
+                Text = "Text Editor",
+                WidthSpecification = LayoutParamPolicies.MatchParent,
+                SizeHeight = 100,
+                PointSize = 25.0f,
+                BackgroundColor = Color.White,
+            };
+            view.Add(editor);
+
+            // editor.TextColor = Color.Red; // doesn't work
+            // editor.FontStyle = new PropertyMap().Add("weight", new PropertyValue("regular")); // works fine
+
+
+            editor.TextChanged += (s, e) =>
+            {
+                Tizen.Log.Error("NUI", "Editor Text Changed[" + e.TextEditor.Text + "] \n");
+
+                editor.InputColor = Color.Blue;
+                label.Text = editor.Text;
+            };
         }
-
 
         [STAThread]
         static void Main(string[] args)
