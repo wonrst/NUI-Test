@@ -60,6 +60,7 @@ namespace TextComponentsTest
             };
             view.Add(field);
 
+
             //field.TextColor = Color.Blue; // works fine
             field.Text = "Update from code";
             //field.TextColor = Color.Blue; // doesn't work
@@ -70,6 +71,7 @@ namespace TextComponentsTest
                 Tizen.Log.Error("NUI", "Field Text Changed[" + e.TextField.Text + "] \n");
 
                 field.InputColor = Color.Red;
+                //field.FontStyle = new PropertyMap().Add("weight", new PropertyValue("regular")); // If this is enabled, it works fine
                 label.Text = field.Text;
             };
 
@@ -84,6 +86,7 @@ namespace TextComponentsTest
             };
             view.Add(editor);
 
+
             // editor.TextColor = Color.Red; // doesn't work
             // editor.FontStyle = new PropertyMap().Add("weight", new PropertyValue("regular")); // works fine
 
@@ -93,6 +96,7 @@ namespace TextComponentsTest
                 Tizen.Log.Error("NUI", "Editor Text Changed[" + e.TextEditor.Text + "] \n");
 
                 editor.InputColor = Color.Blue;
+                //editor.FontStyle = new PropertyMap().Add("weight", new PropertyValue("regular")); // If this is enabled, it works fine
                 label.Text = editor.Text;
             };
         }
