@@ -27,7 +27,7 @@ namespace TextComponentsTest
                     CellPadding = new Size2D(10, 10),
                 },
                 WidthSpecification = LayoutParamPolicies.MatchParent,
-                HeightSpecification = 300,
+                HeightSpecification = 170,
                 BackgroundColor = Color.Black,
             };
             window.Add(view);
@@ -39,7 +39,7 @@ namespace TextComponentsTest
                 Text = "Text Label in Layout",
                 MultiLine = true,
                 WidthSpecification = LayoutParamPolicies.MatchParent,
-                HeightSpecification = 100,
+                HeightSpecification = 50,
                 PointSize = 25.0f,
                 BackgroundColor = Color.White,
             };
@@ -52,12 +52,13 @@ namespace TextComponentsTest
             {
                 Text = "Text Field in Layout",
                 WidthSpecification = LayoutParamPolicies.MatchParent,
-                SizeHeight = 100,
+                HeightSpecification = 50,
 
                 MaxLength = 200,
                 PointSize = 25.0f,
                 BackgroundColor = Color.Yellow,
             };
+            field.TextColor = Color.Blue;
             view.Add(field);
             field.TextChanged += (s, e) =>
             {
@@ -70,10 +71,11 @@ namespace TextComponentsTest
             {
                 Text = "Text Editor in Layout",
                 WidthSpecification = LayoutParamPolicies.MatchParent,
-                SizeHeight = 100,
+                HeightSpecification = 50,
                 PointSize = 25.0f,
                 BackgroundColor = Color.Blue,
             };
+            editor.TextColor = Color.Blue;
             view.Add(editor);
             editor.TextChanged += (s, e) =>
             {
@@ -82,10 +84,12 @@ namespace TextComponentsTest
             };
 
 
+            // NO Layout - VIEW 
             View view2 = new View()
             {
-                Size2D = new Size2D(480, 400),
-                Position2D = new Position2D(0, 350),
+                Size2D = new Size2D(480, 190),
+                Position2D = new Position2D(0, 180),
+                BackgroundColor = Color.Gray,
             };
             window.Add(view2);
 
@@ -95,9 +99,8 @@ namespace TextComponentsTest
             {
                 Text = "Text Label in View",
                 MultiLine = true,
-                WidthSpecification = LayoutParamPolicies.MatchParent,
-                HeightSpecification = 100,
-                Position2D = new Position2D(0, 0),
+                Size2D = new Size2D(480, 50),
+                Position2D = new Position2D(0, 10),
                 PointSize = 25.0f,
                 BackgroundColor = Color.White,
             };
@@ -109,37 +112,49 @@ namespace TextComponentsTest
             TextField field2 = new TextField
             {
                 Text = "Text Field in View",
-                WidthSpecification = LayoutParamPolicies.MatchParent,
-                SizeHeight = 100,
-                Position2D = new Position2D(0, 100),
+                Size2D = new Size2D(480, 50),
+                Position2D = new Position2D(0, 70),
                 MaxLength = 200,
                 PointSize = 25.0f,
                 BackgroundColor = Color.Yellow,
             };
+            field2.TextColor = Color.Blue;
             view2.Add(field2);
             field2.TextChanged += (s, e) =>
             {
                 Tizen.Log.Error("NUI", "Field Text Changed[" + e.TextField.Text + "] \n");
                 label2.Text = field2.Text;
+
+                if (field2.Text.Length > 10)
+                    field2.TextColor = Color.Purple;
+                else
+                    field2.TextColor = Color.Red;
+
+                // field2.InputColor = Color.Red; // dosen't work
             };
 
 
             TextEditor editor2 = new TextEditor
             {
                 Text = "Text Editor in View",
-                WidthSpecification = LayoutParamPolicies.MatchParent,
-                SizeHeight = 100,
+                Size2D = new Size2D(480, 50),
                 PointSize = 25.0f,
-                Position2D = new Position2D(0, 200),
+                Position2D = new Position2D(0, 130),
                 BackgroundColor = Color.White,
             };
+            editor2.TextColor = Color.Blue;
             view2.Add(editor2);
             editor2.TextChanged += (s, e) =>
             {
                 Tizen.Log.Error("NUI", "Editor Text Changed[" + e.TextEditor.Text + "] \n");
                 label2.Text = editor2.Text;
-            };
 
+                if (editor2.Text.Length > 10)
+                    editor2.TextColor = Color.Purple;
+                else
+                    editor2.TextColor = Color.Red;
+                // editor2.InputColor = Color.Red; // dosen't work
+            };
 
         }
 
