@@ -2,6 +2,7 @@ using System;
 using System.Threading.Tasks;
 using Tizen.NUI;
 using Tizen.NUI.BaseComponents;
+using Tizen.NUI.Components;
 
 namespace TextComponentsTest
 {
@@ -30,6 +31,8 @@ namespace TextComponentsTest
                 HeightSpecification = LayoutParamPolicies.MatchParent,
                 BackgroundColor = Color.Black,
             };
+            window.Add(view);
+
 
             // Normal field
             TextField field = new TextField
@@ -75,7 +78,7 @@ namespace TextComponentsTest
             // Normal field
             TextField field2 = new TextField
             {
-                Text = "Text Field",
+                Text = "Color update",
                 WidthSpecification = LayoutParamPolicies.MatchParent,
                 HeightSpecification = LayoutParamPolicies.WrapContent,
 
@@ -87,6 +90,11 @@ namespace TextComponentsTest
             field2.TextChanged += (s, e) =>
             {
                 Tizen.Log.Error("NUI", "Field Text Changed[" + e.TextField.Text + "] \n");
+                int len = field2.Text.Length;
+                if (len > 10)
+                    field2.TextColor = Color.Red;
+                else
+                    field2.TextColor = Color.Blue;
             };
 
             view.Add(field2);
@@ -95,9 +103,9 @@ namespace TextComponentsTest
             // Need to implement layout editor
             TextEditor editor2 = new TextEditor
             {
-                Text = "Text Editor",
+                Text = "Color update",
                 WidthSpecification = LayoutParamPolicies.MatchParent,
-                HeightSpecification = 300,
+                HeightSpecification = 100,
 
                 PointSize = 25.0f,
                 BackgroundColor = Color.White,
@@ -106,11 +114,29 @@ namespace TextComponentsTest
             editor2.TextChanged += (s, e) =>
             {
                 Tizen.Log.Error("NUI", "Editor Text Changed[" + e.TextEditor.Text + "] \n");
+                int len = editor2.Text.Length;
+                if (len > 10)
+                    editor2.TextColor = Color.Red;
+                else
+                    editor2.TextColor = Color.Blue;
             };
 
             view.Add(editor2);
 
-            window.Add(view);
+
+            var button = new Button
+            {
+                Text = "Set Text",
+                WidthSpecification = LayoutParamPolicies.MatchParent,
+                HeightSpecification = 50,
+            };
+            button.Clicked += (s, e) =>
+            {
+                field.Text = "Set Text from button click";
+                // field.InputColor = Color.Red;
+            };
+            view.Add(button);
+
         }
 
 
