@@ -30,7 +30,7 @@ namespace TextComponentsTest
                 HeightSpecification = LayoutParamPolicies.MatchParent,
                 BackgroundColor = Color.Black,
             };
-
+            window.Add(view);
 
             // Label title
             TextLabel titleLabel = new TextLabel
@@ -235,8 +235,32 @@ namespace TextComponentsTest
             view.Add(selectionHandleField);
 
 
+            // Input Style
+            TextField inputStyleField = new TextField
+            {
+                Text = "Input Style is works fine?",
+                WidthSpecification = LayoutParamPolicies.MatchParent,
+                HeightSpecification = LayoutParamPolicies.WrapContent,
 
-            window.Add(view);
+                PointSize = 25.0f,
+                BackgroundColor = Color.White,
+            };
+            view.Add(inputStyleField);
+
+            inputStyleField.TextChanged += (s, e) =>
+            {
+                inputStyleField.InputFontFamily = "Ubuntu Mono";
+                PropertyMap inputFontStyle = new PropertyMap();
+                inputFontStyle.Add("width", new PropertyValue("condensed"));  // width:  condensed, semiCondensed, normal, semiExpanded, expanded
+                inputFontStyle.Add("weight", new PropertyValue("light"));     // weight: thin, light, normal, regular, medium, bold
+                inputFontStyle.Add("slant", new PropertyValue("normal"));    // slant:  normal, roman, italic, oblique
+                inputStyleField.InputFontStyle = inputFontStyle;
+
+                inputStyleField.InputPointSize = 15.0f;
+            };
+
+
+
         }
 
         [STAThread]
