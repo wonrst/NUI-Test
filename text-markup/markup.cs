@@ -35,7 +35,7 @@ namespace TextComponentsTest
             // Normal label
             TextLabel label = new TextLabel
             {
-                Text = "<u>Lorem ipsum</u> dolor <u>sit amet,</u> consectetur adipiscing <u>elit, <u>sed do eiusmod tempor</u> incididunt ut labore</u> et dolore magna aliqua.",
+                Text = "<background color='red'>Lorem ipsum dolor</background> <u>sit amet,</u> consectetur adipiscing <u>elit, <u>sed do eiusmod tempor</u> incididunt ut labore</u> et dolore magna aliqua.",
                 EnableMarkup = true,
                 MultiLine = true,
                 WidthSpecification = LayoutParamPolicies.MatchParent,
@@ -51,7 +51,7 @@ namespace TextComponentsTest
             // Ellipsis label
             TextLabel ellipsisLabel = new TextLabel
             {
-                Text = "<u>Lorem ipsum dolor sit amet,</u> consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+                Text = "<background color='yellow'><u>Lorem ipsum dolor sit amet,</u></background> consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
                 EnableMarkup = true,
                 MultiLine = false,
                 Ellipsis = true,
@@ -68,7 +68,7 @@ namespace TextComponentsTest
             // Normal field
             TextField field = new TextField
             {
-                Text = "Lorem ipsum dolor sit amet, <u>Underline text filed</u>",
+                Text = "<background color=blue>Lorem ipsum dolor sit amet,</background> <u>Underline text filed</u>",
                 EnableMarkup = true,
                 WidthSpecification = LayoutParamPolicies.MatchParent,
                 HeightSpecification = LayoutParamPolicies.WrapContent,
@@ -131,7 +131,7 @@ namespace TextComponentsTest
             // Need to implement layout editor
             TextEditor editor = new TextEditor
             {
-                Text = "Lorem ipsum dolor sit amet, <u>consectetur adipiscing elit, sed do eiusmod tempor</u> incididunt ut labore et dolore <u>magna</u> aliqua.",
+                Text = "<background color='red'>Lorem ipsum dolor sit amet,</background> <u>consectetur adipiscing elit, sed do eiusmod tempor</u> incididunt ut labore et dolore <u>magna</u> aliqua.",
                 // Text = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
                 EnableMarkup = true,
                 WidthSpecification = LayoutParamPolicies.MatchParent,
