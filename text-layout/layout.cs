@@ -46,7 +46,7 @@ namespace TextComponentsTest
                 BackgroundColor = Color.White,
             };
             view.Add(label);
-            label.TextColor = Color.Green; // works fine
+            label.TextColor = Color.Green; // color issue is fixed
 
 
             // Normal field
@@ -75,7 +75,7 @@ namespace TextComponentsTest
                 WidthSpecification = LayoutParamPolicies.MatchParent,
                 HeightSpecification = 50,
                 PointSize = 25.0f,
-                BackgroundColor = Color.Blue,
+                BackgroundColor = Color.Gray,
             };
             editor.TextColor = Color.Blue;
             view.Add(editor);
@@ -164,7 +164,7 @@ namespace TextComponentsTest
 
             var button = new Button
             {
-                Text = "Set Text",
+                Text = "Set Text to field",
                 Size2D = new Size2D(480, 50),
                 Position2D = new Position2D(0, 400),
             };
@@ -174,13 +174,57 @@ namespace TextComponentsTest
 
                 Tizen.Log.Error("NUI", "before textChanged [" + textChanged + "] \n");
                 
-                field2.Text = "Set Text from button click";
+                field2.Text = "Set\nText\nfrom\nbutton\nclick\n";
 
                 Tizen.Log.Error("NUI", "after textChanged [" + textChanged + "] \n"); // textChanged should be true
             };
 
             window.Add(button);
 
+
+            var button2 = new Button
+            {
+                Text = "Set Text to editor",
+                Size2D = new Size2D(480, 50),
+                Position2D = new Position2D(0, 460),
+            };
+            button2.Clicked += (s, e) =>
+            {                
+                editor2.Text = "Set\nText\nfrom\nbutton\nclick\n";
+                Tizen.Log.Error("NUI", "editor2.Text [" + editor2.Text  + "] \n");
+            };
+
+            window.Add(button2);
+
+
+            var button3 = new Button
+            {
+                Text = "Set Text to Editor in Layout",
+                Size2D = new Size2D(480, 50),
+                Position2D = new Position2D(0, 520),
+            };
+            button3.Clicked += (s, e) =>
+            {
+                editor.Text = "Set\n Text\n from\n button\n click\n";
+                Tizen.Log.Error("NUI", "editor.Text [" + editor.Text  + "] \n");
+            };
+
+            window.Add(button3);
+
+
+            var button4 = new Button
+            {
+                Text = "Set Text to Field in Layout",
+                Size2D = new Size2D(480, 50),
+                Position2D = new Position2D(0, 580),
+            };
+            button4.Clicked += (s, e) =>
+            {
+                field.Text = "Set\n Text\n from\n button\n click\n";
+                Tizen.Log.Error("NUI", "field.Text [" + field.Text  + "] \n");
+            };
+
+            window.Add(button4);
 
         }
 
