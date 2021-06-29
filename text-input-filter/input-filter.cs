@@ -52,12 +52,13 @@ namespace TextComponentsTest
             PropertyMap inputFilter = new PropertyMap();
             inputFilter.Add((int)InputFilterType.Accepted, new PropertyValue("[\\d]"));
             inputFilter.Add((int)InputFilterType.Rejected, new PropertyValue("[0-3]"));
-            // inputFilter.Add("accepted", new PropertyValue("[\\d]"));
-            // inputFilter.Add("rejected", new PropertyValue("[\\d]"));
+
+            //inputFilter.Add("accepted", new PropertyValue("[\\d]"));
+            //inputFilter.Add("rejected", new PropertyValue("[0-3]"));
 
             field.InputFilter = inputFilter;
 
-            field.InputFiltered += OnTextFieldInputFiltered;
+            field.InputFiltered += OnInputFiltered;
 
 /*
             field.InputFiltered += (s, e) =>
@@ -88,7 +89,7 @@ namespace TextComponentsTest
 
             editor.InputFilter = inputFilter2;
 
-            editor.InputFiltered += OnTextEditorInputFiltered;
+            editor.InputFiltered += OnInputFiltered;
 
 
             TextLabel label = new TextLabel
@@ -224,43 +225,17 @@ namespace TextComponentsTest
                 field.InputFilter = inputFilter;
                 editor.InputFilter = inputFilter;
             };
-
-
         }
 
-        public void OnTextFieldInputFiltered(object sender, InputFilteredEventArgs e)
+        public void OnInputFiltered(object sender, InputFilteredEventArgs e)
         {
-            TextField field = sender as TextField;
-            string regex;
             if (e.Type == InputFilterType.Accepted)
             {
-                field.InputFilter.Find((int)InputFilterType.Accepted).Get(out regex);
-
-                Tizen.Log.Fatal("NUI", "[FIELD][Accepted] Only accepted follow characters " + regex + "\n");
+                Tizen.Log.Fatal("NUI", "[Accepted] Only accepted follow characters " + e.Accepted + "\n");
             }
             else if (e.Type == InputFilterType.Rejected)
             {
-                field.InputFilter.Find((int)InputFilterType.Rejected).Get(out regex);
-
-                Tizen.Log.Fatal("NUI", "[FIELD][Rejected] Rejected follow characters " + regex + "\n");
-            }
-        }
-
-        public void OnTextEditorInputFiltered(object sender, InputFilteredEventArgs e)
-        {
-            TextEditor editor = sender as TextEditor;
-            string regex;
-            if (e.Type == InputFilterType.Accepted)
-            {
-                editor.InputFilter.Find((int)InputFilterType.Accepted).Get(out regex);
-
-                Tizen.Log.Fatal("NUI", "[EDITOR][Accepted] Only accepted follow characters " + regex + "\n");
-            }
-            else if (e.Type == InputFilterType.Rejected)
-            {
-                editor.InputFilter.Find((int)InputFilterType.Rejected).Get(out regex);
-
-                Tizen.Log.Fatal("NUI", "[EDITOR][Rejected] Rejected follow characters " + regex + "\n");
+                Tizen.Log.Fatal("NUI", "[Rejected] Rejected follow characters " + e.Rejected + "\n");
             }
         }
 
