@@ -12,10 +12,13 @@ namespace TextComponentsTest
         public TextField field2;
         public TextField field3;
         public TextField field4;
-        public bool focus_1;
-        public bool focus_2;
-        public bool focus_3;
-        public bool focus_4;
+        public Button button;
+        public Button button2;
+        public Button button3;
+        public Button button4;
+        public Button button5;
+        public Button button6;
+
         protected override void OnCreate()
         {
             base.OnCreate();
@@ -53,15 +56,15 @@ namespace TextComponentsTest
             {
                 Tizen.Log.Error("NUI", "Field Text Changed[" + e.TextField.Text + "] \n");
             };
-            field.PrimaryCursorPosition = 0;
+            field.PrimaryCursorPosition = 999;
             view.Add(field);
             field.FocusGained += (s, e) =>
             {
-                focus_1 = true;
+                Tizen.Log.Error("NUI", "Field 1 FOCUS GAINED \n");
             };
             field.FocusLost += (s, e) =>
             {
-                focus_1 = false;
+                Tizen.Log.Error("NUI", "Field 1 FOCUS LOST \n");
             };
 
             // TODO: Set Selection Range at OnInitialize
@@ -74,15 +77,15 @@ namespace TextComponentsTest
             {
                 Tizen.Log.Error("NUI", "Field Text Changed[" + e.TextField.Text + "] \n");
             };
-            field2.PrimaryCursorPosition = 0;
+            //field2.PrimaryCursorPosition = 0;
             view.Add(field2);            
             field2.FocusGained += (s, e) =>
             {
-                focus_2 = true;
+                Tizen.Log.Error("NUI", "Field 2 FOCUS GAINED \n");
             };
             field2.FocusLost += (s, e) =>
             {
-                focus_2 = false;
+                Tizen.Log.Error("NUI", "Field 2 FOCUS LOST \n");
             };
 
 
@@ -91,15 +94,15 @@ namespace TextComponentsTest
             {
                 Tizen.Log.Error("NUI", "Field Text Changed[" + e.TextField.Text + "] \n");
             };
-            field3.PrimaryCursorPosition = 0;
+            //field3.PrimaryCursorPosition = 0;
             view.Add(field3);            
             field3.FocusGained += (s, e) =>
             {
-                focus_3 = true;
+                Tizen.Log.Error("NUI", "Field 3 FOCUS GAINED \n");
             };
             field3.FocusLost += (s, e) =>
             {
-                focus_3 = false;
+                Tizen.Log.Error("NUI", "Field 3 FOCUS LOST \n");
             };
 
 
@@ -108,16 +111,108 @@ namespace TextComponentsTest
             {
                 Tizen.Log.Error("NUI", "Field Text Changed[" + e.TextField.Text + "] \n");
             };
-            field4.PrimaryCursorPosition = 0;
+            //field4.PrimaryCursorPosition = 0;
             view.Add(field4);
             field4.FocusGained += (s, e) =>
             {
-                focus_4 = true;
+                Tizen.Log.Error("NUI", "Field 4 FOCUS GAINED \n");
             };
             field4.FocusLost += (s, e) =>
             {
-                focus_4 = false;
+                Tizen.Log.Error("NUI", "Field 4 FOCUS LOST \n");
             };
+
+
+            button = newButton("set/get cursor pos 5");
+            button.Clicked += (s, e) =>
+            {
+                field.PrimaryCursorPosition = 5;
+                Tizen.Log.Error("NUI", "field 1 cursor pos [" + field.PrimaryCursorPosition + "] \n");
+            };
+            view.Add(button);
+
+
+            button2 = newButton("get cursor pos");
+            button2.Clicked += (s, e) =>
+            {
+                Tizen.Log.Error("NUI", "field 1 cursor pos [" + field.PrimaryCursorPosition + "] \n");
+            };
+            view.Add(button2);
+
+
+            button3 = newButton("set pos ALL 3");
+            button3.Clicked += (s, e) =>
+            {
+                field.PrimaryCursorPosition = 300;
+                field2.PrimaryCursorPosition = 30;
+                field3.PrimaryCursorPosition = 300;
+                field4.PrimaryCursorPosition = 30;
+
+                Tizen.Log.Error("NUI", "field 1 cursor pos [" + field.PrimaryCursorPosition + "] \n");
+                Tizen.Log.Error("NUI", "field 2 cursor pos [" + field2.PrimaryCursorPosition + "] \n");
+                Tizen.Log.Error("NUI", "field 3 cursor pos [" + field3.PrimaryCursorPosition + "] \n");
+                Tizen.Log.Error("NUI", "field 4 cursor pos [" + field4.PrimaryCursorPosition + "] \n\n");
+            };
+            view.Add(button3);
+
+
+            button4 = newButton("get pos ALL");
+            button4.Clicked += (s, e) =>
+            {
+                Tizen.Log.Error("NUI", "field 1 cursor pos [" + field.PrimaryCursorPosition + "] \n");
+                Tizen.Log.Error("NUI", "field 2 cursor pos [" + field2.PrimaryCursorPosition + "] \n");
+                Tizen.Log.Error("NUI", "field 3 cursor pos [" + field3.PrimaryCursorPosition + "] \n");
+                Tizen.Log.Error("NUI", "field 4 cursor pos [" + field4.PrimaryCursorPosition + "] \n\n");
+            };
+            view.Add(button4);
+
+
+            button5 = newButton("focusable true");
+            button5.Clicked += (s, e) =>
+            {
+                button.Focusable = true;
+                button.FocusableInTouch = true;
+
+                button2.Focusable = true;
+                button2.FocusableInTouch = true;
+
+                button3.Focusable = true;
+                button3.FocusableInTouch = true;
+
+                button4.Focusable = true;
+                button4.FocusableInTouch = true;
+
+                button5.Focusable = true;
+                button5.FocusableInTouch = true;
+
+                button6.Focusable = true;
+                button6.FocusableInTouch = true;
+            };
+            view.Add(button5);
+
+
+            button6 = newButton("focusable false");
+            button6.Clicked += (s, e) =>
+            {
+                button.Focusable = false;
+                button.FocusableInTouch = false;
+
+                button2.Focusable = false;
+                button2.FocusableInTouch = false;
+
+                button3.Focusable = false;
+                button3.FocusableInTouch = false;
+
+                button4.Focusable = false;
+                button4.FocusableInTouch = false;
+
+                button5.Focusable = false;
+                button5.FocusableInTouch = false;
+
+                button6.Focusable = false;
+                button6.FocusableInTouch = false;
+            };
+            view.Add(button6);
 
 
         }
@@ -136,7 +231,9 @@ namespace TextComponentsTest
             {
                 Text = text,
                 WidthSpecification = LayoutParamPolicies.MatchParent,
-                HeightSpecification = LayoutParamPolicies.MatchParent,
+                HeightSpecification = 50,
+                Focusable = true,
+                FocusableInTouch = true,
             };
             button.TextLabel.PointSize = 15.0f;
             return button;
@@ -169,6 +266,8 @@ namespace TextComponentsTest
 
                 HorizontalAlignment = HorizontalAlignment.Begin,
                 VerticalAlignment = VerticalAlignment.Center,
+
+                Focusable = true,
             };
             setHandle(textField);
 
