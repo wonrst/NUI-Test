@@ -162,9 +162,9 @@ namespace TextComponentsTest
             PropertyMap hiddenMap = new PropertyMap();
             hiddenMap.Add(HiddenInputProperty.Mode, new PropertyValue((int)HiddenInputModeType.ShowLastCharacter));
             //hiddenMap.Add(HiddenInputProperty.Mode, new PropertyValue((int)HiddenInputModeType.HideCount));
-            hiddenMap.Add(HiddenInputProperty.ShowLastCharacterDuration, new PropertyValue(500));
-            hiddenMap.Add(HiddenInputProperty.SubstituteCount, new PropertyValue(10));
-            hiddenMap.Add(HiddenInputProperty.SubstituteCharacter, new PropertyValue(0x23));
+            //hiddenMap.Add(HiddenInputProperty.ShowLastCharacterDuration, new PropertyValue(500));
+            //hiddenMap.Add(HiddenInputProperty.SubstituteCount, new PropertyValue(10));
+            //hiddenMap.Add(HiddenInputProperty.SubstituteCharacter, new PropertyValue(0x23));
             passwordField.HiddenInputSettings = hiddenMap;
 
             view.Add(passwordField);
@@ -260,6 +260,84 @@ namespace TextComponentsTest
             };
 
 
+            // compare 1
+            TextLabel compare1 = new TextLabel
+            {
+                Text = "FONT STYLE COMPARE",
+                WidthSpecification = LayoutParamPolicies.MatchParent,
+                HeightSpecification = LayoutParamPolicies.WrapContent,
+                PointSize = 25.0f,
+                BackgroundColor = Color.White,
+                HorizontalAlignment = HorizontalAlignment.Begin,
+                VerticalAlignment = VerticalAlignment.Center,
+            };
+
+            compare1.FontFamily = "BreezeSans";
+            PropertyMap expanded = new PropertyMap();
+            expanded.Add("width", new PropertyValue("expanded"));  // width:  condensed, semiCondensed, normal, semiExpanded, expanded
+            compare1.FontStyle = expanded;
+
+            view.Add(compare1);
+
+
+            // compare 2
+            TextLabel compare2 = new TextLabel
+            {
+                Text = "FONT STYLE COMPARE",
+                WidthSpecification = LayoutParamPolicies.MatchParent,
+                HeightSpecification = LayoutParamPolicies.WrapContent,
+                PointSize = 25.0f,
+                BackgroundColor = Color.White,
+                HorizontalAlignment = HorizontalAlignment.Begin,
+                VerticalAlignment = VerticalAlignment.Center,
+            };
+
+            compare2.FontFamily = "BreezeSans";
+            PropertyMap condensed = new PropertyMap();
+            condensed.Add("width", new PropertyValue("condensed"));  // width:  condensed, semiCondensed, normal, semiExpanded, expanded
+            compare2.FontStyle = condensed;
+
+            view.Add(compare2);
+
+
+            // compare 3
+            TextLabel compare3 = new TextLabel
+            {
+                Text = "FONT STYLE COMPARE",
+                WidthSpecification = LayoutParamPolicies.MatchParent,
+                HeightSpecification = LayoutParamPolicies.WrapContent,
+                PointSize = 25.0f,
+                BackgroundColor = Color.White,
+                HorizontalAlignment = HorizontalAlignment.Begin,
+                VerticalAlignment = VerticalAlignment.Center,
+            };
+
+            compare3.FontFamily = "BreezeSans";
+            PropertyMap bold = new PropertyMap();
+            bold.Add("weight", new PropertyValue("bold"));     // weight: thin, light, normal, regular, medium, bold
+            compare3.FontStyle = bold;
+
+            view.Add(compare3);
+
+
+            // compare 4
+            TextLabel compare4 = new TextLabel
+            {
+                Text = "FONT STYLE COMPARE",
+                WidthSpecification = LayoutParamPolicies.MatchParent,
+                HeightSpecification = LayoutParamPolicies.WrapContent,
+                PointSize = 25.0f,
+                BackgroundColor = Color.White,
+                HorizontalAlignment = HorizontalAlignment.Begin,
+                VerticalAlignment = VerticalAlignment.Center,
+            };
+
+            compare4.FontFamily = "BreezeSans";
+            PropertyMap light = new PropertyMap();
+            light.Add("weight", new PropertyValue("light"));     // weight: thin, light, normal, regular, medium, bold
+            compare4.FontStyle = light;
+
+            view.Add(compare4);
 
         }
 
