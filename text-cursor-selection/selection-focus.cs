@@ -19,11 +19,13 @@ namespace TextComponentsTest
         public Button button5;
         public Button button6;
         public Button button7;
+        public int index;
 
         protected override void OnCreate()
         {
             base.OnCreate();
             Initialize();
+            index = 0;
         }
 
         public void Initialize()
@@ -60,9 +62,14 @@ namespace TextComponentsTest
 
             //field.SelectedTextStart = 0;
             //field.SelectedTextEnd = 10;
-            //field.SelectWholeText();
+
+            field.SelectWholeText();
 
             view.Add(field);
+            
+//            field.SelectWholeText();
+
+
             field.FocusGained += (s, e) =>
             {
                 Tizen.Log.Error("NUI", "Field 1 FOCUS GAINED \n");
@@ -73,8 +80,8 @@ namespace TextComponentsTest
             };
 
             // TODO: Set Selection Range at OnInitialize
-             field.SelectedTextStart = 3;
-             field.SelectedTextEnd = 12;
+            // field.SelectedTextStart = 3;
+            // field.SelectedTextEnd = 12;
 
 
             field2 = newTextField("Text Field Cursor Test This is long long text content because I need very long text.. scrollable text components", 20.0f);
@@ -82,10 +89,13 @@ namespace TextComponentsTest
             {
                 Tizen.Log.Error("NUI", "Field Text Changed[" + e.TextField.Text + "] \n");
             };
+
+            field2.SelectWholeText();
+
             view.Add(field2);
 
-            field2.SelectedTextStart = 10;
-            field2.SelectedTextEnd = 15;
+            //field2.SelectedTextStart = 10;
+            //field2.SelectedTextEnd = 15;
 
             field2.FocusGained += (s, e) =>
             {
@@ -103,10 +113,13 @@ namespace TextComponentsTest
                 Tizen.Log.Error("NUI", "Field Text Changed[" + e.TextField.Text + "] \n");
             };
 
-            field3.SelectedTextStart = 5;
-            field3.SelectedTextEnd = 10;
+            //field3.SelectedTextStart = 5;
+            //field3.SelectedTextEnd = 10;
 
-            view.Add(field3);            
+            view.Add(field3);
+
+            field3.SelectWholeText();
+
             field3.FocusGained += (s, e) =>
             {
                 Tizen.Log.Error("NUI", "Field 3 FOCUS GAINED \n");
@@ -123,8 +136,9 @@ namespace TextComponentsTest
                 Tizen.Log.Error("NUI", "Field Text Changed[" + e.TextField.Text + "] \n");
             };
 
-            field4.SelectedTextStart = 5;
-            field4.SelectedTextEnd = 30;
+            //field4.SelectedTextStart = 5;
+            //field4.SelectedTextEnd = 30;
+            field4.SelectWholeText();
 
             view.Add(field4);
             field4.FocusGained += (s, e) =>
@@ -140,9 +154,31 @@ namespace TextComponentsTest
             button = newButton("set/get sel 5-10");
             button.Clicked += (s, e) =>
             {
-                field.SelectedTextStart = 10;
-                field.SelectedTextEnd = 10;
-                Tizen.Log.Error("NUI", "field 1 sel [" + field.SelectedTextStart + "][" + field.SelectedTextEnd + "] \n");
+                switch (index)
+                {
+                    case 0:
+                        field.SelectWholeText();
+                    break;
+                    case 1:
+                        field2.SelectWholeText();
+                    break;
+                    case 2:
+                        field3.SelectWholeText();
+                    break;
+                    case 3:
+                        field4.SelectWholeText();
+                    break;  
+                    default:
+                    break;
+                }
+
+                // field.SelectWholeText();
+                // field.SelectedTextStart = 10;
+                // field.SelectedTextEnd = 10;
+                Tizen.Log.Error("NUI", "field[" + index + 1 + "] sel [" + field.SelectedTextStart + "][" + field.SelectedTextEnd + "][" + field.SelectedText + "] \n");
+
+                index ++;
+                if (index == 4) index = 0;
             };
             view.Add(button);
 
@@ -150,7 +186,26 @@ namespace TextComponentsTest
             button2 = newButton("get sel");
             button2.Clicked += (s, e) =>
             {
-                Tizen.Log.Error("NUI", "field 1 sel [" + field.SelectedTextStart + "][" + field.SelectedTextEnd + "] \n");
+                int idx = index - 1;
+                if (idx == -1) idx = 3;
+
+                switch (idx)
+                {
+                    case 0:
+                        Tizen.Log.Error("NUI", "field 1 sel [" + field.SelectedTextStart + "][" + field.SelectedTextEnd + "][" + field.SelectedText + "] \n");
+                    break;
+                    case 1:
+                        Tizen.Log.Error("NUI", "field 2 sel [" + field2.SelectedTextStart + "][" + field2.SelectedTextEnd + "][" + field2.SelectedText + "] \n");
+                    break;
+                    case 2:
+                        Tizen.Log.Error("NUI", "field 3 sel [" + field3.SelectedTextStart + "][" + field3.SelectedTextEnd + "][" + field3.SelectedText + "] \n");
+                    break;
+                    case 3:
+                        Tizen.Log.Error("NUI", "field 4 sel [" + field4.SelectedTextStart + "][" + field4.SelectedTextEnd + "][" + field4.SelectedText + "] \n");
+                    break;  
+                    default:
+                    break;
+                }
             };
             view.Add(button2);
 
@@ -177,10 +232,11 @@ namespace TextComponentsTest
                 field4.SelectedTextEnd = 10;
                 */
 
-                Tizen.Log.Error("NUI", "field 1 sel [" + field.SelectedTextStart + "][" + field.SelectedTextEnd + "] \n");
-                Tizen.Log.Error("NUI", "field 2 sel [" + field2.SelectedTextStart + "][" + field2.SelectedTextEnd + "] \n");
-                Tizen.Log.Error("NUI", "field 3 sel [" + field3.SelectedTextStart + "][" + field3.SelectedTextEnd + "] \n");
-                Tizen.Log.Error("NUI", "field 4 sel [" + field4.SelectedTextStart + "][" + field4.SelectedTextEnd + "] \n*n");
+
+                Tizen.Log.Error("NUI", "field 1 sel [" + field.SelectedTextStart + "][" + field.SelectedTextEnd + "][" + field.SelectedText + "] \n");
+                Tizen.Log.Error("NUI", "field 2 sel [" + field2.SelectedTextStart + "][" + field2.SelectedTextEnd + "][" + field2.SelectedText + "] \n");
+                Tizen.Log.Error("NUI", "field 3 sel [" + field3.SelectedTextStart + "][" + field3.SelectedTextEnd + "][" + field3.SelectedText + "] \n");
+                Tizen.Log.Error("NUI", "field 4 sel [" + field4.SelectedTextStart + "][" + field4.SelectedTextEnd + "][" + field4.SelectedText + "] \n\n");
             };
             view.Add(button3);
 
@@ -188,10 +244,10 @@ namespace TextComponentsTest
             button4 = newButton("get sel ALL");
             button4.Clicked += (s, e) =>
             {
-                Tizen.Log.Error("NUI", "field 1 sel [" + field.SelectedTextStart + "][" + field.SelectedTextEnd + "] \n");
-                Tizen.Log.Error("NUI", "field 2 sel [" + field2.SelectedTextStart + "][" + field2.SelectedTextEnd + "] \n");
-                Tizen.Log.Error("NUI", "field 3 sel [" + field3.SelectedTextStart + "][" + field3.SelectedTextEnd + "] \n");
-                Tizen.Log.Error("NUI", "field 4 sel [" + field4.SelectedTextStart + "][" + field4.SelectedTextEnd + "] \n*n");
+                Tizen.Log.Error("NUI", "field 1 sel [" + field.SelectedTextStart + "][" + field.SelectedTextEnd + "][" + field.SelectedText + "] \n");
+                Tizen.Log.Error("NUI", "field 2 sel [" + field2.SelectedTextStart + "][" + field2.SelectedTextEnd + "][" + field2.SelectedText + "] \n");
+                Tizen.Log.Error("NUI", "field 3 sel [" + field3.SelectedTextStart + "][" + field3.SelectedTextEnd + "][" + field3.SelectedText + "] \n");
+                Tizen.Log.Error("NUI", "field 4 sel [" + field4.SelectedTextStart + "][" + field4.SelectedTextEnd + "][" + field4.SelectedText + "] \n\n");
             };
             view.Add(button4);
 
