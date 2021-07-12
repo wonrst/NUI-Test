@@ -63,11 +63,11 @@ namespace TextComponentsTest
             //field.SelectedTextStart = 0;
             //field.SelectedTextEnd = 10;
 
-            field.SelectWholeText();
+            //field.SelectWholeText();
 
             view.Add(field);
             
-//            field.SelectWholeText();
+            field.SelectWholeText();
 
 
             field.FocusGained += (s, e) =>
@@ -90,9 +90,11 @@ namespace TextComponentsTest
                 Tizen.Log.Error("NUI", "Field Text Changed[" + e.TextField.Text + "] \n");
             };
 
-            field2.SelectWholeText();
+            //field2.SelectWholeText();
 
             view.Add(field2);
+
+            field2.SelectWholeText();
 
             //field2.SelectedTextStart = 10;
             //field2.SelectedTextEnd = 15;
@@ -138,9 +140,12 @@ namespace TextComponentsTest
 
             //field4.SelectedTextStart = 5;
             //field4.SelectedTextEnd = 30;
-            field4.SelectWholeText();
+            //field4.SelectWholeText();
 
             view.Add(field4);
+
+            field4.SelectWholeText();
+
             field4.FocusGained += (s, e) =>
             {
                 Tizen.Log.Error("NUI", "Field 4 FOCUS GAINED \n");
