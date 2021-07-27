@@ -122,12 +122,10 @@ namespace TextComponentsTest
             //placeholder["pixelSize"] = new PropertyValue(10.0f);
             placeholder["ellipsis"] = new PropertyValue(true);
             field.Placeholder = placeholder;
-
-            
+         
 
             field.Placeholder["text"].Get(out string pText);
-            field.Placeholder["textFocused"]?.Get(out string pTextFocused);
-
+            field.Placeholder["textFocused"].Get(out string pTextFocused);
 
 
             Color pColor = new Color();
@@ -138,9 +136,13 @@ namespace TextComponentsTest
             PropertyMap pFontStyle = new PropertyMap();
             field.Placeholder["fontStyle"].Get(pFontStyle);
 
-            field.Placeholder["pointSize"].Get(out float pPointSize);
+            pFontStyle["width"].Get(out string pWidth);
+            pFontStyle["weight"].Get(out string pWeight);
+            pFontStyle["slant"].Get(out string pSlant);
 
-//            field.Placeholder["pixelSize"].Get(out float pPixelSize);
+
+            field.Placeholder["pointSize"].Get(out float pPointSize);
+            //field.Placeholder["pixelSize"].Get(out float pPixelSize);
             field.Placeholder["ellipsis"].Get(out bool pEllipsis);
 
 
