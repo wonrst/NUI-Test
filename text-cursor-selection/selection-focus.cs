@@ -60,14 +60,16 @@ namespace TextComponentsTest
                 Tizen.Log.Error("NUI", "Field Text Changed[" + e.TextField.Text + "] \n");
             };
 
-            //field.SelectedTextStart = 0;
-            //field.SelectedTextEnd = 10;
+            //field.SelectedTextStart = 2;
+            //field.SelectedTextEnd = 12;
 
             //field.SelectWholeText();
 
             view.Add(field);
             
-            field.SelectWholeText();
+            //field.SelectWholeText();
+
+            field.SelectText(100, 1);
 
 
             field.FocusGained += (s, e) =>
@@ -80,8 +82,8 @@ namespace TextComponentsTest
             };
 
             // TODO: Set Selection Range at OnInitialize
-            // field.SelectedTextStart = 3;
-            // field.SelectedTextEnd = 12;
+            //field.SelectedTextStart = 3;
+            //field.SelectedTextEnd = 12;
 
 
             field2 = newTextField("Text Field Cursor Test This is long long text content because I need very long text.. scrollable text components", 20.0f);
@@ -94,10 +96,12 @@ namespace TextComponentsTest
 
             view.Add(field2);
 
-            field2.SelectWholeText();
+            //field2.SelectWholeText();
 
-            //field2.SelectedTextStart = 10;
-            //field2.SelectedTextEnd = 15;
+            //field2.SelectedTextStart = 3;
+            //field2.SelectedTextEnd = 12;
+
+            field2.SelectText(10, 2);
 
             field2.FocusGained += (s, e) =>
             {
@@ -120,7 +124,12 @@ namespace TextComponentsTest
 
             view.Add(field3);
 
-            field3.SelectWholeText();
+            //field3.SelectWholeText();
+
+            //field3.SelectedTextStart = 3;
+            //field3.SelectedTextEnd = 12;
+
+            field3.SelectText(3, 12);
 
             field3.FocusGained += (s, e) =>
             {
@@ -146,6 +155,11 @@ namespace TextComponentsTest
 
             field4.SelectWholeText();
 
+            //field4.SelectedTextStart = 3;
+            //field4.SelectedTextEnd = 12;
+
+            //field4.SelectText(0, 5);
+
             field4.FocusGained += (s, e) =>
             {
                 Tizen.Log.Error("NUI", "Field 4 FOCUS GAINED \n");
@@ -162,16 +176,28 @@ namespace TextComponentsTest
                 switch (index)
                 {
                     case 0:
-                        field.SelectWholeText();
+                        field.SelectText(5, 15);
+                        //field.SelectWholeText();
+                        //field.SelectedTextStart = 5;
+                        //field.SelectedTextEnd = 15;
                     break;
                     case 1:
-                        field2.SelectWholeText();
+                        field2.SelectText(0, 15);
+                        //field2.SelectWholeText();
+                        //field2.SelectedTextStart = 5;
+                        //field2.SelectedTextEnd = 15;
                     break;
                     case 2:
-                        field3.SelectWholeText();
+                         field3.SelectText(5, 10);
+                        //field3.SelectWholeText();
+                        //field3.SelectedTextStart = 5;
+                        //field3.SelectedTextEnd = 15;
                     break;
                     case 3:
-                        field4.SelectWholeText();
+                        field4.SelectText(6, 12);
+                        //field4.SelectWholeText();
+                        //field4.SelectedTextStart = 5;
+                        //field4.SelectedTextEnd = 15;
                     break;  
                     default:
                     break;
@@ -218,24 +244,33 @@ namespace TextComponentsTest
             button3 = newButton("set sel ALL 0-10");
             button3.Clicked += (s, e) =>
             {
+
+                field.SelectText(0, 15);
+                field2.SelectText(1, 14);
+                field3.SelectText(2, 13);
+                field4.SelectText(5, 12);
+
+                /*
                 field.SelectWholeText();
                 field2.SelectWholeText();
                 field3.SelectWholeText();
                 field4.SelectWholeText();
+                */
 
                 /*
-                field.SelectedTextStart = 10;
+                field.SelectedTextStart = 0;
                 field.SelectedTextEnd = 15;
 
-                field2.SelectedTextStart = 20;
-                field2.SelectedTextEnd = 30;
+                field2.SelectedTextStart = 0;
+                field2.SelectedTextEnd = 15;
 
-                field3.SelectedTextStart = 30;
-                field3.SelectedTextEnd = 40;
+                field3.SelectedTextStart = 0;
+                field3.SelectedTextEnd = 15;
 
-                field4.SelectedTextStart = 10;
-                field4.SelectedTextEnd = 10;
+                field4.SelectedTextStart = 0;
+                field4.SelectedTextEnd = 15;
                 */
+                
 
 
                 Tizen.Log.Error("NUI", "field 1 sel [" + field.SelectedTextStart + "][" + field.SelectedTextEnd + "][" + field.SelectedText + "] \n");
@@ -338,8 +373,8 @@ namespace TextComponentsTest
                 Text = text,
                 WidthSpecification = LayoutParamPolicies.MatchParent,
                 HeightSpecification = 50,
-                Focusable = true,
-                FocusableInTouch = true,
+                Focusable = false,
+                FocusableInTouch = false,
             };
             button.TextLabel.PointSize = 15.0f;
             return button;
