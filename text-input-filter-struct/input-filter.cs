@@ -47,11 +47,22 @@ namespace TextComponentsTest
             };
             view.Add(field);
 
+
+            field.SetInputFilter(new Tizen.NUI.Text.InputFilter
+            {
+                Accepted = new Regex(@"[\d]"),
+                Rejected = new Regex("[0-3]"),
+            });
+
+            field.InputFiltered += OnInputFiltered;
+
+/*
             Tizen.NUI.Text.InputFilter inputFilter;
             inputFilter.Accepted = new Regex(@"[\d]"); // accept whole digits
             inputFilter.Rejected = new Regex("[0-3]"); // reject 0, 1, 2, 3
             field.SetInputFilter(inputFilter);
             field.InputFiltered += OnInputFiltered;
+*/
 
 
             // Normal editor
@@ -67,6 +78,27 @@ namespace TextComponentsTest
             };
             view.Add(editor);
 
+
+
+            editor.SetInputFilter(new Tizen.NUI.Text.InputFilter
+            {
+                Accepted = new Regex(@"[\w]"),
+                Rejected = new Regex(@"[\d]"),
+            });
+
+            editor.InputFiltered += (s, e) =>
+            {
+                if (e.Type == InputFilterType.Accept)
+                {
+                    Tizen.Log.Fatal("NUI", "[Editor] only accepted follow characters " + editor.GetInputFilter().Accepted + "\n");
+                }
+                else if (e.Type == InputFilterType.Reject)
+                {
+                    Tizen.Log.Fatal("NUI", "[Editor] Rejected follow characters " + editor.GetInputFilter().Rejected + "\n");
+                }
+            };
+
+/*
             Tizen.NUI.Text.InputFilter filter;
             filter.Accepted = new Regex(@"[\w]"); // accept words
             filter.Rejected = new Regex(@"[\d]"); // reject digits
@@ -82,6 +114,7 @@ namespace TextComponentsTest
                     Tizen.Log.Fatal("NUI", "[Editor] Rejected follow characters " + editor.GetInputFilter().Rejected + "\n");
                 }
             };
+*/
         }
 
         public void OnInputFiltered(object sender, InputFilteredEventArgs e)
