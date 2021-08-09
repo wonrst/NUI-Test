@@ -160,7 +160,6 @@ namespace TextComponentsTest
             };
 
 
-
             // Underline
             TextLabel underlineLabel = new TextLabel
             {
@@ -172,14 +171,69 @@ namespace TextComponentsTest
                 HorizontalAlignment = HorizontalAlignment.Begin,
                 VerticalAlignment = VerticalAlignment.Center,
             };
-
-            PropertyMap underline = new PropertyMap();
-            underline.Add("enable", new PropertyValue("true"));     // bool
-            underline.Add("color", new PropertyValue(Color.Green)); // Color
-            underline.Add("height", new PropertyValue(2.0f));       // float
-            underlineLabel.Underline = underline;
-
+/*
+            PropertyMap underlinem = new PropertyMap();
+            underlinem.Add("enable", new PropertyValue(true));     // bool
+            underlinem.Add("color", new PropertyValue(Color.Green)); // Color
+            underlinem.Add("height", new PropertyValue(0.0f));       // float
+            underlineLabel.Underline = underlinem;
+*/
             view.Add(underlineLabel);
+
+            PropertyMap underlineMap = new PropertyMap();
+            underlineMap = underlineLabel.Underline;
+
+/*
+
+
+            underlineMap.Find(0, "enable").Get(out bool underEnabled);
+            
+            Color underColor = new Color();
+            underlineMap.Find(0, "color").Get(underColor);
+
+            underlineMap.Find(0, "height").Get(out float underHeight);
+
+
+
+            Tizen.Log.Error("NUI", "map count : " + underlineMap.Count() + "\n");
+
+            Tizen.Log.Error("NUI", "enable : " + underEnabled + "\n");
+            Tizen.Log.Error("NUI", "color : " + underColor.R + ", " + underColor.G + ", " + underColor.B + ", " + underColor.A + "\n");
+            Tizen.Log.Error("NUI", "height : " + underHeight + "\n");
+*/
+
+
+            var underline = new Tizen.NUI.Text.Underline();
+            //underline.Enable = true;
+            //underline.Color = Color.Blue;
+            //underline.Height = 5.0f;
+            //underline.Enable
+
+            if (underline.Color == null)
+                Tizen.Log.Error("NUI", "struct color null \n");
+            else
+                Tizen.Log.Error("NUI", "what???? \n");
+
+            Tizen.Log.Error("NUI", "struct enable : " + underline.Enable + "\n");
+
+            Tizen.Log.Error("NUI", "struct height : " + underline.Height + "\n");
+
+            underlineLabel.SetUnderline(underline);
+
+
+            Tizen.Log.Error("NUI", "get struct enable : " + underlineLabel.GetUnderline().Enable + "\n");
+            Tizen.Log.Error("NUI", "get struct color : " + underlineLabel.GetUnderline().Color.R + ", " + underlineLabel.GetUnderline().Color.G + ", " + underlineLabel.GetUnderline().Color.B + ", " + underlineLabel.GetUnderline().Color.A + "\n");
+            Tizen.Log.Error("NUI", "get struct height : " + underlineLabel.GetUnderline().Height + "\n");
+
+
+            
+
+
+/*
+            Tizen.Log.Error("NUI", "struct enable : " + underline.Enable + "\n");
+            Tizen.Log.Error("NUI", "struct color : " + underline.Color.R + ", " + underline.Color.G + ", " + underline.Color.B + ", " + underline.Color.A + "\n");
+            Tizen.Log.Error("NUI", "struct height : " + underline.Height + "\n");
+  */                     
 
 
 
