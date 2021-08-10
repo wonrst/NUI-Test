@@ -119,9 +119,8 @@ namespace TextComponentsTest
 
             var button = new Button
             {
-                Text = "set font style",
                 WidthSpecification = LayoutParamPolicies.MatchParent,
-                HeightSpecification = 50,
+                HeightSpecification = 15,
             };
             view.Add(button);
 
@@ -292,13 +291,46 @@ namespace TextComponentsTest
                 HorizontalAlignment = HorizontalAlignment.Begin,
                 VerticalAlignment = VerticalAlignment.Center,
             };
-
-            PropertyMap outline = new PropertyMap();
-            outline.Add("width", new PropertyValue(2.0f));            // float
-            outline.Add("color", new PropertyValue(Color.CadetBlue)); // Color
-            outlineLabel.Outline = outline;
-
             view.Add(outlineLabel);
+
+            var outline = new Tizen.NUI.Text.Outline();
+            outline.Width = 2.0f;
+            outline.Color = new Color("#45B39D");
+            outlineLabel.SetOutline(outline);
+            
+            Tizen.Log.Error("NUI", "out color : " + outlineLabel.GetOutline().Color.R + ", " + outlineLabel.GetOutline().Color.G + ", " + outlineLabel.GetOutline().Color.B + ", " + outlineLabel.GetOutline().Color.A + "\n");
+            Tizen.Log.Error("NUI", "out width : " + outlineLabel.GetOutline().Width + "\n");
+
+            // Outline
+            TextField outlineField = new TextField
+            {
+                Text = "Outline Field ipsum dolor",
+                WidthSpecification = LayoutParamPolicies.MatchParent,
+                HeightSpecification = LayoutParamPolicies.WrapContent,
+                PointSize = 25.0f,
+                BackgroundColor = Color.White,
+            };
+            view.Add(outlineField);
+            outlineField.SetOutline(outline);
+
+            Tizen.Log.Error("NUI", "out field color : " + outlineField.GetOutline().Color.R + ", " + outlineField.GetOutline().Color.G + ", " + outlineField.GetOutline().Color.B + ", " + outlineField.GetOutline().Color.A + "\n");
+            Tizen.Log.Error("NUI", "out field width : " + outlineField.GetOutline().Width + "\n");
+
+            // Outline
+            TextEditor outlineEditor = new TextEditor
+            {
+                Text = "Outline Editor ipsum dolor",
+                WidthSpecification = LayoutParamPolicies.MatchParent,
+                HeightSpecification = LayoutParamPolicies.WrapContent,
+                PointSize = 25.0f,
+                BackgroundColor = Color.White,
+            };
+            view.Add(outlineEditor);
+            outlineEditor.SetOutline(outline);
+
+            Tizen.Log.Error("NUI", "out field color : " + outlineEditor.GetOutline().Color.R + ", " + outlineEditor.GetOutline().Color.G + ", " + outlineEditor.GetOutline().Color.B + ", " + outlineEditor.GetOutline().Color.A + "\n");
+            Tizen.Log.Error("NUI", "out field width : " + outlineEditor.GetOutline().Width + "\n");
+
 
 
 
