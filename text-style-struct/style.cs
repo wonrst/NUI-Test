@@ -171,70 +171,58 @@ namespace TextComponentsTest
                 HorizontalAlignment = HorizontalAlignment.Begin,
                 VerticalAlignment = VerticalAlignment.Center,
             };
-/*
-            PropertyMap underlinem = new PropertyMap();
-            underlinem.Add("enable", new PropertyValue(true));     // bool
-            underlinem.Add("color", new PropertyValue(Color.Green)); // Color
-            underlinem.Add("height", new PropertyValue(0.0f));       // float
-            underlineLabel.Underline = underlinem;
-*/
+
             view.Add(underlineLabel);
 
             PropertyMap underlineMap = new PropertyMap();
             underlineMap = underlineLabel.Underline;
 
-/*
-
-
-            underlineMap.Find(0, "enable").Get(out bool underEnabled);
-            
-            Color underColor = new Color();
-            underlineMap.Find(0, "color").Get(underColor);
-
-            underlineMap.Find(0, "height").Get(out float underHeight);
-
-
-
-            Tizen.Log.Error("NUI", "map count : " + underlineMap.Count() + "\n");
-
-            Tizen.Log.Error("NUI", "enable : " + underEnabled + "\n");
-            Tizen.Log.Error("NUI", "color : " + underColor.R + ", " + underColor.G + ", " + underColor.B + ", " + underColor.A + "\n");
-            Tizen.Log.Error("NUI", "height : " + underHeight + "\n");
-*/
-
 
             var underline = new Tizen.NUI.Text.Underline();
-            //underline.Enable = true;
-            //underline.Color = Color.Blue;
-            //underline.Height = 5.0f;
-            //underline.Enable
-
-            if (underline.Color == null)
-                Tizen.Log.Error("NUI", "struct color null \n");
-            else
-                Tizen.Log.Error("NUI", "what???? \n");
+            underline.Enable = true;
+            underline.Color = new Color("#3498DB");
+            underline.Height = 2.0f;
 
             Tizen.Log.Error("NUI", "struct enable : " + underline.Enable + "\n");
-
             Tizen.Log.Error("NUI", "struct height : " + underline.Height + "\n");
-
             underlineLabel.SetUnderline(underline);
-
 
             Tizen.Log.Error("NUI", "get struct enable : " + underlineLabel.GetUnderline().Enable + "\n");
             Tizen.Log.Error("NUI", "get struct color : " + underlineLabel.GetUnderline().Color.R + ", " + underlineLabel.GetUnderline().Color.G + ", " + underlineLabel.GetUnderline().Color.B + ", " + underlineLabel.GetUnderline().Color.A + "\n");
             Tizen.Log.Error("NUI", "get struct height : " + underlineLabel.GetUnderline().Height + "\n");
 
 
-            
+            // Underline
+            TextField underlineField = new TextField
+            {
+                Text = "Underline Lorem ipsum dolor",
+                WidthSpecification = LayoutParamPolicies.MatchParent,
+                HeightSpecification = LayoutParamPolicies.WrapContent,
+                PointSize = 25.0f,
+                BackgroundColor = Color.White,
+                HorizontalAlignment = HorizontalAlignment.Begin,
+                VerticalAlignment = VerticalAlignment.Center,
+            };
+            view.Add(underlineField);
 
+            underlineField.SetUnderline(underline);
 
-/*
-            Tizen.Log.Error("NUI", "struct enable : " + underline.Enable + "\n");
-            Tizen.Log.Error("NUI", "struct color : " + underline.Color.R + ", " + underline.Color.G + ", " + underline.Color.B + ", " + underline.Color.A + "\n");
-            Tizen.Log.Error("NUI", "struct height : " + underline.Height + "\n");
-  */                     
+            // Underline
+            TextEditor underlineEditor = new TextEditor
+            {
+                Text = "Underline Editor ipsum dolor",
+                WidthSpecification = LayoutParamPolicies.MatchParent,
+                HeightSpecification = LayoutParamPolicies.WrapContent,
+                PointSize = 25.0f,
+                BackgroundColor = Color.White,
+            };
+            view.Add(underlineEditor);
 
+            underlineEditor.SetUnderline(underline);
+
+            Tizen.Log.Error("NUI", "get editor enable : " + underlineEditor.GetUnderline().Enable + "\n");
+            Tizen.Log.Error("NUI", "get editor color : " + underlineEditor.GetUnderline().Color.R + ", " + underlineEditor.GetUnderline().Color.G + ", " + underlineEditor.GetUnderline().Color.B + ", " + underlineEditor.GetUnderline().Color.A + "\n");
+            Tizen.Log.Error("NUI", "get editor height : " + underlineEditor.GetUnderline().Height + "\n");
 
 
             // Shadow
@@ -248,14 +236,49 @@ namespace TextComponentsTest
                 HorizontalAlignment = HorizontalAlignment.Begin,
                 VerticalAlignment = VerticalAlignment.Center,
             };
-
-            PropertyMap shadow = new PropertyMap();
-            shadow.Add("offset", new PropertyValue(new Vector2(2, 2))); // Vector2
-            shadow.Add("color", new PropertyValue(Color.Red));          // Color
-            shadowLabel.Shadow = shadow;
-
             view.Add(shadowLabel);
 
+            var shadowStruct = new Tizen.NUI.Text.Shadow();
+            shadowStruct.BlurRadius = 5.0f;
+            shadowStruct.Color = new Color("#F1C40F");
+            shadowStruct.Offset = new Vector2(3, 3);
+            shadowLabel.SetShadow(shadowStruct);
+
+            Tizen.Log.Error("NUI", "get shadow label color : " + shadowLabel.GetShadow().Color.R + ", " + shadowLabel.GetShadow().Color.G + ", " + shadowLabel.GetShadow().Color.B + ", " + shadowLabel.GetShadow().Color.A + "\n");
+            Tizen.Log.Error("NUI", "get shadow label offset : " + shadowLabel.GetShadow().Offset.X + ", " + shadowLabel.GetShadow().Offset.Y + "\n");
+            Tizen.Log.Error("NUI", "get shadow label blurRadius : " + shadowLabel.GetShadow().BlurRadius + "\n");
+
+            // Shadow
+            TextField shadowField = new TextField
+            {
+                Text = "Shadow Field ipsum dolor",
+                WidthSpecification = LayoutParamPolicies.MatchParent,
+                HeightSpecification = LayoutParamPolicies.WrapContent,
+                PointSize = 25.0f,
+                BackgroundColor = Color.White,
+            };
+            view.Add(shadowField);
+            shadowField.SetShadow(shadowStruct);
+
+            Tizen.Log.Error("NUI", "get shadow field color : " + shadowField.GetShadow().Color.R + ", " + shadowField.GetShadow().Color.G + ", " + shadowField.GetShadow().Color.B + ", " + shadowField.GetShadow().Color.A + "\n");
+            Tizen.Log.Error("NUI", "get shadow field offset : " + shadowField.GetShadow().Offset.X + ", " + shadowField.GetShadow().Offset.Y + "\n");
+            Tizen.Log.Error("NUI", "get shadow field blurRadius : " + shadowField.GetShadow().BlurRadius + "\n");
+
+            // Shadow
+            TextEditor shadowEditor = new TextEditor
+            {
+                Text = "Shadow Editor ipsum dolor",
+                WidthSpecification = LayoutParamPolicies.MatchParent,
+                HeightSpecification = LayoutParamPolicies.WrapContent,
+                PointSize = 25.0f,
+                BackgroundColor = Color.White,
+            };
+            view.Add(shadowEditor);
+            shadowEditor.SetShadow(shadowStruct);
+
+            Tizen.Log.Error("NUI", "get shadow editor color : " + shadowEditor.GetShadow().Color.R + ", " + shadowEditor.GetShadow().Color.G + ", " + shadowEditor.GetShadow().Color.B + ", " + shadowEditor.GetShadow().Color.A + "\n");
+            Tizen.Log.Error("NUI", "get shadow editor offset : " + shadowEditor.GetShadow().Offset.X + ", " + shadowEditor.GetShadow().Offset.Y + "\n");
+            Tizen.Log.Error("NUI", "get shadow editor blurRadius : " + shadowEditor.GetShadow().BlurRadius + "\n");
 
 
             // Outline
