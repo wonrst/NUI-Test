@@ -52,7 +52,7 @@ namespace TextComponentsTest
                 Text = "FontStyle Lorem ipsum dolor",
                 WidthSpecification = LayoutParamPolicies.MatchParent,
                 HeightSpecification = LayoutParamPolicies.WrapContent,
-                PointSize = 25.0f,
+                PointSize = 15.0f,
                 BackgroundColor = Color.White,
                 HorizontalAlignment = HorizontalAlignment.Begin,
                 VerticalAlignment = VerticalAlignment.Center,
@@ -82,7 +82,7 @@ namespace TextComponentsTest
                 Text = "FontStyle TextField",
                 WidthSpecification = LayoutParamPolicies.MatchParent,
                 HeightSpecification = LayoutParamPolicies.WrapContent,
-                PointSize = 25.0f,
+                PointSize = 15.0f,
                 BackgroundColor = Color.White,
             };
 
@@ -102,7 +102,7 @@ namespace TextComponentsTest
                 Text = "FontStyle TextEditor",
                 WidthSpecification = LayoutParamPolicies.MatchParent,
                 HeightSpecification = LayoutParamPolicies.WrapContent,
-                PointSize = 25.0f,
+                PointSize = 15.0f,
                 BackgroundColor = Color.White,
             };
 
@@ -165,7 +165,7 @@ namespace TextComponentsTest
                 Text = "Underline Lorem ipsum dolor",
                 WidthSpecification = LayoutParamPolicies.MatchParent,
                 HeightSpecification = LayoutParamPolicies.WrapContent,
-                PointSize = 25.0f,
+                PointSize = 15.0f,
                 BackgroundColor = Color.White,
                 HorizontalAlignment = HorizontalAlignment.Begin,
                 VerticalAlignment = VerticalAlignment.Center,
@@ -197,7 +197,7 @@ namespace TextComponentsTest
                 Text = "Underline Lorem ipsum dolor",
                 WidthSpecification = LayoutParamPolicies.MatchParent,
                 HeightSpecification = LayoutParamPolicies.WrapContent,
-                PointSize = 25.0f,
+                PointSize = 15.0f,
                 BackgroundColor = Color.White,
                 HorizontalAlignment = HorizontalAlignment.Begin,
                 VerticalAlignment = VerticalAlignment.Center,
@@ -212,7 +212,7 @@ namespace TextComponentsTest
                 Text = "Underline Editor ipsum dolor",
                 WidthSpecification = LayoutParamPolicies.MatchParent,
                 HeightSpecification = LayoutParamPolicies.WrapContent,
-                PointSize = 25.0f,
+                PointSize = 15.0f,
                 BackgroundColor = Color.White,
             };
             view.Add(underlineEditor);
@@ -230,7 +230,7 @@ namespace TextComponentsTest
                 Text = "Shadow Lorem ipsum dolor",
                 WidthSpecification = LayoutParamPolicies.MatchParent,
                 HeightSpecification = LayoutParamPolicies.WrapContent,
-                PointSize = 25.0f,
+                PointSize = 15.0f,
                 BackgroundColor = Color.White,
                 HorizontalAlignment = HorizontalAlignment.Begin,
                 VerticalAlignment = VerticalAlignment.Center,
@@ -253,7 +253,7 @@ namespace TextComponentsTest
                 Text = "Shadow Field ipsum dolor",
                 WidthSpecification = LayoutParamPolicies.MatchParent,
                 HeightSpecification = LayoutParamPolicies.WrapContent,
-                PointSize = 25.0f,
+                PointSize = 15.0f,
                 BackgroundColor = Color.White,
             };
             view.Add(shadowField);
@@ -269,7 +269,7 @@ namespace TextComponentsTest
                 Text = "Shadow Editor ipsum dolor",
                 WidthSpecification = LayoutParamPolicies.MatchParent,
                 HeightSpecification = LayoutParamPolicies.WrapContent,
-                PointSize = 25.0f,
+                PointSize = 15.0f,
                 BackgroundColor = Color.White,
             };
             view.Add(shadowEditor);
@@ -286,7 +286,7 @@ namespace TextComponentsTest
                 Text = "Outline Lorem ipsum dolor",
                 WidthSpecification = LayoutParamPolicies.MatchParent,
                 HeightSpecification = LayoutParamPolicies.WrapContent,
-                PointSize = 25.0f,
+                PointSize = 15.0f,
                 BackgroundColor = Color.White,
                 HorizontalAlignment = HorizontalAlignment.Begin,
                 VerticalAlignment = VerticalAlignment.Center,
@@ -307,7 +307,7 @@ namespace TextComponentsTest
                 Text = "Outline Field ipsum dolor",
                 WidthSpecification = LayoutParamPolicies.MatchParent,
                 HeightSpecification = LayoutParamPolicies.WrapContent,
-                PointSize = 25.0f,
+                PointSize = 15.0f,
                 BackgroundColor = Color.White,
             };
             view.Add(outlineField);
@@ -322,7 +322,7 @@ namespace TextComponentsTest
                 Text = "Outline Editor ipsum dolor",
                 WidthSpecification = LayoutParamPolicies.MatchParent,
                 HeightSpecification = LayoutParamPolicies.WrapContent,
-                PointSize = 25.0f,
+                PointSize = 15.0f,
                 BackgroundColor = Color.White,
             };
             view.Add(outlineEditor);
@@ -332,214 +332,39 @@ namespace TextComponentsTest
             Tizen.Log.Error("NUI", "out field width : " + outlineEditor.GetOutline().Width + "\n");
 
 
-
-
-            // Label title
-            TextLabel titleLabel2 = new TextLabel
+            // textFitLabel
+            TextLabel textFitLabel = new TextLabel
             {
-                Text = " /* Text Field PropertyMap Test */ ",
+                Text = "Text Fit Label...!!",
                 WidthSpecification = LayoutParamPolicies.MatchParent,
-                HeightSpecification = LayoutParamPolicies.WrapContent,
-                PointSize = 12.0f,
-                BackgroundColor = Color.CadetBlue,
-            };
-            view.Add(titleLabel2);
-
-
-
-            // HiddenInputSettings
-            TextField passwordField = new TextField
-            {
-                WidthSpecification = LayoutParamPolicies.MatchParent,
-                HeightSpecification = LayoutParamPolicies.WrapContent,
-
-                MaxLength = 20,
-                PointSize = 25.0f,
-                BackgroundColor = Color.White,
-                
-                PlaceholderText = "HiddenInputSettings",
-                PlaceholderTextFocused = "HiddenInputSettings Focused",
-            };
-
-            PropertyMap hiddenMap = new PropertyMap();
-            hiddenMap.Add(HiddenInputProperty.Mode, new PropertyValue((int)HiddenInputModeType.ShowLastCharacter));
-            //hiddenMap.Add(HiddenInputProperty.Mode, new PropertyValue((int)HiddenInputModeType.HideCount));
-            //hiddenMap.Add(HiddenInputProperty.ShowLastCharacterDuration, new PropertyValue(500));
-            //hiddenMap.Add(HiddenInputProperty.SubstituteCount, new PropertyValue(10));
-            //hiddenMap.Add(HiddenInputProperty.SubstituteCharacter, new PropertyValue(0x23));
-            passwordField.HiddenInputSettings = hiddenMap;
-
-            view.Add(passwordField);
-
-
-            // Placeholder
-            TextField placeholderField = new TextField
-            {
-                WidthSpecification = LayoutParamPolicies.MatchParent,
-                HeightSpecification = LayoutParamPolicies.WrapContent,
-
-                PointSize = 25.0f,
+                //HeightSpecification = LayoutParamPolicies.WrapContent,
+                HeightSpecification = 100,
+                PointSize = 15.0f,
                 BackgroundColor = Color.White,
             };
+            view.Add(textFitLabel);
 
-            PropertyMap placeholderMap = new PropertyMap();
-            placeholderMap.Add("text", new PropertyValue("Placeholder TextField"));
-            placeholderMap.Add("textFocused", new PropertyValue("Placeholder TextField Focused"));
-            placeholderMap.Add("color", new PropertyValue(Color.CadetBlue));
-            placeholderMap.Add("fontFamily", new PropertyValue("Serif"));
-            placeholderMap.Add("pointSize", new PropertyValue(25.0f));
-            placeholderField.Placeholder = placeholderMap;
+            var textFit = new Tizen.NUI.Text.TextFit();
+            textFit.Enable = true;
+            textFit.MinSize = 10.0f;
+            textFit.MaxSize = 100.0f;
+            textFit.StepSize = 5.0f;
+            textFit.FontSizeType = FontSizeType.PointSize;
+            textFitLabel.SetTextFit(textFit);
 
-            view.Add(placeholderField);
+            Tizen.Log.Error("NUI", "fit struct enable : " + textFit.Enable + "\n");
+            Tizen.Log.Error("NUI", "fit struct minSize : " + textFit.MinSize + "\n");
+            Tizen.Log.Error("NUI", "fit struct maxSize : " + textFit.MaxSize + "\n");
+            Tizen.Log.Error("NUI", "fit struct stepSize : " + textFit.StepSize + "\n");
+            Tizen.Log.Error("NUI", "fit struct fontSizeType : " + textFit.FontSizeType + "\n");
 
-
-
-            // SelectionHandleImage
-            TextField selectionHandleField = new TextField
-            {
-                Text = "Selection Handle Image L, R",
-                WidthSpecification = LayoutParamPolicies.MatchParent,
-                HeightSpecification = LayoutParamPolicies.WrapContent,
-
-                PointSize = 25.0f,
-                BackgroundColor = Color.White,
-
-                GrabHandleImage = "handle_down.png",
-            };
-
-            // Normal
-            PropertyMap imageLeftMap = new PropertyMap();
-            imageLeftMap.Add("filename", new PropertyValue("handle_downleft.png"));
-            selectionHandleField.SelectionHandleImageLeft = imageLeftMap;
-
-            PropertyMap imageRightMap = new PropertyMap();
-            imageRightMap.Add("filename", new PropertyValue("handle_downright.png"));
-            selectionHandleField.SelectionHandleImageRight = imageRightMap;
-
-            // Pressed
-            PropertyMap pressedImageLeftMap = new PropertyMap();
-            pressedImageLeftMap.Add("filename", new PropertyValue("handle_downleft_pressed.png"));
-            selectionHandleField.SelectionHandlePressedImageLeft = pressedImageLeftMap;
-
-            PropertyMap pressedImageRightMap = new PropertyMap();
-            pressedImageRightMap.Add("filename", new PropertyValue("handle_downright_pressed.png"));
-            selectionHandleField.SelectionHandlePressedImageRight = pressedImageRightMap;
-
-            // Marker?
-            PropertyMap markerImageLeftMap = new PropertyMap();
-            markerImageLeftMap.Add("filename", new PropertyValue("handle_marker.png"));
-            selectionHandleField.SelectionHandleMarkerImageLeft = markerImageLeftMap;
-
-            PropertyMap markerImageRightMap = new PropertyMap();
-            markerImageRightMap.Add("filename", new PropertyValue("handle_marker.png"));
-            selectionHandleField.SelectionHandleMarkerImageRight = markerImageRightMap;
-
-            view.Add(selectionHandleField);
+            Tizen.Log.Error("NUI", "fit get enable : " + textFitLabel.GetTextFit().Enable + "\n");
+            Tizen.Log.Error("NUI", "fit get minSize : " + textFitLabel.GetTextFit().MinSize + "\n");
+            Tizen.Log.Error("NUI", "fit get maxSize : " + textFitLabel.GetTextFit().MaxSize + "\n");
+            Tizen.Log.Error("NUI", "fit get stepSize : " + textFitLabel.GetTextFit().StepSize + "\n");
+            Tizen.Log.Error("NUI", "fit get fontSizeType : " + textFitLabel.GetTextFit().FontSizeType + "\n");
 
 
-            // Input Style
-            TextField inputStyleField = new TextField
-            {
-                Text = "Input Style is works fine?",
-                WidthSpecification = LayoutParamPolicies.MatchParent,
-                HeightSpecification = LayoutParamPolicies.WrapContent,
-
-                PointSize = 25.0f,
-                BackgroundColor = Color.White,
-            };
-            view.Add(inputStyleField);
-
-            inputStyleField.TextChanged += (s, e) =>
-            {
-                inputStyleField.InputFontFamily = "Ubuntu Mono";
-                PropertyMap inputFontStyle = new PropertyMap();
-                inputFontStyle.Add("width", new PropertyValue("condensed"));  // width:  condensed, semiCondensed, normal, semiExpanded, expanded
-                inputFontStyle.Add("weight", new PropertyValue("light"));     // weight: thin, light, normal, regular, medium, bold
-                inputFontStyle.Add("slant", new PropertyValue("normal"));    // slant:  normal, roman, italic, oblique
-                inputStyleField.InputFontStyle = inputFontStyle;
-
-                inputStyleField.InputPointSize = 15.0f;
-            };
-
-
-            // compare 1
-            TextLabel compare1 = new TextLabel
-            {
-                Text = "FONT STYLE COMPARE",
-                WidthSpecification = LayoutParamPolicies.MatchParent,
-                HeightSpecification = LayoutParamPolicies.WrapContent,
-                PointSize = 25.0f,
-                BackgroundColor = Color.White,
-                HorizontalAlignment = HorizontalAlignment.Begin,
-                VerticalAlignment = VerticalAlignment.Center,
-            };
-
-            compare1.FontFamily = "BreezeSans";
-            PropertyMap expanded = new PropertyMap();
-            expanded.Add("width", new PropertyValue("expanded"));  // width:  condensed, semiCondensed, normal, semiExpanded, expanded
-            compare1.FontStyle = expanded;
-
-            view.Add(compare1);
-
-
-            // compare 2
-            TextLabel compare2 = new TextLabel
-            {
-                Text = "FONT STYLE COMPARE",
-                WidthSpecification = LayoutParamPolicies.MatchParent,
-                HeightSpecification = LayoutParamPolicies.WrapContent,
-                PointSize = 25.0f,
-                BackgroundColor = Color.White,
-                HorizontalAlignment = HorizontalAlignment.Begin,
-                VerticalAlignment = VerticalAlignment.Center,
-            };
-
-            compare2.FontFamily = "BreezeSans";
-            PropertyMap condensed = new PropertyMap();
-            condensed.Add("width", new PropertyValue("condensed"));  // width:  condensed, semiCondensed, normal, semiExpanded, expanded
-            compare2.FontStyle = condensed;
-
-            view.Add(compare2);
-
-
-            // compare 3
-            TextLabel compare3 = new TextLabel
-            {
-                Text = "FONT STYLE COMPARE",
-                WidthSpecification = LayoutParamPolicies.MatchParent,
-                HeightSpecification = LayoutParamPolicies.WrapContent,
-                PointSize = 25.0f,
-                BackgroundColor = Color.White,
-                HorizontalAlignment = HorizontalAlignment.Begin,
-                VerticalAlignment = VerticalAlignment.Center,
-            };
-
-            compare3.FontFamily = "BreezeSans";
-            PropertyMap bold = new PropertyMap();
-            bold.Add("weight", new PropertyValue("bold"));     // weight: thin, light, normal, regular, medium, bold
-            compare3.FontStyle = bold;
-
-            view.Add(compare3);
-
-
-            // compare 4
-            TextLabel compare4 = new TextLabel
-            {
-                Text = "FONT STYLE COMPARE",
-                WidthSpecification = LayoutParamPolicies.MatchParent,
-                HeightSpecification = LayoutParamPolicies.WrapContent,
-                PointSize = 25.0f,
-                BackgroundColor = Color.White,
-                HorizontalAlignment = HorizontalAlignment.Begin,
-                VerticalAlignment = VerticalAlignment.Center,
-            };
-
-            compare4.FontFamily = "BreezeSans";
-            PropertyMap light = new PropertyMap();
-            light.Add("weight", new PropertyValue("light"));     // weight: thin, light, normal, regular, medium, bold
-            compare4.FontStyle = light;
-
-            view.Add(compare4);
 
         }
 
