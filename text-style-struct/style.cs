@@ -165,7 +165,7 @@ namespace TextComponentsTest
                 Text = "Underline Lorem ipsum dolor",
                 WidthSpecification = LayoutParamPolicies.MatchParent,
                 HeightSpecification = LayoutParamPolicies.WrapContent,
-                PointSize = 15.0f,
+                PointSize = 25.0f,
                 BackgroundColor = Color.White,
                 HorizontalAlignment = HorizontalAlignment.Begin,
                 VerticalAlignment = VerticalAlignment.Center,
@@ -173,14 +173,10 @@ namespace TextComponentsTest
 
             view.Add(underlineLabel);
 
-            PropertyMap underlineMap = new PropertyMap();
-            underlineMap = underlineLabel.Underline;
-
-
             var underline = new Tizen.NUI.Text.Underline();
             underline.Enable = true;
-            underline.Color = new Color("#3498DB");
-            underline.Height = 2.0f;
+            //underline.Color = new Color("#3498DB");
+            //underline.Height = 5.0f;
 
             Tizen.Log.Error("NUI", "struct enable : " + underline.Enable + "\n");
             Tizen.Log.Error("NUI", "struct height : " + underline.Height + "\n");
@@ -205,6 +201,10 @@ namespace TextComponentsTest
             view.Add(underlineField);
 
             underlineField.SetUnderline(underline);
+
+            Tizen.Log.Error("NUI", "get field enable : " + underlineField.GetUnderline().Enable + "\n");
+            Tizen.Log.Error("NUI", "get field color : " + underlineField.GetUnderline().Color.R + ", " + underlineField.GetUnderline().Color.G + ", " + underlineField.GetUnderline().Color.B + ", " + underlineField.GetUnderline().Color.A + "\n");
+            Tizen.Log.Error("NUI", "get field height : " + underlineField.GetUnderline().Height + "\n");
 
             // Underline
             TextEditor underlineEditor = new TextEditor
@@ -239,7 +239,7 @@ namespace TextComponentsTest
 
             var shadowStruct = new Tizen.NUI.Text.Shadow();
             shadowStruct.BlurRadius = 5.0f;
-            shadowStruct.Color = new Color("#F1C40F");
+            shadowStruct.Color = Color.Red;
             shadowStruct.Offset = new Vector2(3, 3);
             shadowLabel.SetShadow(shadowStruct);
 
@@ -294,7 +294,7 @@ namespace TextComponentsTest
             view.Add(outlineLabel);
 
             var outline = new Tizen.NUI.Text.Outline();
-            outline.Width = 2.0f;
+            //outline.Width = 2.0f;
             outline.Color = new Color("#45B39D");
             outlineLabel.SetOutline(outline);
             
@@ -338,7 +338,7 @@ namespace TextComponentsTest
                 Text = "Text Fit Label...!!",
                 WidthSpecification = LayoutParamPolicies.MatchParent,
                 //HeightSpecification = LayoutParamPolicies.WrapContent,
-                HeightSpecification = 100,
+                HeightSpecification = 50,
                 PointSize = 15.0f,
                 BackgroundColor = Color.White,
             };
@@ -346,10 +346,10 @@ namespace TextComponentsTest
 
             var textFit = new Tizen.NUI.Text.TextFit();
             textFit.Enable = true;
-            textFit.MinSize = 10.0f;
-            textFit.MaxSize = 100.0f;
-            textFit.StepSize = 5.0f;
-            textFit.FontSizeType = FontSizeType.PointSize;
+            textFit.MinSize = 30.0f;
+            //textFit.MaxSize = 200.0f;
+            //textFit.StepSize = 20.0f;
+            //textFit.FontSizeType = FontSizeType.PixelSize;
             textFitLabel.SetTextFit(textFit);
 
             Tizen.Log.Error("NUI", "fit struct enable : " + textFit.Enable + "\n");
@@ -365,6 +365,75 @@ namespace TextComponentsTest
             Tizen.Log.Error("NUI", "fit get fontSizeType : " + textFitLabel.GetTextFit().FontSizeType + "\n");
 
 
+
+            // placeholder
+            TextField placeholderField = new TextField
+            {
+                //PlaceholderText = "Hello..!!",
+                WidthSpecification = LayoutParamPolicies.MatchParent,
+                HeightSpecification = 50,
+                PointSize = 25.0f,
+                BackgroundColor = Color.White,
+                FontFamily = "Serif",
+            };
+            view.Add(placeholderField);
+            placeholderField.SetFontStyle(new Tizen.NUI.Text.FontStyle()
+            {
+                Width = FontWidthType.Expanded,
+                Weight = FontWeightType.ExtraLight,
+                Slant = FontSlantType.Italic,
+            });
+
+
+            var placeholder = new Tizen.NUI.Text.Placeholder();
+            placeholder.Text = "placeholder text";
+            placeholder.TextFocused = "placeholder TextFocused";
+            placeholder.Color = new Color("#45B39D");
+            placeholder.FontFamily = "BreezeSans";
+            placeholder.FontStyle = new Tizen.NUI.Text.FontStyle()
+            {
+                Width = FontWidthType.Expanded,
+                Weight = FontWeightType.ExtraLight,
+                Slant = FontSlantType.Italic,
+            };
+            placeholder.PointSize = 25.0f;
+            //placeholder.PixelSize = 50.0f;
+            placeholder.Ellipsis = true;
+            placeholderField.SetPlaceholder(placeholder);
+
+
+            Tizen.Log.Error("NUI", "Text " + placeholderField.GetPlaceholder().Text + "\n");
+            Tizen.Log.Error("NUI", "TextFocused " + placeholderField.GetPlaceholder().TextFocused + "\n");
+            Tizen.Log.Error("NUI", "Color " + placeholderField.GetPlaceholder().Color.R + ", " + placeholderField.GetPlaceholder().Color.G + ", " + placeholderField.GetPlaceholder().Color.B + ", " + placeholderField.GetPlaceholder().Color.A + "\n");
+            Tizen.Log.Error("NUI", "FontFamily " + placeholderField.GetPlaceholder().FontFamily + "\n");
+            Tizen.Log.Error("NUI", "FontStyle " + placeholderField.GetPlaceholder().FontStyle?.Width + " " + placeholderField.GetPlaceholder().FontStyle?.Weight + " " + placeholderField.GetPlaceholder().FontStyle?.Slant + "\n");
+            Tizen.Log.Error("NUI", "PointSize " + placeholderField.GetPlaceholder().PointSize + "\n");
+            Tizen.Log.Error("NUI", "PixelSize " + placeholderField.GetPlaceholder().PixelSize + "\n");
+            Tizen.Log.Error("NUI", "Ellipsis " + placeholderField.GetPlaceholder().Ellipsis + "\n");
+
+
+            
+            // placeholder text editor
+            TextEditor placeholderEditor = new TextEditor
+            {
+                WidthSpecification = LayoutParamPolicies.MatchParent,
+                HeightSpecification = 50,
+                PointSize = 25.0f,
+                BackgroundColor = Color.White,
+                FontFamily = "Ubuntu Mono",
+            };
+            view.Add(placeholderEditor);
+
+            placeholderEditor.SetPlaceholder(placeholder);
+
+            Tizen.Log.Error("NUI", "edit Text " + placeholderEditor.GetPlaceholder().Text + "\n");
+            Tizen.Log.Error("NUI", "edit TextFocused " + placeholderEditor.GetPlaceholder().TextFocused + "\n");
+            Tizen.Log.Error("NUI", "edit Color " + placeholderEditor.GetPlaceholder().Color.R + ", " + placeholderEditor.GetPlaceholder().Color.G + ", " + placeholderEditor.GetPlaceholder().Color.B + ", " + placeholderEditor.GetPlaceholder().Color.A + "\n");
+            Tizen.Log.Error("NUI", "edit FontFamily " + placeholderEditor.GetPlaceholder().FontFamily + "\n");
+            Tizen.Log.Error("NUI", "edit FontStyle " + placeholderEditor.GetPlaceholder().FontStyle?.Width + " " + placeholderEditor.GetPlaceholder().FontStyle?.Weight + " " + placeholderEditor.GetPlaceholder().FontStyle?.Slant + "\n");
+            Tizen.Log.Error("NUI", "edit PointSize " + placeholderEditor.GetPlaceholder().PointSize + "\n");
+            Tizen.Log.Error("NUI", "edit PixelSize " + placeholderEditor.GetPlaceholder().PixelSize + "\n");
+            Tizen.Log.Error("NUI", "edit Ellipsis " + placeholderEditor.GetPlaceholder().Ellipsis + "\n");
 
         }
 
