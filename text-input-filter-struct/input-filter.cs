@@ -50,9 +50,11 @@ namespace TextComponentsTest
 
             field.SetInputFilter(new Tizen.NUI.Text.InputFilter
             {
-                Accepted = new Regex(@"[\d]"),
-                Rejected = new Regex("[0-3]"),
+                Accepted = @"[\d]",
+                //Rejected = "[0-3]",
             });
+
+            Tizen.Log.Error("NUI", "regex : " + field.GetInputFilter().Accepted.ToString() + "\n");
 
             field.InputFiltered += OnInputFiltered;
 
@@ -82,8 +84,8 @@ namespace TextComponentsTest
 
             editor.SetInputFilter(new Tizen.NUI.Text.InputFilter
             {
-                Accepted = new Regex(@"[\w]"),
-                Rejected = new Regex(@"[\d]"),
+                Accepted = @"[\w]",
+                //Rejected = @"[\d]",
             });
 
             editor.InputFiltered += (s, e) =>
