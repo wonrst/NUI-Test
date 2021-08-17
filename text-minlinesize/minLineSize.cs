@@ -66,9 +66,10 @@ namespace TextComponentsTest
             // line spacing
             TextEditor lineSpacingEditor = new TextEditor
             {
-                Text = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+                Text = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.\n",
                 WidthSpecification = LayoutParamPolicies.MatchParent,
-                HeightSpecification = LayoutParamPolicies.WrapContent,
+                //HeightSpecification = LayoutParamPolicies.WrapContent,
+                HeightSpecification = 150,
                 PointSize = 15.0f,
                 BackgroundColor = Color.White,
 
@@ -80,13 +81,14 @@ namespace TextComponentsTest
             // min line size
             TextEditor minLineSizeEditor = new TextEditor
             {
-                Text = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+                Text = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.\n",
                 WidthSpecification = LayoutParamPolicies.MatchParent,
-                HeightSpecification = LayoutParamPolicies.WrapContent,
+                //HeightSpecification = LayoutParamPolicies.WrapContent,
+                HeightSpecification = 150,
                 PointSize = 15.0f,
                 BackgroundColor = Color.White,
 
-                MinLineSize = 30.0f,
+                MinLineSize = 50.0f,
             };
             view.Add(minLineSizeEditor);
 
