@@ -84,6 +84,12 @@ namespace TextComponentsTest
             view.Add(selectedLabel);
 
 
+            field.CursorPositionChanged += (s, e) =>
+            {
+                cursorPosLabel.Text = "Cursor Position : " + field.PrimaryCursorPosition;
+                Tizen.Log.Error("NUI", "old[" + e.OldCursorPosition + "]\n");
+            };
+
             // Focus callback of main field
             field.FocusGained += (s, e) =>
             {
