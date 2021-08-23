@@ -68,7 +68,7 @@ namespace TextComponentsTest
 
 
             // Selection
-            TextLabel selectionLabel = newTextLabel("Selection Length : " + (int)(field.SelectedTextEnd - field.SelectedTextStart), 15.0f);
+            TextLabel selectionLabel = newTextLabel("Selection Length : " + field.SelectedText.Length, 15.0f);
             view.Add(selectionLabel);
 
             // Cursor Position
@@ -88,6 +88,14 @@ namespace TextComponentsTest
             {
                 cursorPosLabel.Text = "Cursor Position : " + field.PrimaryCursorPosition;
                 Tizen.Log.Error("NUI", "old[" + e.OldCursorPosition + "]\n");
+            };
+
+            field.SelectionChanged += (s, e) =>
+            {
+                selectionLabel.Text = "Selection Length : " + field.SelectedText.Length;
+                cursorPosLabel.Text = "Cursor Position : " + field.PrimaryCursorPosition;
+                selectedLabel.Text = "Selected Text : " + field.SelectedText + " [" + field.SelectedTextStart + ", " + field.SelectedTextEnd + "]";
+                Tizen.Log.Error("NUI", "old[" + e.OldSelectionStart + ", " + e.OldSelectionEnd + "]\n");
             };
 
             // Focus callback of main field
@@ -152,8 +160,7 @@ namespace TextComponentsTest
             selButton.Clicked += (s, e) =>
             {
                 printLog(false);
-                field.SelectedTextStart = Int32.Parse(startSel.Text);
-                field.SelectedTextEnd = Int32.Parse(endSel.Text);
+                field.SelectText((uint)Int32.Parse(startSel.Text), (uint)Int32.Parse(endSel.Text));
                 printLog(true);
             };
             HorView3.Add(selButton);
@@ -257,7 +264,7 @@ namespace TextComponentsTest
             Button selectedButton = newButton("Get Data");
             selectedButton.Clicked += (s, e) =>
             {                
-                selectionLabel.Text = "Selection Length : " + (int)(field.SelectedTextEnd - field.SelectedTextStart);
+                selectionLabel.Text = "Selection Length : " + field.SelectedText.Length;
                 cursorPosLabel.Text = "Cursor Position : " + field.PrimaryCursorPosition;
                 isFocusedLabel.Text = "Is Focused : " + isFocused;
                 selectedLabel.Text = "Selected Text : " + field.SelectedText;
