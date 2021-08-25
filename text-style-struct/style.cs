@@ -165,7 +165,7 @@ namespace TextComponentsTest
                 Text = "Underline Lorem ipsum dolor",
                 WidthSpecification = LayoutParamPolicies.MatchParent,
                 HeightSpecification = LayoutParamPolicies.WrapContent,
-                PointSize = 25.0f,
+                PointSize = 15.0f,
                 BackgroundColor = Color.White,
                 HorizontalAlignment = HorizontalAlignment.Begin,
                 VerticalAlignment = VerticalAlignment.Center,
@@ -449,9 +449,9 @@ namespace TextComponentsTest
 
             var hiddenInput = new Tizen.NUI.Text.HiddenInput();
             hiddenInput.Mode = HiddenInputModeType.ShowLastCharacter;
-            hiddenInput.SubstituteCharacter = '★';
-            hiddenInput.SubstituteCount = 0;
-            hiddenInput.ShowLastCharacterDuration = 1000;
+            //hiddenInput.SubstituteCharacter = '★';
+            //hiddenInput.SubstituteCount = 0;
+            //hiddenInput.ShowLastCharacterDuration = 1000;
 
             hiddenInputField.SetHiddenInput(hiddenInput);
 
@@ -459,6 +459,49 @@ namespace TextComponentsTest
             Tizen.Log.Error("NUI", "struct hiddenInput char " + hiddenInputField.GetHiddenInput().SubstituteCharacter + "\n");
             Tizen.Log.Error("NUI", "struct hiddenInput cnt " + hiddenInputField.GetHiddenInput().SubstituteCount + "\n");
             Tizen.Log.Error("NUI", "struct hiddenInput dur " + hiddenInputField.GetHiddenInput().ShowLastCharacterDuration + "\n");
+
+            View horView = new View()
+            {
+                Layout = new LinearLayout()
+                {
+                    LinearOrientation = LinearLayout.Orientation.Horizontal,
+                    LinearAlignment = LinearLayout.Alignment.Begin,
+                    CellPadding = new Size2D(10, 10),
+                },
+                WidthSpecification = LayoutParamPolicies.MatchParent,
+                HeightSpecification = 15,
+            };
+            view.Add(horView);
+
+            var btnShow = new Button
+            {
+                WidthSpecification = LayoutParamPolicies.MatchParent,
+                HeightSpecification = LayoutParamPolicies.MatchParent,
+            };
+            btnShow.Clicked += (s, e) =>
+            {
+                var hiddenNone = new Tizen.NUI.Text.HiddenInput();
+                hiddenInput.Mode = HiddenInputModeType.HideNone;
+                hiddenInputField.SetHiddenInput(hiddenNone);
+                hiddenInputField.Text = hiddenInputField.Text;
+            };
+            horView.Add(btnShow);
+
+            var btnHide = new Button
+            {
+                WidthSpecification = LayoutParamPolicies.MatchParent,
+                HeightSpecification = LayoutParamPolicies.MatchParent,
+            };
+            btnHide.Clicked += (s, e) =>
+            {
+                var hiddenHide = new Tizen.NUI.Text.HiddenInput();
+                hiddenHide.Mode = HiddenInputModeType.ShowLastCharacter;
+                hiddenInputField.SetHiddenInput(hiddenHide);
+                hiddenInputField.Text = hiddenInputField.Text;
+            };
+            horView.Add(btnHide);
+
+
 
 
         }
