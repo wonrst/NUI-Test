@@ -372,7 +372,7 @@ namespace TextComponentsTest
                 //PlaceholderText = "Hello..!!",
                 WidthSpecification = LayoutParamPolicies.MatchParent,
                 HeightSpecification = 50,
-                PointSize = 25.0f,
+                PointSize = 15.0f,
                 BackgroundColor = Color.White,
                 FontFamily = "Serif",
             };
@@ -396,7 +396,7 @@ namespace TextComponentsTest
                 Weight = FontWeightType.ExtraLight,
                 Slant = FontSlantType.Italic,
             };
-            placeholder.PointSize = 25.0f;
+            placeholder.PointSize = 15.0f;
             //placeholder.PixelSize = 50.0f;
             placeholder.Ellipsis = true;
             placeholderField.SetPlaceholder(placeholder);
@@ -418,7 +418,7 @@ namespace TextComponentsTest
             {
                 WidthSpecification = LayoutParamPolicies.MatchParent,
                 HeightSpecification = 50,
-                PointSize = 25.0f,
+                PointSize = 15.0f,
                 BackgroundColor = Color.White,
                 FontFamily = "Ubuntu Mono",
             };
@@ -434,6 +434,32 @@ namespace TextComponentsTest
             Tizen.Log.Error("NUI", "edit PointSize " + placeholderEditor.GetPlaceholder().PointSize + "\n");
             Tizen.Log.Error("NUI", "edit PixelSize " + placeholderEditor.GetPlaceholder().PixelSize + "\n");
             Tizen.Log.Error("NUI", "edit Ellipsis " + placeholderEditor.GetPlaceholder().Ellipsis + "\n");
+
+
+            // Hidden Input
+            TextField hiddenInputField = new TextField
+            {
+                PlaceholderText = "Password",
+                WidthSpecification = LayoutParamPolicies.MatchParent,
+                HeightSpecification = LayoutParamPolicies.WrapContent,
+                PointSize = 15.0f,
+                BackgroundColor = Color.White,
+            };
+            view.Add(hiddenInputField);
+
+            var hiddenInput = new Tizen.NUI.Text.HiddenInput();
+            hiddenInput.Mode = HiddenInputModeType.ShowLastCharacter;
+            hiddenInput.SubstituteCharacter = '★';
+            hiddenInput.SubstituteCount = 0;
+            hiddenInput.ShowLastCharacterDuration = 1000;
+
+            hiddenInputField.SetHiddenInput(hiddenInput);
+
+            Tizen.Log.Error("NUI", "struct hiddenInput mode " + hiddenInputField.GetHiddenInput().Mode + "\n");
+            Tizen.Log.Error("NUI", "struct hiddenInput char " + hiddenInputField.GetHiddenInput().SubstituteCharacter + "\n");
+            Tizen.Log.Error("NUI", "struct hiddenInput cnt " + hiddenInputField.GetHiddenInput().SubstituteCount + "\n");
+            Tizen.Log.Error("NUI", "struct hiddenInput dur " + hiddenInputField.GetHiddenInput().ShowLastCharacterDuration + "\n");
+
 
         }
 
