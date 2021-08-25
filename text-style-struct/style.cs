@@ -501,6 +501,96 @@ namespace TextComponentsTest
             };
             horView.Add(btnHide);
 
+            // SelectionHandleImage
+            TextField selectionHandleField = new TextField
+            {
+                Text = "Selection Handle Image L, R",
+                WidthSpecification = LayoutParamPolicies.MatchParent,
+                HeightSpecification = LayoutParamPolicies.WrapContent,
+
+                PointSize = 15.0f,
+                BackgroundColor = Color.White,
+
+                GrabHandleImage = "handle_down.png",
+            };
+            view.Add(selectionHandleField);
+
+            // Normal
+            PropertyMap imageLeftMap = new PropertyMap();
+            //imageLeftMap.Add("filename", new PropertyValue("handle_downleft.png"));
+            imageLeftMap.Add("filename", new PropertyValue(""));
+            selectionHandleField.SelectionHandleImageLeft = imageLeftMap;
+
+            PropertyMap imageRightMap = new PropertyMap();
+            imageRightMap.Add("filename", new PropertyValue("handle_downright.png"));
+            selectionHandleField.SelectionHandleImageRight = imageRightMap;
+
+            // Pressed
+            PropertyMap pressedImageLeftMap = new PropertyMap();
+            pressedImageLeftMap.Add("filename", new PropertyValue("handle_downleft_pressed.png"));
+            //selectionHandleField.SelectionHandlePressedImageLeft = pressedImageLeftMap;
+
+            PropertyMap pressedImageRightMap = new PropertyMap();
+            pressedImageRightMap.Add("filename", new PropertyValue("handle_downright_pressed.png"));
+            //selectionHandleField.SelectionHandlePressedImageRight = pressedImageRightMap;
+
+            // Marker?
+            PropertyMap markerImageLeftMap = new PropertyMap();
+            markerImageLeftMap.Add("filename", new PropertyValue("handle_marker.png"));
+            //selectionHandleField.SelectionHandleMarkerImageLeft = markerImageLeftMap;
+
+            PropertyMap markerImageRightMap = new PropertyMap();
+            markerImageRightMap.Add("filename", new PropertyValue("handle_marker.png"));
+            //selectionHandleField.SelectionHandleMarkerImageRight = markerImageRightMap;
+
+            PropertyMap getLeft = selectionHandleField.SelectionHandleImageLeft;
+            getLeft.Find(0, "filename").Get(out string fileLeft);
+            Tizen.Log.Error("NUI", "get left " + fileLeft + "\n");
+
+            PropertyMap getRight = selectionHandleField.SelectionHandleImageRight;
+            getRight.Find(0, "filename").Get(out string fileRight);
+            Tizen.Log.Error("NUI", "get right " + fileRight + "\n");
+
+            PropertyMap getLeftPress = selectionHandleField.SelectionHandlePressedImageLeft;
+            getLeftPress.Find(0, "filename").Get(out string fileLeftPress);
+            Tizen.Log.Error("NUI", "get left press " + fileLeftPress + "\n");
+
+            PropertyMap getRightPress = selectionHandleField.SelectionHandlePressedImageRight;
+            getRightPress.Find(0, "filename").Get(out string fileRightPress);
+            Tizen.Log.Error("NUI", "get right press " + fileRightPress + "\n");
+
+            PropertyMap getLeftMarker = selectionHandleField.SelectionHandleMarkerImageLeft;
+            getLeftMarker.Find(0, "filename").Get(out string fileLeftMarker);
+            Tizen.Log.Error("NUI", "get left marker " + fileLeftMarker + "\n");
+
+            PropertyMap getRightMarker = selectionHandleField.SelectionHandleMarkerImageRight;
+
+            Tizen.Log.Error("NUI", "getRightMarker CNT [" + getRightMarker.Count() + "] \n");
+            
+            if (getRightMarker.Find(0, "filename") == null)
+                Tizen.Log.Error("NUI", "right marker is null \n");
+            else
+                Tizen.Log.Error("NUI", "right marker is not null \n");
+            
+            //getRightMarker.Find(0, "filename").Get(out string fileRightMarker);
+            //Tizen.Log.Error("NUI", "get right marker " + fileRightMarker + "\n");
+
+
+/*
+            SetSelectionHandleImage
+            SetSelectionHandlePressedImage
+            SetSelectionHandleMarkerImage
+
+            public struct SelectionHandleImage
+            {
+                public string LeftImageUrl { get; set; }
+                public string RightImageUrl { get; set; }
+                public string LeftPreesedImageUrl { get; set; }
+                public string RightPreesedImageUrl { get; set; }
+                public string LeftMarkerImageUrl { get; set; }
+                public string RightMarkerImageUrl { get; set; }
+            }
+*/
 
 
 
