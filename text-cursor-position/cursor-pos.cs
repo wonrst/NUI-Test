@@ -87,7 +87,6 @@ namespace TextComponentsTest
             field.CursorPositionChanged += (s, e) =>
             {
                 cursorPosLabel.Text = "Cursor Position : " + field.PrimaryCursorPosition;
-                Tizen.Log.Error("NUI", "old[" + e.OldCursorPosition + "]\n");
             };
 
             field.SelectionChanged += (s, e) =>
@@ -95,7 +94,15 @@ namespace TextComponentsTest
                 selectionLabel.Text = "Selection Length : " + field.SelectedText.Length;
                 cursorPosLabel.Text = "Cursor Position : " + field.PrimaryCursorPosition;
                 selectedLabel.Text = "Selected Text : " + field.SelectedText + " [" + field.SelectedTextStart + ", " + field.SelectedTextEnd + "]";
-                Tizen.Log.Error("NUI", "old[" + e.OldSelectionStart + ", " + e.OldSelectionEnd + "]\n");
+            };
+
+            field.SelectionCleared += (s, e) =>
+            {
+                selectionLabel.Text = "Selection Length : " + field.SelectedText.Length;
+                cursorPosLabel.Text = "Cursor Position : " + field.PrimaryCursorPosition;
+                selectedLabel.Text = "Selected Text : " + field.SelectedText + " [" + field.SelectedTextStart + ", " + field.SelectedTextEnd + "]";
+
+                Tizen.Log.Error("NUI", "Text selection cleared \n");
             };
 
             // Focus callback of main field
