@@ -142,7 +142,11 @@ namespace TextComponentsTest
 
             fontStyleField.TextChanged += (s, e) =>
             {
-                fontStyleField.SetInputFontStyle(fontStyle);
+                var inputStyle = new Tizen.NUI.Text.FontStyle();
+                inputStyle.Width = FontWidthType.Expanded;
+                inputStyle.Weight = FontWeightType.Bold;
+                inputStyle.Slant = FontSlantType.None;
+                fontStyleField.SetInputFontStyle(inputStyle);
 
                 Tizen.Log.Error("NUI", "set input field width : " + fontStyleField.GetInputFontStyle().Width + "\n");
                 Tizen.Log.Error("NUI", "set input field width : " + fontStyleField.GetInputFontStyle().Weight + "\n");
@@ -151,7 +155,11 @@ namespace TextComponentsTest
 
             fontStyleEditor.TextChanged += (s, e) =>
             {
-                fontStyleEditor.SetInputFontStyle(fontStyle);
+                var inputStyle = new Tizen.NUI.Text.FontStyle();
+                inputStyle.Width = FontWidthType.Expanded;
+                inputStyle.Weight = FontWeightType.Bold;
+                inputStyle.Slant = FontSlantType.None;
+                fontStyleEditor.SetInputFontStyle(inputStyle);
 
                 Tizen.Log.Error("NUI", "set input editor width : " + fontStyleEditor.GetInputFontStyle().Width + "\n");
                 Tizen.Log.Error("NUI", "set input editor width : " + fontStyleEditor.GetInputFontStyle().Weight + "\n");
@@ -294,7 +302,7 @@ namespace TextComponentsTest
             view.Add(outlineLabel);
 
             var outline = new Tizen.NUI.Text.Outline();
-            //outline.Width = 2.0f;
+            outline.Width = 2.0f;
             outline.Color = new Color("#45B39D");
             outlineLabel.SetOutline(outline);
             
@@ -372,6 +380,7 @@ namespace TextComponentsTest
                 //PlaceholderText = "Hello..!!",
                 WidthSpecification = LayoutParamPolicies.MatchParent,
                 HeightSpecification = 50,
+                PlaceholderText = "This is placeholder",
                 PointSize = 15.0f,
                 BackgroundColor = Color.White,
                 FontFamily = "Serif",
@@ -384,6 +393,11 @@ namespace TextComponentsTest
                 Slant = FontSlantType.Italic,
             });
 
+            placeholderField.Placeholder = new PropertyMap();
+
+            Tizen.Log.Error("NUI", "1 Placeholder Text : " + placeholderField.PlaceholderText + "\n");
+
+            placeholderField.PlaceholderText = "hello place holder";
 
             var placeholder = new Tizen.NUI.Text.Placeholder();
             placeholder.Text = "placeholder text";
@@ -401,6 +415,8 @@ namespace TextComponentsTest
             placeholder.Ellipsis = true;
             placeholderField.SetPlaceholder(placeholder);
 
+            placeholderField.PlaceholderText = "HI place";
+            
 
             Tizen.Log.Error("NUI", "Text " + placeholderField.GetPlaceholder().Text + "\n");
             Tizen.Log.Error("NUI", "TextFocused " + placeholderField.GetPlaceholder().TextFocused + "\n");
@@ -411,6 +427,28 @@ namespace TextComponentsTest
             Tizen.Log.Error("NUI", "PixelSize " + placeholderField.GetPlaceholder().PixelSize + "\n");
             Tizen.Log.Error("NUI", "Ellipsis " + placeholderField.GetPlaceholder().Ellipsis + "\n");
 
+            Tizen.Log.Error("NUI", "2 Placeholder Text : " + placeholderField.PlaceholderText + "\n");
+            Tizen.Log.Error("NUI", "3 Placeholder Text : " + placeholderField.PlaceholderText + "\n");
+            Tizen.Log.Error("NUI", "4 Placeholder Text : " + placeholderField.PlaceholderText + "\n");
+            Tizen.Log.Error("NUI", "5 Placeholder Text : " + placeholderField.PlaceholderText + "\n");
+
+            Tizen.Log.Error("NUI", "LAST Placeholder Text : " + placeholderField.PlaceholderText + "\n");
+            Tizen.Log.Error("NUI", "LAST Struct Text " + placeholderField.GetPlaceholder().Text + "\n");
+
+
+            var btnPlace = new Button
+            {
+                WidthSpecification = LayoutParamPolicies.MatchParent,
+                HeightSpecification = 15,
+            };
+            btnPlace.Clicked += (s, e) =>
+            {
+                Tizen.Log.Error("NUI", "Placeholder Text : " + placeholderField.PlaceholderText + "\n");
+                Tizen.Log.Error("NUI", "Placeholder Struct Text " + placeholderField.GetPlaceholder().Text + "\n");
+
+                PropertyMap map = placeholderField.Placeholder;
+            };
+            view.Add(btnPlace);
 
             
             // placeholder text editor
@@ -515,84 +553,58 @@ namespace TextComponentsTest
             };
             view.Add(selectionHandleField);
 
-            // Normal
-            PropertyMap imageLeftMap = new PropertyMap();
-            //imageLeftMap.Add("filename", new PropertyValue("handle_downleft.png"));
-            imageLeftMap.Add("filename", new PropertyValue(""));
-            selectionHandleField.SelectionHandleImageLeft = imageLeftMap;
 
-            PropertyMap imageRightMap = new PropertyMap();
-            imageRightMap.Add("filename", new PropertyValue("handle_downright.png"));
-            selectionHandleField.SelectionHandleImageRight = imageRightMap;
+            var selectionHandleImage = new Tizen.NUI.Text.SelectionHandleImage();
+            selectionHandleImage.LeftImageUrl = "handle_downleft.png";
+            selectionHandleImage.RightImageUrl = "handle_downright.png";
+            selectionHandleField.SetSelectionHandleImage(selectionHandleImage);
 
-            // Pressed
-            PropertyMap pressedImageLeftMap = new PropertyMap();
-            pressedImageLeftMap.Add("filename", new PropertyValue("handle_downleft_pressed.png"));
-            //selectionHandleField.SelectionHandlePressedImageLeft = pressedImageLeftMap;
+            var selectionHandlePressedImage = new Tizen.NUI.Text.SelectionHandleImage();
+            selectionHandlePressedImage.LeftImageUrl = "handle_downleft_pressed.png";
+            selectionHandlePressedImage.RightImageUrl = "handle_downright_pressed.png";
+            selectionHandleField.SetSelectionHandlePressedImage(selectionHandlePressedImage);
 
-            PropertyMap pressedImageRightMap = new PropertyMap();
-            pressedImageRightMap.Add("filename", new PropertyValue("handle_downright_pressed.png"));
-            //selectionHandleField.SelectionHandlePressedImageRight = pressedImageRightMap;
+            var selectionHandleMarkerImage = new Tizen.NUI.Text.SelectionHandleImage();
+            selectionHandleMarkerImage.LeftImageUrl = "handle_marker.png";
+            selectionHandleMarkerImage.RightImageUrl = "handle_marker.png";
+            selectionHandleField.SetSelectionHandleMarkerImage(selectionHandleMarkerImage);
 
-            // Marker?
-            PropertyMap markerImageLeftMap = new PropertyMap();
-            markerImageLeftMap.Add("filename", new PropertyValue("handle_marker.png"));
-            //selectionHandleField.SelectionHandleMarkerImageLeft = markerImageLeftMap;
+            Tizen.Log.Error("NUI", "get struct sel left " + selectionHandleField.GetSelectionHandleImage().LeftImageUrl + "\n");
+            Tizen.Log.Error("NUI", "get struct sel right " + selectionHandleField.GetSelectionHandleImage().RightImageUrl + "\n");
 
-            PropertyMap markerImageRightMap = new PropertyMap();
-            markerImageRightMap.Add("filename", new PropertyValue("handle_marker.png"));
-            //selectionHandleField.SelectionHandleMarkerImageRight = markerImageRightMap;
+            Tizen.Log.Error("NUI", "get struct pressed left " + selectionHandleField.GetSelectionHandlePressedImage().LeftImageUrl + "\n");
+            Tizen.Log.Error("NUI", "get struct pressed right " + selectionHandleField.GetSelectionHandlePressedImage().RightImageUrl + "\n");
 
-            PropertyMap getLeft = selectionHandleField.SelectionHandleImageLeft;
-            getLeft.Find(0, "filename").Get(out string fileLeft);
-            Tizen.Log.Error("NUI", "get left " + fileLeft + "\n");
-
-            PropertyMap getRight = selectionHandleField.SelectionHandleImageRight;
-            getRight.Find(0, "filename").Get(out string fileRight);
-            Tizen.Log.Error("NUI", "get right " + fileRight + "\n");
-
-            PropertyMap getLeftPress = selectionHandleField.SelectionHandlePressedImageLeft;
-            getLeftPress.Find(0, "filename").Get(out string fileLeftPress);
-            Tizen.Log.Error("NUI", "get left press " + fileLeftPress + "\n");
-
-            PropertyMap getRightPress = selectionHandleField.SelectionHandlePressedImageRight;
-            getRightPress.Find(0, "filename").Get(out string fileRightPress);
-            Tizen.Log.Error("NUI", "get right press " + fileRightPress + "\n");
-
-            PropertyMap getLeftMarker = selectionHandleField.SelectionHandleMarkerImageLeft;
-            getLeftMarker.Find(0, "filename").Get(out string fileLeftMarker);
-            Tizen.Log.Error("NUI", "get left marker " + fileLeftMarker + "\n");
-
-            PropertyMap getRightMarker = selectionHandleField.SelectionHandleMarkerImageRight;
-
-            Tizen.Log.Error("NUI", "getRightMarker CNT [" + getRightMarker.Count() + "] \n");
-            
-            if (getRightMarker.Find(0, "filename") == null)
-                Tizen.Log.Error("NUI", "right marker is null \n");
-            else
-                Tizen.Log.Error("NUI", "right marker is not null \n");
-            
-            //getRightMarker.Find(0, "filename").Get(out string fileRightMarker);
-            //Tizen.Log.Error("NUI", "get right marker " + fileRightMarker + "\n");
+            Tizen.Log.Error("NUI", "get struct marker left " + selectionHandleField.GetSelectionHandleMarkerImage().LeftImageUrl + "\n");
+            Tizen.Log.Error("NUI", "get struct marker right " + selectionHandleField.GetSelectionHandleMarkerImage().RightImageUrl + "\n");
 
 
-/*
-            SetSelectionHandleImage
-            SetSelectionHandlePressedImage
-            SetSelectionHandleMarkerImage
-
-            public struct SelectionHandleImage
+            // SelectionHandleImage
+            TextEditor selectionHandleEditor = new TextEditor
             {
-                public string LeftImageUrl { get; set; }
-                public string RightImageUrl { get; set; }
-                public string LeftPreesedImageUrl { get; set; }
-                public string RightPreesedImageUrl { get; set; }
-                public string LeftMarkerImageUrl { get; set; }
-                public string RightMarkerImageUrl { get; set; }
-            }
-*/
+                Text = "Selection Handle Editor L, R",
+                WidthSpecification = LayoutParamPolicies.MatchParent,
+                HeightSpecification = LayoutParamPolicies.WrapContent,
 
+                PointSize = 15.0f,
+                BackgroundColor = Color.White,
 
+                GrabHandleImage = "handle_down.png",
+            };
+            view.Add(selectionHandleEditor);
+
+            selectionHandleEditor.SetSelectionHandleImage(selectionHandlePressedImage);
+            selectionHandleEditor.SetSelectionHandlePressedImage(selectionHandleImage);
+            selectionHandleEditor.SetSelectionHandleMarkerImage(selectionHandleMarkerImage);
+
+            Tizen.Log.Error("NUI", "get editor struct sel left " + selectionHandleEditor.GetSelectionHandleImage().LeftImageUrl + "\n");
+            Tizen.Log.Error("NUI", "get editor struct sel right " + selectionHandleEditor.GetSelectionHandleImage().RightImageUrl + "\n");
+
+            Tizen.Log.Error("NUI", "get editor struct pressed left " + selectionHandleEditor.GetSelectionHandlePressedImage().LeftImageUrl + "\n");
+            Tizen.Log.Error("NUI", "get editor struct pressed right " + selectionHandleEditor.GetSelectionHandlePressedImage().RightImageUrl + "\n");
+
+            Tizen.Log.Error("NUI", "get editor struct marker left " + selectionHandleEditor.GetSelectionHandleMarkerImage().LeftImageUrl + "\n");
+            Tizen.Log.Error("NUI", "get editor struct marker right " + selectionHandleEditor.GetSelectionHandleMarkerImage().RightImageUrl + "\n");
 
         }
 
