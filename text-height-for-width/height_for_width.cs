@@ -46,6 +46,43 @@ namespace TextComponentsTest
             view.Add(label);
             AdjustTextLabelHeight(label);
 
+
+            TextLabel label2 = new TextLabel
+            {
+                Text = "Lorem ipsum dolor sit amet",
+                MultiLine = true,
+                PointSize = 25.0f,
+                BackgroundColor = Color.White,
+                Size2D = new Size2D(480, 40),
+            };
+            view.Add(label2);
+            AdjustTextLabelHeight(label2);
+
+
+            TextLabel label3 = new TextLabel
+            {
+                Text = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor",
+                MultiLine = true,
+                PointSize = 25.0f,
+                BackgroundColor = Color.White,
+                Size2D = new Size2D(480, 40),
+            };
+            view.Add(label3);
+            AdjustTextLabelHeight(label3);
+
+
+            TextLabel label4 = new TextLabel
+            {
+                Text = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+                MultiLine = true,
+                PointSize = 25.0f,
+                BackgroundColor = Color.White,
+                Size2D = new Size2D(480, 40),
+            };
+            view.Add(label4);
+            AdjustTextLabelHeight(label4);
+
+
             var button = new Button
             {
                 //Text = "GetHeightForWidth 240",
@@ -57,6 +94,12 @@ namespace TextComponentsTest
             {
                 label.Text = "Lorem ipsum";
                 AdjustTextLabelHeight(label);
+                label2.Text = "Lorem ipsum";
+                AdjustTextLabelHeight(label2);
+                label3.Text = "Lorem ipsum";
+                AdjustTextLabelHeight(label3);
+                label4.Text = "Lorem ipsum";
+                AdjustTextLabelHeight(label4);
             };
 
             var button2 = new Button
@@ -70,6 +113,12 @@ namespace TextComponentsTest
             {
                 label.Text = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.";
                 AdjustTextLabelHeight(label);
+                label2.Text = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.";
+                AdjustTextLabelHeight(label2);
+                label3.Text = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.";
+                AdjustTextLabelHeight(label3);
+                label4.Text = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.";
+                AdjustTextLabelHeight(label4);
             };
         }
 
