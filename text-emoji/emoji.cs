@@ -32,7 +32,7 @@ namespace TextComponentsTest
             };
             window.Add(view);
 
-/*
+
             // Normal label
             TextLabel label = new TextLabel
             {
@@ -66,11 +66,13 @@ namespace TextComponentsTest
             setHandle(field);
 
 
+
+
             // Normal field
             TextField field2 = new TextField
             {
-                FontFamily = "SamsungColorEmoji",
-                Text = "&#x1f938;&#x200d;&#x2642;&#xfe0f;",
+                //FontFamily = "SamsungColorEmoji",
+                Text = "&#x200d;abc&#x1f469;&#x200d;&#x1f52c;def&#x200d;",
                 EnableMarkup = true,
                 WidthSpecification = LayoutParamPolicies.MatchParent,
                 HeightSpecification = LayoutParamPolicies.WrapContent,
@@ -83,13 +85,14 @@ namespace TextComponentsTest
             setHandle(field2);
 
 
-*/
+
             // Normal label
             TextLabel label2 = new TextLabel
             {
-                FontFamily = "SamsungColorEmoji",
-                //Text = "&#x1f469;&#x200d;&#x1f466; &#x1f469;&#x1f466; &#x1f469;&#x200d;&#x1f52c;",
-                Text = "123&#x1f469;&#x200d;&#x1f52c;456",
+                //FontFamily = "NotoColorEmoji",
+                Text = "abc&#x1f469;&#x200c;&#x1f466; &#x1f469;&#x200c;&#x1f466; &#x1f469;&#x200d;&#x1f52c;def",
+                //Text = "&#x200d;abc&#x1f469;&#x200d;&#x1f52c;def&#x200c;",
+                //Text = "abc&#x1f469;&#x200d;&#x1f52c;def",
                 EnableMarkup = true,
                 MultiLine = true,
                 WidthSpecification = LayoutParamPolicies.MatchParent,
@@ -101,14 +104,14 @@ namespace TextComponentsTest
             };
             view.Add(label2);
 
-/*
+
             // Normal field
             TextField field3 = new TextField
             {
-                FontFamily = "SamsungColorEmoji",
-                //Text = "&#x1f469;&#x200d;&#x1f466; &#x1f469;&#x1f466; &#x1f469;&#x200d;&#x1f52c;",
+                //FontFamily = "NotoColorEmoji",
+                Text = "abc&#x1f469;&#x200d;&#x1f466; &#x1f469;&#x1f466; &#x1f469;&#x200c;&#x1f52c;def",
                 //Text = "123 &#x1f469;&#x200d;&#x1f52c; 456",
-                Text = "123&#x1f469;&#x200d;&#x1f52c;456",
+                //Text = "123&#x1f469;&#x200d;&#x1f52c;456",
                 EnableMarkup = true,
                 WidthSpecification = LayoutParamPolicies.MatchParent,
                 HeightSpecification = LayoutParamPolicies.WrapContent,
@@ -118,7 +121,7 @@ namespace TextComponentsTest
                 VerticalAlignment = VerticalAlignment.Center,   // only single line
             };
             view.Add(field3);
-            setHandle(field3);*/
+            setHandle(field3);
 
         }
 
