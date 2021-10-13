@@ -33,10 +33,9 @@ namespace TextComponentsTest
             window.Add(view);
 
 
-            // Normal label
             TextLabel label = new TextLabel
             {
-                FontFamily = "SamsungColorEmoji",
+                //FontFamily = "SamsungColorEmoji",
                 Text = "&#x262a;&#xfe0e;이모지อัอัอั&#x262a;&#xfe0f;&#x1F1F0;&#x1F1F7;&#x1F1FA;&#x1F1F8;&#x1F1EC;&#x1F1E7;&#x1F1EB;&#x1F1F7;&#x1F1EE;&#x1F1F9;&#x1F1E8;&#x1F1E6;",
                 EnableMarkup = true,
                 MultiLine = true,
@@ -44,12 +43,10 @@ namespace TextComponentsTest
                 HeightSpecification = LayoutParamPolicies.WrapContent,
                 PointSize = 25.0f,
                 BackgroundColor = Color.White,
-                HorizontalAlignment = HorizontalAlignment.Begin,
-                VerticalAlignment = VerticalAlignment.Center,   // only single line
             };
             view.Add(label);
 
-            // Normal field
+
             TextField field = new TextField
             {
                 FontFamily = "SamsungColorEmoji",
@@ -59,48 +56,35 @@ namespace TextComponentsTest
                 HeightSpecification = LayoutParamPolicies.WrapContent,
                 PointSize = 25.0f,
                 BackgroundColor = Color.White,
-                HorizontalAlignment = HorizontalAlignment.Begin,
-                VerticalAlignment = VerticalAlignment.Center,   // only single line
             };
             view.Add(field);
             setHandle(field);
 
 
-
-
-            // Normal field
             TextField field2 = new TextField
             {
                 //FontFamily = "SamsungColorEmoji",
-                Text = "&#x200d;abc&#x1f469;&#x200d;&#x1f52c;def&#x200d;",
+                Text = "&#x200c;&#x200d;abc&#x1f469;&#x200d;&#x1f52c;def&#x200d;",
                 EnableMarkup = true,
                 WidthSpecification = LayoutParamPolicies.MatchParent,
                 HeightSpecification = LayoutParamPolicies.WrapContent,
                 PointSize = 25.0f,
                 BackgroundColor = Color.White,
-                HorizontalAlignment = HorizontalAlignment.Begin,
-                VerticalAlignment = VerticalAlignment.Center,   // only single line
             };
             view.Add(field2);
             setHandle(field2);
 
 
-
-            // Normal label
             TextLabel label2 = new TextLabel
             {
-                //FontFamily = "NotoColorEmoji",
-                Text = "abc&#x1f469;&#x200c;&#x1f466; &#x1f469;&#x200c;&#x1f466; &#x1f469;&#x200d;&#x1f52c;def",
-                //Text = "&#x200d;abc&#x1f469;&#x200d;&#x1f52c;def&#x200c;",
-                //Text = "abc&#x1f469;&#x200d;&#x1f52c;def",
+                FontFamily = "SamsungColorEmoji",
+                Text = "abc&#x1f469;&#x200d;&#x1f466; &#x1f469;&#x200c;&#x1f466; &#x1f469;&#x200d;&#x1f52c;def",
                 EnableMarkup = true,
                 MultiLine = true,
                 WidthSpecification = LayoutParamPolicies.MatchParent,
                 HeightSpecification = LayoutParamPolicies.WrapContent,
                 PointSize = 25.0f,
                 BackgroundColor = Color.White,
-                HorizontalAlignment = HorizontalAlignment.Begin,
-                VerticalAlignment = VerticalAlignment.Center,   // only single line
             };
             view.Add(label2);
 
@@ -108,21 +92,73 @@ namespace TextComponentsTest
             // Normal field
             TextField field3 = new TextField
             {
-                //FontFamily = "NotoColorEmoji",
-                Text = "abc&#x1f469;&#x200d;&#x1f466; &#x1f469;&#x1f466; &#x1f469;&#x200c;&#x1f52c;def",
-                //Text = "123 &#x1f469;&#x200d;&#x1f52c; 456",
-                //Text = "123&#x1f469;&#x200d;&#x1f52c;456",
+                //FontFamily = "SamsungColorEmoji",
+                Text = "&#x200d;abc&#x1f469;&#x200d;&#x1f466; &#x1f469;&#x1f466; &#x1f469;&#x200d;&#x1f52c;def",
                 EnableMarkup = true,
                 WidthSpecification = LayoutParamPolicies.MatchParent,
                 HeightSpecification = LayoutParamPolicies.WrapContent,
                 PointSize = 25.0f,
                 BackgroundColor = Color.White,
-                HorizontalAlignment = HorizontalAlignment.Begin,
-                VerticalAlignment = VerticalAlignment.Center,   // only single line
             };
             view.Add(field3);
             setHandle(field3);
 
+
+            TextLabel label3 = new TextLabel
+            {
+                //FontFamily = "SamsungColorEmoji",
+                Text = "&#x1f469;&#x200d;&#x1f52c;",
+                //Text = "&#x0030;&#xfe0f;&#x20e3;&#x0031;&#xfe0f;&#x20e3;&#x0032;&#xfe0f;&#x20e3;&#x0033;&#xfe0f;&#x20e3;",
+                EnableMarkup = true,
+                MultiLine = true,
+                WidthSpecification = LayoutParamPolicies.MatchParent,
+                HeightSpecification = LayoutParamPolicies.WrapContent,
+                PointSize = 25.0f,
+                BackgroundColor = Color.White,
+            };
+            view.Add(label3);
+
+
+            TextLabel label4 = new TextLabel
+            {
+                //FontFamily = "SamsungColorEmoji",
+                Text = "&#x0030;&#xfe0f;&#x20e3;&#x0031;&#xfe0f;&#x20e3;&#x0032;&#xfe0f;&#x20e3;&#x0033;&#xfe0f;&#x20e3;",
+                EnableMarkup = true,
+                MultiLine = true,
+                WidthSpecification = LayoutParamPolicies.MatchParent,
+                HeightSpecification = LayoutParamPolicies.WrapContent,
+                PointSize = 25.0f,
+                BackgroundColor = Color.White,
+            };
+            view.Add(label4);
+
+
+            TextLabel label5 = new TextLabel
+            {
+                FontFamily = "SamsungColorEmoji",
+                Text = "&#x1f3f3;&#xfe0f;&#x200d;&#x1f308;",
+                EnableMarkup = true,
+                MultiLine = true,
+                WidthSpecification = LayoutParamPolicies.MatchParent,
+                HeightSpecification = LayoutParamPolicies.WrapContent,
+                PointSize = 25.0f,
+                BackgroundColor = Color.White,
+            };
+            view.Add(label5);
+
+
+            TextLabel label6 = new TextLabel
+            {
+                //FontFamily = "SamsungColorEmoji",
+                Text = "&#x1f3f3;&#x200d;&#x1f308;",
+                EnableMarkup = true,
+                MultiLine = true,
+                WidthSpecification = LayoutParamPolicies.MatchParent,
+                HeightSpecification = LayoutParamPolicies.WrapContent,
+                PointSize = 25.0f,
+                BackgroundColor = Color.White,
+            };
+            view.Add(label6);
         }
 
         public void setHandle(TextField field)
@@ -138,18 +174,6 @@ namespace TextComponentsTest
             field.SelectionHandleImageRight = imageRightMap;
         }
 
-        public void setHandle(TextEditor editor)
-        {
-            editor.GrabHandleImage = "images/handle_down.png";
-
-            PropertyMap imageLeftMap = new PropertyMap();
-            imageLeftMap.Add("filename", new PropertyValue("images/handle_downleft.png"));
-            editor.SelectionHandleImageLeft = imageLeftMap;
-
-            PropertyMap imageRightMap = new PropertyMap();
-            imageRightMap.Add("filename", new PropertyValue("images/handle_downright.png"));
-            editor.SelectionHandleImageRight = imageRightMap;
-        }
 
         [STAThread]
         static void Main(string[] args)
