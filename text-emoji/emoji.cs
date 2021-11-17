@@ -159,6 +159,48 @@ namespace TextComponentsTest
                 BackgroundColor = Color.White,
             };
             view.Add(label6);
+
+
+            TextLabel label7 = new TextLabel
+            {
+                //FontFamily = "SamsungColorEmoji",
+                Text = "0&#xfe0f;&#x20e3;1&#xfe0f;&#x20e3;2&#xfe0f;&#x20e3;3&#xfe0f;&#x20e3;",
+                EnableMarkup = true,
+                MultiLine = true,
+                WidthSpecification = LayoutParamPolicies.MatchParent,
+                HeightSpecification = LayoutParamPolicies.WrapContent,
+                PointSize = 25.0f,
+                BackgroundColor = Color.White,
+            };
+            view.Add(label7);
+
+
+            TextLabel label8 = new TextLabel
+            {
+                //FontFamily = "SamsungColorEmoji",
+                Text = "0&#xfe0e;&#x20e3;1&#xfe0f;&#x20e3;2&#xfe0e;&#x20e3;3&#xfe0f;&#x20e3;",
+                EnableMarkup = true,
+                MultiLine = true,
+                WidthSpecification = LayoutParamPolicies.MatchParent,
+                HeightSpecification = LayoutParamPolicies.WrapContent,
+                PointSize = 25.0f,
+                BackgroundColor = Color.White,
+            };
+            view.Add(label8);
+
+            TextField label9 = new TextField
+            {
+                //FontFamily = "SamsungColorEmoji",
+                Text = "&#x262a;&#xfe0f;&#xfe0f;&#xfe0f;&#x262a;&#xfe0f;",
+                EnableMarkup = true,
+                //MultiLine = true,
+                WidthSpecification = LayoutParamPolicies.MatchParent,
+                HeightSpecification = LayoutParamPolicies.WrapContent,
+                PointSize = 25.0f,
+                BackgroundColor = Color.White,
+            };
+            view.Add(label9);
+
         }
 
         public void setHandle(TextField field)
