@@ -79,42 +79,6 @@ namespace TextComponentsTest
             };
         }
 
-        public void onTextFieldTextChanged(object sender, TextField.TextChangedEventArgs e)
-        {
-            Tizen.Log.Fatal("NUI", "Field Text Changed : " + e.TextField.Text + "\n");
-        }
-
-        public void onTextEditorTextChanged(object sender, TextEditor.TextChangedEventArgs e)
-        {
-            Tizen.Log.Fatal("NUI", "Editor Text Changed : " + e.TextEditor.Text + "\n");
-        }
-
-        public void setHandle(TextField field)
-        {
-            field.GrabHandleImage = "images/handle_down.png";
-
-            PropertyMap imageLeftMap = new PropertyMap();
-            imageLeftMap.Add("filename", new PropertyValue("images/handle_downleft.png"));
-            field.SelectionHandleImageLeft = imageLeftMap;
-
-            PropertyMap imageRightMap = new PropertyMap();
-            imageRightMap.Add("filename", new PropertyValue("images/handle_downright.png"));
-            field.SelectionHandleImageRight = imageRightMap;
-        }
-
-        public void setHandle(TextEditor editor)
-        {
-            editor.GrabHandleImage = "images/handle_down.png";
-
-            PropertyMap imageLeftMap = new PropertyMap();
-            imageLeftMap.Add("filename", new PropertyValue("images/handle_downleft.png"));
-            editor.SelectionHandleImageLeft = imageLeftMap;
-
-            PropertyMap imageRightMap = new PropertyMap();
-            imageRightMap.Add("filename", new PropertyValue("images/handle_downright.png"));
-            editor.SelectionHandleImageRight = imageRightMap;
-        }
-
         [STAThread]
         static void Main(string[] args)
         {
