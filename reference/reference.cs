@@ -2,6 +2,7 @@ using System;
 using System.Threading.Tasks;
 using Tizen.NUI;
 using Tizen.NUI.BaseComponents;
+using Tizen.NUI.Components;
 
 namespace TextComponentsTest
 {
@@ -154,6 +155,20 @@ namespace TextComponentsTest
             };
 
             view.Add(editor);
+
+            
+            var button = new Button
+            {
+                Text = "get size of label",
+                WidthSpecification = LayoutParamPolicies.MatchParent,
+                HeightSpecification = LayoutParamPolicies.WrapContent,
+            };
+            view.Add(button);
+            button.Clicked += (s, e) =>
+            {
+                Tizen.Log.Error("NUI", "label size[" + label.Size.Width + ", " + label.Size.Height + "] \n");
+                Tizen.Log.Error("NUI", "label natural size[" + label.NaturalSize.Width + ", " + label.NaturalSize.Height + "] \n");
+            };
         }
 
         public void onTextFieldTextChanged(object sender, TextField.TextChangedEventArgs e)
