@@ -44,6 +44,8 @@ namespace TextComponentsTest
             };
             window.Add(view);
 
+            FocusManager.Instance.EnableDefaultAlgorithm(true);
+
             // Label for title
             TextLabel titleLabel = newTextLabel("TextField : ", 15.0f);
             titleLabel.BackgroundColor = Color.CadetBlue;
@@ -268,6 +270,7 @@ namespace TextComponentsTest
                 VerticalAlignment = VerticalAlignment.Center,
 
                 Focusable = true,
+                FocusableInTouch = true,
             };
             setHandle(textField);
 
