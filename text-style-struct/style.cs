@@ -184,16 +184,44 @@ namespace TextComponentsTest
             var underline = new Tizen.NUI.Text.Underline();
             underline.Enable = true;
             //underline.Color = new Color("#3498DB");
-            //underline.Height = 5.0f;
+            underline.Color = Color.Red;
+            underline.Height = 3.0f;
+
+            //underline.Type = UnderlineType.Solid;
+            underline.Type = UnderlineType.Dashed;
+            underline.DashWidth = 5.0f;
+            underline.DashGap = 5.0f;
+
+            var strike = new Tizen.NUI.Text.Strikethrough();
+            strike.Enable = true;
+            strike.Color = new Color("#3498DB");
+            strike.Height = 1.0f;
 
             Tizen.Log.Error("NUI", "struct enable : " + underline.Enable + "\n");
             Tizen.Log.Error("NUI", "struct height : " + underline.Height + "\n");
+            if (underline.Color != null)
+            Tizen.Log.Error("NUI", "struct color : " + underline.Color.R + ", " + underline.Color.G + ", " + underline.Color.B + ", " + underline.Color.A + "\n");
             underlineLabel.SetUnderline(underline);
+            underlineLabel.SetStrikethrough(strike);
+
+            var getUnderline = underlineLabel.GetStrikethrough();
+
+            //underlineLabel.UnderlineColor = new Vector4(0, 1, 1, 1);
+            Tizen.Log.Error("NUI", "GET LABEL UnderlineColor : " + underlineLabel.UnderlineColor.X + ", " + underlineLabel.UnderlineColor.Y + ", " + underlineLabel.UnderlineColor.Z + ", " + underlineLabel.UnderlineColor.W + "\n");
+            //underlineLabel.UnderlineHeight = 1.0f;
+            Tizen.Log.Error("NUI", "GET LABEL UnderlineHeight : " + underlineLabel.UnderlineHeight + "\n");
 
             Tizen.Log.Error("NUI", "get struct enable : " + underlineLabel.GetUnderline().Enable + "\n");
             Tizen.Log.Error("NUI", "get struct color : " + underlineLabel.GetUnderline().Color.R + ", " + underlineLabel.GetUnderline().Color.G + ", " + underlineLabel.GetUnderline().Color.B + ", " + underlineLabel.GetUnderline().Color.A + "\n");
             Tizen.Log.Error("NUI", "get struct height : " + underlineLabel.GetUnderline().Height + "\n");
+            Tizen.Log.Error("NUI", "get struct type : " + underlineLabel.GetUnderline().Type + "\n");
+            Tizen.Log.Error("NUI", "get struct dash width : " + underlineLabel.GetUnderline().DashWidth + "\n");
+            Tizen.Log.Error("NUI", "get struct dash gap : " + underlineLabel.GetUnderline().DashGap + "\n");
 
+
+            Tizen.Log.Error("NUI", "get s struct enable : " + underlineLabel.GetStrikethrough().Enable + "\n");
+            Tizen.Log.Error("NUI", "get s struct color : " + underlineLabel.GetStrikethrough().Color.R + ", " + underlineLabel.GetStrikethrough().Color.G + ", " + underlineLabel.GetStrikethrough().Color.B + ", " + underlineLabel.GetStrikethrough().Color.A + "\n");
+            Tizen.Log.Error("NUI", "get s struct height : " + underlineLabel.GetStrikethrough().Height + "\n");
 
             // Underline
             TextField underlineField = new TextField
@@ -209,10 +237,16 @@ namespace TextComponentsTest
             view.Add(underlineField);
 
             underlineField.SetUnderline(underline);
+            underlineField.SetStrikethrough(strike);
+
 
             Tizen.Log.Error("NUI", "get field enable : " + underlineField.GetUnderline().Enable + "\n");
             Tizen.Log.Error("NUI", "get field color : " + underlineField.GetUnderline().Color.R + ", " + underlineField.GetUnderline().Color.G + ", " + underlineField.GetUnderline().Color.B + ", " + underlineField.GetUnderline().Color.A + "\n");
             Tizen.Log.Error("NUI", "get field height : " + underlineField.GetUnderline().Height + "\n");
+
+            Tizen.Log.Error("NUI", "get s field enable : " + underlineField.GetStrikethrough().Enable + "\n");
+            Tizen.Log.Error("NUI", "get s field color : " + underlineField.GetStrikethrough().Color.R + ", " + underlineField.GetStrikethrough().Color.G + ", " + underlineField.GetStrikethrough().Color.B + ", " + underlineField.GetStrikethrough().Color.A + "\n");
+            Tizen.Log.Error("NUI", "get s field height : " + underlineField.GetStrikethrough().Height + "\n");
 
             // Underline
             TextEditor underlineEditor = new TextEditor
@@ -226,10 +260,15 @@ namespace TextComponentsTest
             view.Add(underlineEditor);
 
             underlineEditor.SetUnderline(underline);
+            underlineEditor.SetStrikethrough(strike);
 
             Tizen.Log.Error("NUI", "get editor enable : " + underlineEditor.GetUnderline().Enable + "\n");
             Tizen.Log.Error("NUI", "get editor color : " + underlineEditor.GetUnderline().Color.R + ", " + underlineEditor.GetUnderline().Color.G + ", " + underlineEditor.GetUnderline().Color.B + ", " + underlineEditor.GetUnderline().Color.A + "\n");
             Tizen.Log.Error("NUI", "get editor height : " + underlineEditor.GetUnderline().Height + "\n");
+
+            Tizen.Log.Error("NUI", "get s editor enable : " + underlineEditor.GetStrikethrough().Enable + "\n");
+            Tizen.Log.Error("NUI", "get s editor color : " + underlineEditor.GetStrikethrough().Color.R + ", " + underlineEditor.GetStrikethrough().Color.G + ", " + underlineEditor.GetStrikethrough().Color.B + ", " + underlineEditor.GetStrikethrough().Color.A + "\n");
+            Tizen.Log.Error("NUI", "get s editor height : " + underlineEditor.GetStrikethrough().Height + "\n");
 
 
             // Shadow
@@ -250,6 +289,12 @@ namespace TextComponentsTest
             shadowStruct.Color = Color.Red;
             shadowStruct.Offset = new Vector2(3, 3);
             shadowLabel.SetShadow(shadowStruct);
+            
+            shadowLabel.ShadowOffset = new Vector2(15, 5);
+            Tizen.Log.Error("NUI", "GET SHADOW offset "+ shadowLabel.ShadowOffset.X + " " + shadowLabel.ShadowOffset.Y + "\n");
+
+            shadowLabel.ShadowColor = new Vector4(0, 1, 0, 1);
+            Tizen.Log.Error("NUI", "GET SHADOW color : " + shadowLabel.ShadowColor.X + ", " + shadowLabel.ShadowColor.Y + ", " + shadowLabel.ShadowColor.Z + ", " + shadowLabel.ShadowColor.W + "\n");
 
             Tizen.Log.Error("NUI", "get shadow label color : " + shadowLabel.GetShadow().Color.R + ", " + shadowLabel.GetShadow().Color.G + ", " + shadowLabel.GetShadow().Color.B + ", " + shadowLabel.GetShadow().Color.A + "\n");
             Tizen.Log.Error("NUI", "get shadow label offset : " + shadowLabel.GetShadow().Offset.X + ", " + shadowLabel.GetShadow().Offset.Y + "\n");
@@ -266,6 +311,12 @@ namespace TextComponentsTest
             };
             view.Add(shadowField);
             shadowField.SetShadow(shadowStruct);
+
+            shadowField.ShadowOffset = new Vector2(10, 10);
+            Tizen.Log.Error("NUI", "FIELD GET SHADOW offset "+ shadowField.ShadowOffset.X + " " + shadowField.ShadowOffset.Y + "\n");
+
+            shadowField.ShadowColor = new Vector4(1, 0, 1, 1);
+            Tizen.Log.Error("NUI", "FIELD GET SHADOW color : " + shadowField.ShadowColor.X + ", " + shadowField.ShadowColor.Y + ", " + shadowField.ShadowColor.Z + ", " + shadowField.ShadowColor.W + "\n");
 
             Tizen.Log.Error("NUI", "get shadow field color : " + shadowField.GetShadow().Color.R + ", " + shadowField.GetShadow().Color.G + ", " + shadowField.GetShadow().Color.B + ", " + shadowField.GetShadow().Color.A + "\n");
             Tizen.Log.Error("NUI", "get shadow field offset : " + shadowField.GetShadow().Offset.X + ", " + shadowField.GetShadow().Offset.Y + "\n");
@@ -355,9 +406,9 @@ namespace TextComponentsTest
             var textFit = new Tizen.NUI.Text.TextFit();
             textFit.Enable = true;
             textFit.MinSize = 30.0f;
-            //textFit.MaxSize = 200.0f;
-            //textFit.StepSize = 20.0f;
-            //textFit.FontSizeType = FontSizeType.PixelSize;
+            textFit.MaxSize = 200.0f;
+            textFit.StepSize = 1.0f;
+            textFit.FontSizeType = FontSizeType.PixelSize;
             textFitLabel.SetTextFit(textFit);
 
             Tizen.Log.Error("NUI", "fit struct enable : " + textFit.Enable + "\n");
