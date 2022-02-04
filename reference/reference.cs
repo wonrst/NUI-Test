@@ -24,7 +24,8 @@ namespace TextComponentsTest
                 Layout = new LinearLayout()
                 {
                     LinearOrientation = LinearLayout.Orientation.Vertical,
-                    LinearAlignment = LinearLayout.Alignment.Begin,
+                    HorizontalAlignment = HorizontalAlignment.Begin,
+                    VerticalAlignment = VerticalAlignment.Top,
                     CellPadding = new Size2D(10, 10),
                 },
                 WidthSpecification = LayoutParamPolicies.MatchParent,
@@ -88,6 +89,7 @@ namespace TextComponentsTest
                 HorizontalAlignment = HorizontalAlignment.Begin,
                 VerticalAlignment = VerticalAlignment.Center,   // only single line
             };
+            view.Add(field);
             setHandle(field);
 
             // field.TextChanged += onTextFieldTextChanged;
@@ -95,8 +97,6 @@ namespace TextComponentsTest
             {
                 Tizen.Log.Error("NUI", "Field Text Changed[" + e.TextField.Text + "] \n");
             };
-
-            view.Add(field);
 
 
             // Password field
@@ -115,6 +115,7 @@ namespace TextComponentsTest
                 PlaceholderTextFocused = "Input Password",
                 // InputMethodSettings = (new InputMethod{PanelLayout = InputMethod.PanelLayoutType.Password}).OutputMap,
             };
+            view.Add(passwordField);
             setHandle(passwordField);
 
             var inputMethod = new InputMethod();
@@ -125,8 +126,6 @@ namespace TextComponentsTest
             hiddenMap.Add(HiddenInputProperty.Mode, new PropertyValue((int)HiddenInputModeType.ShowLastCharacter));
             hiddenMap.Add(HiddenInputProperty.ShowLastCharacterDuration, new PropertyValue(500));
             passwordField.HiddenInputSettings = hiddenMap;
-
-            view.Add(passwordField);
 
 
             // Need to implement layout editor
@@ -142,6 +141,7 @@ namespace TextComponentsTest
 
                 HorizontalAlignment = HorizontalAlignment.Begin,   // there is no VerticalAlignment in TextEditor
             };
+            view.Add(editor);
             setHandle(editor);
 
             // FIXME
@@ -153,8 +153,6 @@ namespace TextComponentsTest
             {
                 Tizen.Log.Error("NUI", "Editor Text Changed[" + e.TextEditor.Text + "] \n");
             };
-
-            view.Add(editor);
 
             
             var button = new Button
