@@ -1,8 +1,6 @@
 using System;
-using System.Threading.Tasks;
 using Tizen.NUI;
 using Tizen.NUI.BaseComponents;
-using System.Threading.Tasks;
 
 namespace TextComponentsTest
 {
@@ -14,7 +12,7 @@ namespace TextComponentsTest
             Initialize();
         }
 
-        public async Task Initialize()
+        public void Initialize()
         {
             Window window = Window.Instance;
             window.BackgroundColor = Color.White;
@@ -24,7 +22,8 @@ namespace TextComponentsTest
                 Layout = new LinearLayout()
                 {
                     LinearOrientation = LinearLayout.Orientation.Vertical,
-                    LinearAlignment = LinearLayout.Alignment.Begin,
+                    HorizontalAlignment = HorizontalAlignment.Begin,
+                    VerticalAlignment = VerticalAlignment.Top,
                     CellPadding = new Size2D(10, 10),
                 },
                 WidthSpecification = LayoutParamPolicies.MatchParent,
@@ -34,7 +33,6 @@ namespace TextComponentsTest
             window.Add(view);
 
 
-            // SelectionChanged text field
             TextField field = new TextField
             {
                 Text = "Hello",
@@ -48,43 +46,82 @@ namespace TextComponentsTest
             setHandle(field);
             view.Add(field);
 
+            field.SelectionStarted += (s, e) =>
+            {
+                Tizen.Log.Error("NUI", "SelectionStarted text : " + field.SelectedText + "\n");
+                Tizen.Log.Error("NUI", "SelectionStarted text start : " + field.SelectedTextStart + "\n");
+                Tizen.Log.Error("NUI", "SelectionStarted text end : " + field.SelectedTextEnd + "\n");
+            };
+
             field.SelectionChanged += (s, e) =>
             {
-                Tizen.Log.Error("NUI", "selected text : " + field.SelectedText + "\n");
-                Tizen.Log.Error("NUI", "selected text start : " + field.SelectedTextStart + "\n");
-                Tizen.Log.Error("NUI", "selected text end : " + field.SelectedTextEnd + "\n");
+                Tizen.Log.Error("NUI", "SelectionChanged text : " + field.SelectedText + "\n");
+                Tizen.Log.Error("NUI", "SelectionChanged text start : " + field.SelectedTextStart + "\n");
+                Tizen.Log.Error("NUI", "SelectionChanged text end : " + field.SelectedTextEnd + "\n");
+            };
+
+            field.SelectionCleared += (s, e) =>
+            {
+                Tizen.Log.Error("NUI", "SelectionCleared text : " + field.SelectedText + "\n");
+                Tizen.Log.Error("NUI", "SelectionCleared text start : " + field.SelectedTextStart + "\n");
+                Tizen.Log.Error("NUI", "SelectionCleared text end : " + field.SelectedTextEnd + "\n");
             };
 
 
-            // No selection event text field
-            TextField field2 = new TextField
+            TextEditor editor = new TextEditor
             {
                 Text = "Hello",
                 WidthSpecification = LayoutParamPolicies.MatchParent,
                 HeightSpecification = LayoutParamPolicies.WrapContent,
 
-                MaxLength = 20,
                 PointSize = 25.0f,
                 BackgroundColor = Color.White,
             };
-            setHandle(field2);
-            view.Add(field2);
+            setHandle(editor);
+            view.Add(editor);
+
+            editor.SelectionStarted += (s, e) =>
+            {
+                Tizen.Log.Error("NUI", "SelectionStarted text : " + editor.SelectedText + "\n");
+                Tizen.Log.Error("NUI", "SelectionStarted text start : " + editor.SelectedTextStart + "\n");
+                Tizen.Log.Error("NUI", "SelectionStarted text end : " + editor.SelectedTextEnd + "\n");
+            };
+
+            editor.SelectionChanged += (s, e) =>
+            {
+                Tizen.Log.Error("NUI", "SelectionChanged text : " + editor.SelectedText + "\n");
+                Tizen.Log.Error("NUI", "SelectionChanged text start : " + editor.SelectedTextStart + "\n");
+                Tizen.Log.Error("NUI", "SelectionChanged text end : " + editor.SelectedTextEnd + "\n");
+            };
+
+            editor.SelectionCleared += (s, e) =>
+            {
+                Tizen.Log.Error("NUI", "SelectionCleared text : " + editor.SelectedText + "\n");
+                Tizen.Log.Error("NUI", "SelectionCleared text start : " + editor.SelectedTextStart + "\n");
+                Tizen.Log.Error("NUI", "SelectionCleared text end : " + editor.SelectedTextEnd + "\n");
+            };
         }
 
         public void setHandle(TextField field)
         {
             field.GrabHandleImage = "images/handle_down.png";
 
-            PropertyMap imageLeftMap = new PropertyMap();
-            imageLeftMap.Add("filename", new PropertyValue("images/handle_downleft.png"));
-            field.SelectionHandleImageLeft = imageLeftMap;
-
-            PropertyMap imageRightMap = new PropertyMap();
-            imageRightMap.Add("filename", new PropertyValue("images/handle_downright.png"));
-            field.SelectionHandleImageRight = imageRightMap;
+            var selectionHandleImage = new Tizen.NUI.Text.SelectionHandleImage();
+            selectionHandleImage.LeftImageUrl = "images/handle_downleft.png";
+            selectionHandleImage.RightImageUrl = "images/handle_downright.png";
+            field.SetSelectionHandleImage(selectionHandleImage);
         }
 
-        [STAThread]
+        public void setHandle(TextEditor editor)
+        {
+            editor.GrabHandleImage = "images/handle_down.png";
+
+            var selectionHandleImage = new Tizen.NUI.Text.SelectionHandleImage();
+            selectionHandleImage.LeftImageUrl = "images/handle_downleft.png";
+            selectionHandleImage.RightImageUrl = "images/handle_downright.png";
+            editor.SetSelectionHandleImage(selectionHandleImage);
+        }
+
         static void Main(string[] args)
         {
             Example example = new Example();
