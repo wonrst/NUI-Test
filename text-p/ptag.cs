@@ -40,6 +40,9 @@ namespace TextComponentsTest
             TextLabel label = NewTextLabel(shorMarkup);
             view.Add(label);
 
+            TextLabel multilineSingleLabel = NewTextLabel(shorMarkup);
+            view.Add(multilineSingleLabel);
+            multilineSingleLabel.MultiLine = true;
 
             TextLabel multilineLabel = NewTextLabel(markupText);
             view.Add(multilineLabel);
