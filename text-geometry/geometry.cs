@@ -60,7 +60,6 @@ namespace TextComponentsTest
             button.Clicked += (s, e) =>
             {
                 Tizen.Log.Error("NUI", "label size[" + label.Size.Width + ", " + label.Size.Height + "] \n");
-                Tizen.Log.Error("NUI", "label natural size[" + label.NaturalSize.Width + ", " + label.NaturalSize.Height + "] \n");
 
                 List<Size2D> sizeList = TextGeometry.GetTextSize(label, 0, label.Text.Length - 1);
                 List<Position2D> positionList = TextGeometry.GetTextPosition(label, 0, label.Text.Length - 1);
