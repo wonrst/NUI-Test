@@ -36,6 +36,7 @@ namespace TextComponentsTest
 
             string shorMarkup = "<p align='center'>Hello world</p>";
             string markupText = "<p align='center'>Hello\nworld</p><p align='begin'>Second\nworld</p><p align='end'>Third\nworld</p>";
+            string mixText = "<p align='center'>Hello\nworld</p><p align='begin'>Second\nworld</p><p align='end'>Third\nworld</p>Fourth\nworld";
 
             TextLabel label = NewTextLabel(shorMarkup);
             view.Add(label);
@@ -52,12 +53,17 @@ namespace TextComponentsTest
             // Markup Field
             TextField markupField = NewTextField(markupText);
             view.Add(markupField);
-            markupField.EnableMarkup = true;
 
             // Markup Editor
             TextEditor markupEditor = NewTextEditor(markupText);
             view.Add(markupEditor);
-            markupEditor.EnableMarkup = true;
+
+            // Mix case
+            TextLabel mixLabel = NewTextLabel(mixText);
+            view.Add(mixLabel);
+
+            TextField mixField = NewTextField(mixText);
+            view.Add(mixField);
         }
 
         public TextLabel NewTextLabel(string text)
@@ -81,6 +87,7 @@ namespace TextComponentsTest
             var field = new TextField
             {
                 Text = text,
+                EnableMarkup = true,
                 WidthSpecification = LayoutParamPolicies.MatchParent,
                 HeightSpecification = LayoutParamPolicies.WrapContent,
                 MaxLength = 200,
@@ -98,6 +105,7 @@ namespace TextComponentsTest
             var editor = new TextEditor
             {
                 Text = text,
+                EnableMarkup = true,
                 WidthSpecification = LayoutParamPolicies.MatchParent,
                 HeightSpecification = 100,
                 //HeightSpecification = LayoutParamPolicies.WrapContent,
