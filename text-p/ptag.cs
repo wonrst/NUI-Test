@@ -35,13 +35,14 @@ namespace TextComponentsTest
             window.Add(view);
 
             string shorMarkup = "<p align='center'>Hello world</p>";
+            string longMarkup = "<p align='center'>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>";
             string markupText = "<p align='center'>Hello\nworld</p><p align='begin'>Second\nworld</p><p align='end'>Third\nworld</p>";
             string mixText = "<p align='center'>Hello\nworld</p><p align='begin'>Second\nworld</p><p align='end'>Third\nworld</p>Fourth\nworld";
 
             TextLabel label = NewTextLabel(shorMarkup);
             view.Add(label);
 
-            TextLabel multilineSingleLabel = NewTextLabel(shorMarkup);
+            TextLabel multilineSingleLabel = NewTextLabel(longMarkup);
             view.Add(multilineSingleLabel);
             multilineSingleLabel.MultiLine = true;
 
