@@ -54,6 +54,7 @@ namespace TextComponentsTest
             Tizen.Log.Error("NUI", "color2 GetHashCode " + color2.GetHashCode() + " \n");
             Tizen.Log.Error("NUI", "color3 GetHashCode " + color3.GetHashCode() + " \n");
             Tizen.Log.Error("NUI", "color4 GetHashCode " + color4.GetHashCode() + " \n");
+
         }
 
         string GetColor(Color color)
