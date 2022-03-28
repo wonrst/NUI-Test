@@ -36,14 +36,15 @@ namespace TextComponentsTest
 
             TextLabel label = new TextLabel
             {
-                Text = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+                Text = "<char-spacing value='5.0f'>Lorem ipsum dolor sit amet,</char-spacing> consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
                 MultiLine = true,
+                EnableMarkup = true,
                 WidthSpecification = LayoutParamPolicies.MatchParent,
                 HeightSpecification = 150,
                 PointSize = 25.0f,
                 BackgroundColor = Color.White,
 
-                CharacterSpacing = 10.0f,
+                CharacterSpacing = -3.5f,
             };
             view.Add(label);
 
@@ -51,15 +52,16 @@ namespace TextComponentsTest
 
             TextField field = new TextField
             {
-                Text = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+                Text = "<char-spacing value='-5.0f'>Lorem ipsum dolor sit amet, consectetur adipiscing elit</char-spacing>, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
                 WidthSpecification = LayoutParamPolicies.MatchParent,
                 HeightSpecification = LayoutParamPolicies.WrapContent,
+                EnableMarkup = true,
 
                 MaxLength = 200,
                 PointSize = 25.0f,
                 BackgroundColor = Color.White,
 
-                CharacterSpacing = 10.0f,
+                CharacterSpacing = 30.1f,
 
                 Ellipsis = true,
                 EllipsisPosition = EllipsisPosition.Middle,
@@ -71,14 +73,14 @@ namespace TextComponentsTest
 
             TextEditor editor = new TextEditor
             {
-                Text = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+                Text = "<char-spacing value='-5.0f'>Lorem ipsum dolor sit amet,</char-spacing> consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
                 EnableMarkup = true,
                 WidthSpecification = LayoutParamPolicies.MatchParent,
                 HeightSpecification = 150,
                 PointSize = 25.0f,
                 BackgroundColor = Color.White,
 
-                CharacterSpacing = 10.0f,
+                //CharacterSpacing = 20.5f,
 
                 Ellipsis = true,
                 EllipsisPosition = EllipsisPosition.Start,
@@ -90,14 +92,14 @@ namespace TextComponentsTest
 
             TextEditor editorKOR = new TextEditor
             {
-                Text = "컴퓨터에서 인간과 같이 사고하고 생각하고 학습하고 판단하는 논리적인 방식을 사용하는 인간지능을 본 딴 고급 컴퓨터프로그램을 말한다. 과거의 인공지능은 확정된 환경에서 유한개의 솔루션을 탐색하는 일이었다. 인공지능은 곧 논리였고, 이에 따른 탐색이었다. 하지만 현실은 환경도 매우 불확정적이고, 솔루션도 미리 유한개로 정해져있지 않은 경우가 많았다. 기계학습은 이런 문제들을 '데이터 중심의 판단'으로 풀어간다.",
+                Text = "<char-spacing value='-5.0f'>컴퓨터에서 인간과 같이 사고하고</char-spacing> 생각하고 학습하고 판단하는 <char-spacing value='-1.0f'>논리적인 방식을 사용하는 인간지능을 본 딴 고급 컴퓨터프로그램</char-spacing>을 말한다. 과거의 인공지능은 확정된 환경에서 유한개의 솔루션을 탐색하는 일이었다. 인공지능은 곧 논리였고, 이에 따른 탐색이었다. 하지만 현실은 환경도 매우 불확정적이고, 솔루션도 미리 유한개로 정해져있지 않은 경우가 많았다. 기계학습은 이런 문제들을 '데이터 중심의 판단'으로 풀어간다.",
                 EnableMarkup = true,
                 WidthSpecification = LayoutParamPolicies.MatchParent,
                 HeightSpecification = 150,
                 PointSize = 25.0f,
                 BackgroundColor = Color.White,
 
-                CharacterSpacing = 10.0f,
+                CharacterSpacing = 15.0f,
 
                 Ellipsis = true,
                 EllipsisPosition = EllipsisPosition.Middle,
@@ -116,7 +118,7 @@ namespace TextComponentsTest
                 PointSize = 25.0f,
                 BackgroundColor = Color.White,
 
-                CharacterSpacing = 10.0f,
+                CharacterSpacing = 20.0f,
 
                 Ellipsis = true,
                 EllipsisPosition = EllipsisPosition.Start,
