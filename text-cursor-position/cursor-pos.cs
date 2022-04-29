@@ -87,6 +87,9 @@ namespace TextComponentsTest
             field.CursorPositionChanged += (s, e) =>
             {
                 cursorPosLabel.Text = "Cursor Position : " + field.PrimaryCursorPosition;
+
+                Tizen.Log.Error("NUI", "CursorPositionChanged \n");
+                printLog(true);
             };
 
             field.SelectionChanged += (s, e) =>
@@ -94,6 +97,9 @@ namespace TextComponentsTest
                 selectionLabel.Text = "Selection Length : " + field.SelectedText.Length;
                 cursorPosLabel.Text = "Cursor Position : " + field.PrimaryCursorPosition;
                 selectedLabel.Text = "Selected Text : " + field.SelectedText + " [" + field.SelectedTextStart + ", " + field.SelectedTextEnd + "]";
+
+                Tizen.Log.Error("NUI", "SelectionChanged \n");
+                printLog(true);
             };
 
             field.SelectionCleared += (s, e) =>
@@ -102,7 +108,8 @@ namespace TextComponentsTest
                 cursorPosLabel.Text = "Cursor Position : " + field.PrimaryCursorPosition;
                 selectedLabel.Text = "Selected Text : " + field.SelectedText + " [" + field.SelectedTextStart + ", " + field.SelectedTextEnd + "]";
 
-                Tizen.Log.Error("NUI", "Text selection cleared \n");
+                Tizen.Log.Error("NUI", "SelectionCleared \n");
+                printLog(true);
             };
 
             // Focus callback of main field
@@ -119,40 +126,6 @@ namespace TextComponentsTest
             };
 
 
-            // Start test
-            View HorView = newHorView();
-            view.Add(HorView);
-
-            TextField start = newTextField("5", 20.0f);
-            HorView.Add(start);
-
-            Button startButton = newButton("Selected Start");
-            startButton.Clicked += (s, e) =>
-            {
-                printLog(false);
-                field.SelectedTextStart = Int32.Parse(start.Text);
-                printLog(true);
-            };
-            HorView.Add(startButton);
-
-
-            // End test
-            View HorView2 = newHorView();
-            view.Add(HorView2);
-
-            TextField end = newTextField("10", 20.0f);
-            HorView2.Add(end);
-
-            Button endButton = newButton("Selected End");
-            endButton.Clicked += (s, e) =>
-            {
-                printLog(false);
-                field.SelectedTextEnd = Int32.Parse(end.Text);
-                printLog(true);
-            };
-            HorView2.Add(endButton);
-
-
             // Select Range test
             View HorView3 = newHorView();
             view.Add(HorView3);
@@ -167,7 +140,7 @@ namespace TextComponentsTest
             selButton.Clicked += (s, e) =>
             {
                 printLog(false);
-                field.SelectText((uint)Int32.Parse(startSel.Text), (uint)Int32.Parse(endSel.Text));
+                field.SelectText(Int32.Parse(startSel.Text), Int32.Parse(endSel.Text));
                 printLog(true);
             };
             HorView3.Add(selButton);
@@ -208,8 +181,7 @@ namespace TextComponentsTest
             {
                 printLog(false);
                 field.PrimaryCursorPosition = Int32.Parse(cSel.Text);
-                field.SelectedTextStart = Int32.Parse(sSel.Text);
-                field.SelectedTextEnd = Int32.Parse(eSel.Text);
+                field.SelectText(Int32.Parse(sSel.Text), Int32.Parse(eSel.Text));
                 printLog(true);
             };
             HorView5.Add(allButton);
@@ -233,8 +205,7 @@ namespace TextComponentsTest
             {
                 printLog(false);
                 field.PrimaryCursorPosition = Int32.Parse(cSel2.Text);
-                field.SelectedTextStart = Int32.Parse(sSel2.Text);
-                field.SelectedTextEnd = Int32.Parse(eSel2.Text);
+                field.SelectText(Int32.Parse(sSel2.Text), Int32.Parse(eSel2.Text));
                 printLog(true);
             };
             HorView6.Add(allButton2);
