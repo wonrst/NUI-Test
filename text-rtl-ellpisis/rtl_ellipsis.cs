@@ -33,8 +33,7 @@ namespace TextComponentsTest
             };
             window.Add(view);
 
-            // Normal label
-            TextLabel label1 = new TextLabel
+            TextLabel label = new TextLabel
             {
                 Text = "Projector سیٹنگیں",
                 Ellipsis = true,
@@ -46,91 +45,70 @@ namespace TextComponentsTest
                 VerticalAlignment = VerticalAlignment.Center,
                 LayoutDirection = ViewLayoutDirectionType.RTL,
             };
-            view.Add(label1);
-
-
-            // Normal label
-            TextLabel label2 = new TextLabel
-            {
-                Text = "Projector سیٹنگیں",
-                Ellipsis = true,
-                WidthSpecification = 150,
-                HeightSpecification = 60,
-                PixelSize = 26.0f,
-                BackgroundColor = Color.White,
-                HorizontalAlignment = HorizontalAlignment.Begin,
-                VerticalAlignment = VerticalAlignment.Center,
-                LayoutDirection = ViewLayoutDirectionType.RTL,
-            };
-            view.Add(label2);
-
+            view.Add(label);
 
             Button buttonMinus = new Button()
             {
                 Text = "Minus label",
-                WidthSpecification = 300,
+                WidthSpecification = LayoutParamPolicies.MatchParent,
                 HeightSpecification = LayoutParamPolicies.WrapContent,
             };
             view.Add(buttonMinus);
             buttonMinus.Clicked += (s, e) =>
             {
-                if (label1.WidthSpecification > 5)
+                if (label.WidthSpecification > 5)
                 {
-                    label1.WidthSpecification -= 5;
-                    label2.WidthSpecification -= 5;
+                    label.WidthSpecification -= 5;
                 }
                 else
                 {
-                    label1.WidthSpecification = 0;
-                    label2.WidthSpecification = 0;
+                    label.WidthSpecification = 0;
                 }
             };
 
             Button buttonPlus = new Button()
             {
                 Text = "Plus label",
-                WidthSpecification = 300,
+                WidthSpecification = LayoutParamPolicies.MatchParent,
                 HeightSpecification = LayoutParamPolicies.WrapContent,
             };
             view.Add(buttonPlus);
             buttonPlus.Clicked += (s, e) =>
             {
-                if (label1.WidthSpecification < 500)
+                if (label.WidthSpecification < 500)
                 {
-                    label1.WidthSpecification += 5;
-                    label2.WidthSpecification += 5;
+                    label.WidthSpecification += 5;
                 }
                 else
                 {
-                    label1.WidthSpecification = 500;
-                    label2.WidthSpecification = 500;
+                    label.WidthSpecification = 500;
                 }
             };
 
             var fontsizeMinus = new Button()
             {
                 Text = "font size minus",
-                WidthSpecification = 300,
+                WidthSpecification = LayoutParamPolicies.MatchParent,
                 HeightSpecification = LayoutParamPolicies.WrapContent,
             };
             view.Add(fontsizeMinus);
             fontsizeMinus.Clicked += (s, e) =>
             {
-                label1.PixelSize -= 1.0f;
-                Tizen.Log.Error("NUI", $"Label PixelSize[{label1.PixelSize}] \n");
+                label.PixelSize -= 1.0f;
+                Tizen.Log.Error("NUI", $"Label PixelSize[{label.PixelSize}] \n");
             };
 
             var fontsizePlus = new Button()
             {
                 Text = "font size plus",
-                WidthSpecification = 300,
+                WidthSpecification = LayoutParamPolicies.MatchParent,
                 HeightSpecification = LayoutParamPolicies.WrapContent,
             };
             view.Add(fontsizePlus);
             fontsizePlus.Clicked += (s, e) =>
             {
-                label1.PixelSize += 1.0f;
-                Tizen.Log.Error("NUI", $"Label PixelSize[{label1.PixelSize}] \n");
+                label.PixelSize += 1.0f;
+                Tizen.Log.Error("NUI", $"Label PixelSize[{label.PixelSize}] \n");
             };
 
         }
