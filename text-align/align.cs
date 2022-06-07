@@ -84,6 +84,20 @@ namespace TextComponentsTest
                 field.HorizontalAlignment = HorizontalAlignment.End;
                 editor.HorizontalAlignment = HorizontalAlignment.End;
             };
+
+            var getAlign = NewButton("Get Align");
+            view.Add(getAlign);
+            getAlign.Clicked += (s, e) =>
+            {
+                Tizen.Log.Fatal("NUI", "label horizontal : " + label.HorizontalAlignment + "\n");
+                Tizen.Log.Fatal("NUI", "label vertical : " + label.VerticalAlignment + "\n");
+                Tizen.Log.Fatal("NUI", "field horizontal : " + field.HorizontalAlignment + "\n");
+                Tizen.Log.Fatal("NUI", "field vertical : " + field.VerticalAlignment + "\n");
+                Tizen.Log.Fatal("NUI", "editor horizontal : " + editor.HorizontalAlignment + "\n");
+                Tizen.Log.Fatal("NUI", "editor vertical : " + editor.VerticalAlignment + "\n");
+            };
+
+
         }
 
         public Button NewButton(string text)
