@@ -36,12 +36,14 @@ namespace TextComponentsTest
             TextLabel label = new TextLabel
             {
                 Text = "Projector سیٹنگیں",
+                //Text = "Projector",
+                //Text = "سیٹنگیں Projector",
                 Ellipsis = true,
                 WidthSpecification = 160,
                 HeightSpecification = 60,
                 PixelSize = 26.0f,
                 BackgroundColor = Color.White,
-                HorizontalAlignment = HorizontalAlignment.Begin,
+                HorizontalAlignment = HorizontalAlignment.Center,
                 VerticalAlignment = VerticalAlignment.Center,
                 LayoutDirection = ViewLayoutDirectionType.RTL,
             };
