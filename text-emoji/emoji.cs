@@ -33,174 +33,114 @@ namespace TextComponentsTest
             window.Add(view);
 
 
-            TextLabel label = new TextLabel
-            {
-                //FontFamily = "SamsungColorEmoji",
-                Text = "&#x262a;&#xfe0e;이모지อัอัอั&#x262a;&#xfe0f;&#x1F1F0;&#x1F1F7;&#x1F1FA;&#x1F1F8;&#x1F1EC;&#x1F1E7;&#x1F1EB;&#x1F1F7;&#x1F1EE;&#x1F1F9;&#x1F1E8;&#x1F1E6;",
-                EnableMarkup = true,
-                MultiLine = true,
-                WidthSpecification = LayoutParamPolicies.MatchParent,
-                HeightSpecification = LayoutParamPolicies.WrapContent,
-                PointSize = 25.0f,
-                BackgroundColor = Color.White,
-            };
-            view.Add(label);
+            //string new = "\U0001F170\U0000FE0E\U0001F171\U0001F172\U0000FE0E\U0001F173\U0001F174";
 
 
-            TextField field = new TextField
-            {
-                FontFamily = "SamsungColorEmoji",
-                Text = "&#x262a;&#xfe0e;이모지อัอัอั&#x262a;&#xfe0f;&#x1F1F0;&#x1F1F7;&#x1F1FA;&#x1F1F8;&#x1F1EC;&#x1F1E7;&#x1F1EB;&#x1F1F7;&#x1F1EE;&#x1F1F9;&#x1F1E8;&#x1F1E6;",
-                EnableMarkup = true,
-                WidthSpecification = LayoutParamPolicies.MatchParent,
-                HeightSpecification = LayoutParamPolicies.WrapContent,
-                PointSize = 25.0f,
-                BackgroundColor = Color.White,
-            };
-            view.Add(field);
-            setHandle(field);
+
+            string text1 = "&#x262a;&#xfe0e;이모지อัอัอั&#x262a;&#xfe0f;&#x1F1F0;&#x1F1F7;&#x1F1FA;&#x1F1F8;&#x1F1EC;&#x1F1E7;&#x1F1EB;&#x1F1F7;&#x1F1EE;&#x1F1F9;&#x1F1E8;&#x1F1E6;";
+            var label1 = newTextLabel(text1);
+            view.Add(label1);
 
 
-            TextField field2 = new TextField
-            {
-                //FontFamily = "SamsungColorEmoji",
-                Text = "&#x200c;&#x200d;abc&#x1f469;&#x200d;&#x1f52c;def&#x200d;",
-                EnableMarkup = true,
-                WidthSpecification = LayoutParamPolicies.MatchParent,
-                HeightSpecification = LayoutParamPolicies.WrapContent,
-                PointSize = 25.0f,
-                BackgroundColor = Color.White,
-            };
-            view.Add(field2);
-            setHandle(field2);
 
-
-            TextLabel label2 = new TextLabel
-            {
-                FontFamily = "SamsungColorEmoji",
-                Text = "abc&#x1f469;&#x200d;&#x1f466; &#x1f469;&#x200c;&#x1f466; &#x1f469;&#x200d;&#x1f52c;def",
-                EnableMarkup = true,
-                MultiLine = true,
-                WidthSpecification = LayoutParamPolicies.MatchParent,
-                HeightSpecification = LayoutParamPolicies.WrapContent,
-                PointSize = 25.0f,
-                BackgroundColor = Color.White,
-            };
+            string text2 = "&#x262a;&#xfe0e;이모지อัอัอั&#x262a;&#xfe0f;&#x1F1F0;&#x1F1F7;&#x1F1FA;&#x1F1F8;&#x1F1EC;&#x1F1E7;&#x1F1EB;&#x1F1F7;&#x1F1EE;&#x1F1F9;&#x1F1E8;&#x1F1E6;";
+            var label2 = newTextField(text2);
             view.Add(label2);
 
 
-            // Normal field
-            TextField field3 = new TextField
-            {
-                //FontFamily = "SamsungColorEmoji",
-                Text = "&#x200d;abc&#x1f469;&#x200d;&#x1f466; &#x1f469;&#x1f466; &#x1f469;&#x200d;&#x1f52c;def",
-                EnableMarkup = true,
-                WidthSpecification = LayoutParamPolicies.MatchParent,
-                HeightSpecification = LayoutParamPolicies.WrapContent,
-                PointSize = 25.0f,
-                BackgroundColor = Color.White,
-            };
-            view.Add(field3);
-            setHandle(field3);
 
-
-            TextLabel label3 = new TextLabel
-            {
-                //FontFamily = "SamsungColorEmoji",
-                Text = "&#x1f469;&#x200d;&#x1f52c;",
-                //Text = "&#x0030;&#xfe0f;&#x20e3;&#x0031;&#xfe0f;&#x20e3;&#x0032;&#xfe0f;&#x20e3;&#x0033;&#xfe0f;&#x20e3;",
-                EnableMarkup = true,
-                MultiLine = true,
-                WidthSpecification = LayoutParamPolicies.MatchParent,
-                HeightSpecification = LayoutParamPolicies.WrapContent,
-                PointSize = 25.0f,
-                BackgroundColor = Color.White,
-            };
+            string text3 = "&#x200c;&#x200d;abc&#x1f469;&#x200d;&#x1f52c;def&#x200d;";
+            var label3 = newTextField(text3);
             view.Add(label3);
 
 
-            TextLabel label4 = new TextLabel
-            {
-                //FontFamily = "SamsungColorEmoji",
-                Text = "&#x0030;&#xfe0f;&#x20e3;&#x0031;&#xfe0f;&#x20e3;&#x0032;&#xfe0f;&#x20e3;&#x0033;&#xfe0f;&#x20e3;",
-                EnableMarkup = true,
-                MultiLine = true,
-                WidthSpecification = LayoutParamPolicies.MatchParent,
-                HeightSpecification = LayoutParamPolicies.WrapContent,
-                PointSize = 25.0f,
-                BackgroundColor = Color.White,
-            };
+
+            string text4 = "abc&#x1f469;&#x200d;&#x1f466; &#x1f469;&#x200c;&#x1f466; &#x1f469;&#x200d;&#x1f52c;def";
+            var label4 = newTextLabel(text4);
             view.Add(label4);
 
 
-            TextLabel label5 = new TextLabel
-            {
-                FontFamily = "SamsungColorEmoji",
-                Text = "&#x1f3f3;&#xfe0f;&#x200d;&#x1f308;",
-                EnableMarkup = true,
-                MultiLine = true,
-                WidthSpecification = LayoutParamPolicies.MatchParent,
-                HeightSpecification = LayoutParamPolicies.WrapContent,
-                PointSize = 25.0f,
-                BackgroundColor = Color.White,
-            };
+
+            string text5 = "&#x200d;abc&#x1f469;&#x200d;&#x1f466; &#x1f469;&#x1f466; &#x1f469;&#x200d;&#x1f52c;def";
+            var label5 = newTextField(text5);
             view.Add(label5);
 
 
-            TextLabel label6 = new TextLabel
-            {
-                //FontFamily = "SamsungColorEmoji",
-                Text = "&#x1f3f3;&#x200d;&#x1f308;",
-                EnableMarkup = true,
-                MultiLine = true,
-                WidthSpecification = LayoutParamPolicies.MatchParent,
-                HeightSpecification = LayoutParamPolicies.WrapContent,
-                PointSize = 25.0f,
-                BackgroundColor = Color.White,
-            };
+
+            string text6 = "&#x1f469;&#x200d;&#x1f52c;";
+            var label6 = newTextLabel(text6);
             view.Add(label6);
 
 
-            TextLabel label7 = new TextLabel
-            {
-                //FontFamily = "SamsungColorEmoji",
-                Text = "0&#xfe0f;&#x20e3;1&#xfe0f;&#x20e3;2&#xfe0f;&#x20e3;3&#xfe0f;&#x20e3;",
-                EnableMarkup = true,
-                MultiLine = true,
-                WidthSpecification = LayoutParamPolicies.MatchParent,
-                HeightSpecification = LayoutParamPolicies.WrapContent,
-                PointSize = 25.0f,
-                BackgroundColor = Color.White,
-            };
+
+            string text7 = "&#x0030;&#xfe0f;&#x20e3;&#x0031;&#xfe0f;&#x20e3;&#x0032;&#xfe0f;&#x20e3;&#x0033;&#xfe0f;&#x20e3;";
+            var label7 = newTextLabel(text7);
             view.Add(label7);
 
 
-            TextLabel label8 = new TextLabel
-            {
-                //FontFamily = "SamsungColorEmoji",
-                Text = "0&#xfe0e;&#x20e3;1&#xfe0f;&#x20e3;2&#xfe0e;&#x20e3;3&#xfe0f;&#x20e3;",
-                EnableMarkup = true,
-                MultiLine = true,
-                WidthSpecification = LayoutParamPolicies.MatchParent,
-                HeightSpecification = LayoutParamPolicies.WrapContent,
-                PointSize = 25.0f,
-                BackgroundColor = Color.White,
-            };
+
+            string text8 = "&#x1f3f3;&#xfe0f;&#x200d;&#x1f308;";
+            var label8 = newTextLabel(text8);
             view.Add(label8);
 
-            TextField label9 = new TextField
+
+
+            string text9 = "&#x1f3f3;&#x200d;&#x1f308;";
+            var label9 = newTextLabel(text9);
+            view.Add(label9);
+
+
+
+            string text10 = "0&#xfe0f;&#x20e3;1&#xfe0f;&#x20e3;2&#xfe0f;&#x20e3;3&#xfe0f;&#x20e3;";
+            var label10 = newTextLabel(text10);
+            view.Add(label10);
+
+
+
+            string text11 = "0&#xfe0f;&#x20e3;1&#xfe0f;&#x20e3;2&#xfe0f;&#x20e3;3&#xfe0f;&#x20e3;";
+            var label11 = newTextLabel(text11);
+            view.Add(label11);
+
+
+
+            string text12 = "0&#xfe0e;&#x20e3;1&#xfe0f;&#x20e3;2&#xfe0e;&#x20e3;3&#xfe0f;&#x20e3;";
+            var label12 = newTextLabel(text12);
+            view.Add(label12);
+
+
+
+            string text13 = "&#x262a;&#xfe0f;&#xfe0f;&#xfe0f;&#x262a;&#xfe0f;";
+            var label13 = newTextField(text13);
+            view.Add(label13);
+        }
+
+        public TextLabel newTextLabel(string text)
+        {
+            var label = new TextLabel
             {
-                //FontFamily = "SamsungColorEmoji",
-                Text = "&#x262a;&#xfe0f;&#xfe0f;&#xfe0f;&#x262a;&#xfe0f;",
+                Text = text,
                 EnableMarkup = true,
-                //MultiLine = true,
                 WidthSpecification = LayoutParamPolicies.MatchParent,
                 HeightSpecification = LayoutParamPolicies.WrapContent,
                 PointSize = 25.0f,
                 BackgroundColor = Color.White,
             };
-            view.Add(label9);
+            return label;
+        }
 
+        public TextField newTextField(string text)
+        {
+            var field = new TextField
+            {
+                Text = text,
+                EnableMarkup = true,
+                WidthSpecification = LayoutParamPolicies.MatchParent,
+                HeightSpecification = LayoutParamPolicies.WrapContent,
+                PointSize = 25.0f,
+                BackgroundColor = Color.White,
+            };
+            setHandle(field);
+            return field;
         }
 
         public void setHandle(TextField field)
