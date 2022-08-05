@@ -35,19 +35,20 @@ namespace TextComponentsTest
             window.Add(view);
 
 
-            // Normal label
-            TextLabel label = new TextLabel
-            {
-                Text = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
-                // EnableMarkup = true,
-                MultiLine = true,
-                WidthSpecification = LayoutParamPolicies.MatchParent,
-                HeightSpecification = LayoutParamPolicies.WrapContent,
-                PointSize = 25.0f,
-                BackgroundColor = Color.White,
-                HorizontalAlignment = HorizontalAlignment.Begin,
-                VerticalAlignment = VerticalAlignment.Center,   // only single line
-            };
+            //string text = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. labelbalelele";
+            //s/tring text = "Loremipsumdolorsitametcon secteturadipiscingelitseddoeiusmodtemporincididuntutlaboreetdoloremagnaaliqua.";
+            //string text = "Loremipsumdolorsitametconsecteturadipiscingelitseddoeiusmodtemporincididuntutlaboreetdoloremagnaaliqua.Loremipsumdolorsitametconsecteturadipiscingelitseddoeiusmodtemporincididuntutlaboreetdoloremagnaaliqua";
+            string text = "مرحبا بالعالم مرحبا بالعالم مرحبا بالعالم مرحبا بالعالم مرحبا بالعالم مرحبا بالعالم مرحبا بالعالم مرحبا بالعالم مرحبا بالعالم مرحبا بالعالم مرحبا بالعالم مرحبا بالعالم مرحبا بالعالم مرحبا بالعالم مرحبا بالعالم مرحبا بالعالم مرحبا بالعالم مرحبا بالعالم";
+            //string text = "23456789A223456789B323456789C423456789D523456789E623456789F723456789G823456789H92345678900234567890123456789022345678903234567890";
+
+
+            var label = NewTextLabel(text, true);
+            //var label = NewTextField(text, true);
+            //var label = NewTextEditor(text, true);
+
+            //label.EllipsisPosition = EllipsisPosition.Start;
+            //label.EllipsisPosition = EllipsisPosition.Middle;
+
             view.Add(label);
 
             var button = new Button
@@ -59,20 +60,25 @@ namespace TextComponentsTest
             view.Add(button);
             button.Clicked += (s, e) =>
             {
-                PrintGeometry(label, "Main Label");
+                PrintGeometry(label, "Main Label", 0, label.Text.Length - 1);
+                //PrintGeometry(label, "Main Label", 50, label.Text.Length - 1);
+                //PrintGeometry(label, "Main Label", 50, 60);
             };
 
 
             TextLabel label2 = new TextLabel
             {
-                Text = "Very short text for geometry test",
+                Text = "<b>V</b>ery short text for geometry test Very short text for geom etry test geometry test geop",
                 MultiLine = true,
-                WidthSpecification = LayoutParamPolicies.MatchParent,
+                EnableMarkup = true,
+                //WidthSpecification = LayoutParamPolicies.MatchParent,
+                WidthSpecification = 476,
                 HeightSpecification = LayoutParamPolicies.WrapContent,
                 PointSize = 25.0f,
                 BackgroundColor = Color.White,
                 HorizontalAlignment = HorizontalAlignment.Begin,
                 VerticalAlignment = VerticalAlignment.Center,   // only single line
+                LineWrapMode = LineWrapMode.Character,
             };
             view.Add(label2);
 
@@ -85,7 +91,7 @@ namespace TextComponentsTest
             view.Add(button2);
             button2.Clicked += (s, e) =>
             {
-                PrintGeometry(label2, "Ref Label");
+                PrintGeometry(label2, "Ref Label", 0, label2.Text.Length - 1);
             };
 
 
@@ -99,7 +105,7 @@ namespace TextComponentsTest
             button3.Clicked += (s, e) =>
             {
                 label.Text = "Very short text for geometry test";
-                PrintGeometry(label, "Main Label");
+                PrintGeometry(label, "Main Label", 0, label.Text.Length - 1);
             };
 
             var button4 = new Button
@@ -112,18 +118,83 @@ namespace TextComponentsTest
             button4.Clicked += (s, e) =>
             {
                 label.Text = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.";
-                PrintGeometry(label, "Main Label");
+                PrintGeometry(label, "Main Label", 0, label.Text.Length - 1);
             };
-
         }
 
-        public void PrintGeometry(TextLabel label, string title)
+        public TextLabel NewTextLabel(string text, bool ellipsis)
+        {
+            TextLabel label = new TextLabel
+            {
+                Text = text,
+                //EnableMarkup = true,
+                Ellipsis = ellipsis,
+                MultiLine = true,
+                WidthSpecification = LayoutParamPolicies.MatchParent,
+                //HeightSpecification = 90,
+                HeightSpecification = 140,
+                //HeightSpecification = 40,
+                //HeightSpecification = LayoutParamPolicies.WrapContent,
+                PointSize = 25.0f,
+                BackgroundColor = Color.White,
+                HorizontalAlignment = HorizontalAlignment.Begin,
+                VerticalAlignment = VerticalAlignment.Center,   // only single line
+                LineWrapMode = LineWrapMode.Character,
+                //LineWrapMode = LineWrapMode.Word,
+                //EllipsisPosition = EllipsisPosition.Start,
+                //EllipsisPosition = EllipsisPosition.Middle,
+            };
+            return label;
+        }
+
+        public TextField NewTextField(string text, bool ellipsis)
+        {
+            TextField field = new TextField
+            {
+                Text = text,
+                //EnableMarkup = true,
+                Ellipsis = ellipsis,
+                WidthSpecification = LayoutParamPolicies.MatchParent,
+                HeightSpecification = LayoutParamPolicies.WrapContent,
+                PointSize = 25.0f,
+                BackgroundColor = Color.White,
+                HorizontalAlignment = HorizontalAlignment.Begin,
+                VerticalAlignment = VerticalAlignment.Center,
+                //EllipsisPosition = EllipsisPosition.Start,
+                //EllipsisPosition = EllipsisPosition.Middle,
+            };
+            return field;
+        }
+
+        public TextEditor NewTextEditor(string text, bool ellipsis)
+        {
+            TextEditor editor = new TextEditor
+            {
+                Text = text,
+                //EnableMarkup = true,
+                Ellipsis = ellipsis,
+                WidthSpecification = LayoutParamPolicies.MatchParent,
+                HeightSpecification = 140,
+                PointSize = 25.0f,
+                BackgroundColor = Color.White,
+                HorizontalAlignment = HorizontalAlignment.Begin,
+                VerticalAlignment = VerticalAlignment.Center,
+                //EllipsisPosition = EllipsisPosition.Start,
+                //EllipsisPosition = EllipsisPosition.Middle,
+            };
+            return editor;
+        }
+
+        public void PrintGeometry(TextLabel label, string title, int start, int end)
         {
             Tizen.Log.Error("NUI", "[ " + title + " ] ============================\n");
-            Tizen.Log.Error("NUI", "label line[" + label.LineCount + "] size[" + label.Size.Width + ", " + label.Size.Height + "] \n");
+            //Tizen.Log.Error("NUI", "label line[" + label.LineCount + "] size[" + label.Size.Width + ", " + label.Size.Height + "] \n");
 
-            List<Size2D> sizeList = TextGeometry.GetTextSize(label, 0, label.Text.Length - 1);
-            List<Position2D> positionList = TextGeometry.GetTextPosition(label, 0, label.Text.Length - 1);
+            Tizen.Log.Error("NUI", "text length[" + label.Text.Length + "] \n");
+
+            List<Size2D> sizeList = TextGeometry.GetTextSize(label, start, end);
+
+            List<Position2D> positionList = TextGeometry.GetTextPosition(label, start, end);
 
             Tizen.Log.Error("NUI", "sizeList count[" + sizeList.Count + "] \n");
             for (int i = 0 ; i < sizeList.Count ; i ++)
@@ -136,6 +207,59 @@ namespace TextComponentsTest
             {
                 Tizen.Log.Error("NUI", "item[" + i + "] X[" + positionList[i].X + "] Y[" + positionList[i].Y + "] \n");
             }
+
+            Tizen.Log.Error("NUI", "\n");
+        }
+
+        public void PrintGeometry(TextField label, string title, int start, int end)
+        {
+            Tizen.Log.Error("NUI", "[ " + title + " ] ============================\n");
+            //Tizen.Log.Error("NUI", "label line[" + label.LineCount + "] size[" + label.Size.Width + ", " + label.Size.Height + "] \n");
+
+            Tizen.Log.Error("NUI", "text length[" + label.Text.Length + "] \n");
+
+            List<Size2D> sizeList = TextGeometry.GetTextSize(label, start, end);
+
+            List<Position2D> positionList = TextGeometry.GetTextPosition(label, start, end);
+
+            Tizen.Log.Error("NUI", "sizeList count[" + sizeList.Count + "] \n");
+            for (int i = 0 ; i < sizeList.Count ; i ++)
+            {
+                Tizen.Log.Error("NUI", "item[" + i + "] width[" + sizeList[i].Width + "] height[" + sizeList[i].Height + "] \n");
+            }
+
+            Tizen.Log.Error("NUI", "positionList count[" + positionList.Count + "] \n");
+            for (int i = 0 ; i < positionList.Count ; i ++)
+            {
+                Tizen.Log.Error("NUI", "item[" + i + "] X[" + positionList[i].X + "] Y[" + positionList[i].Y + "] \n");
+            }
+
+            Tizen.Log.Error("NUI", "\n");
+        }
+
+        public void PrintGeometry(TextEditor label, string title, int start, int end)
+        {
+            Tizen.Log.Error("NUI", "[ " + title + " ] ============================\n");
+            //Tizen.Log.Error("NUI", "label line[" + label.LineCount + "] size[" + label.Size.Width + ", " + label.Size.Height + "] \n");
+
+            Tizen.Log.Error("NUI", "text length[" + label.Text.Length + "] \n");
+
+            List<Size2D> sizeList = TextGeometry.GetTextSize(label, start, end);
+
+            List<Position2D> positionList = TextGeometry.GetTextPosition(label, start, end);
+
+            Tizen.Log.Error("NUI", "sizeList count[" + sizeList.Count + "] \n");
+            for (int i = 0 ; i < sizeList.Count ; i ++)
+            {
+                Tizen.Log.Error("NUI", "item[" + i + "] width[" + sizeList[i].Width + "] height[" + sizeList[i].Height + "] \n");
+            }
+
+            Tizen.Log.Error("NUI", "positionList count[" + positionList.Count + "] \n");
+            for (int i = 0 ; i < positionList.Count ; i ++)
+            {
+                Tizen.Log.Error("NUI", "item[" + i + "] X[" + positionList[i].X + "] Y[" + positionList[i].Y + "] \n");
+            }
+
             Tizen.Log.Error("NUI", "\n");
         }
 
