@@ -40,7 +40,6 @@ namespace TextComponentsTest
             {
                 Text = "Lorem ipsum dolor",
                 // Text = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
-                // EnableMarkup = true,
                 MultiLine = true,
                 WidthSpecification = LayoutParamPolicies.MatchParent,
                 HeightSpecification = LayoutParamPolicies.WrapContent,
@@ -56,7 +55,6 @@ namespace TextComponentsTest
             TextLabel ellipsisLabel = new TextLabel
             {
                 Text = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
-                // EnableMarkup = true,
                 MultiLine = false,
                 Ellipsis = true,
                 WidthSpecification = LayoutParamPolicies.MatchParent,
