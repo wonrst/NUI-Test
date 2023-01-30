@@ -35,7 +35,8 @@ namespace TextComponentsTest
             window.Add(view);
 
             string shortText = "Lorem ipsum dolor";
-            string longText = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.";
+            //string longText = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.";
+            string longText = "Lorem ipsum dolor sit amet, consectetur adipiscing elit.";
 
             TextLabel label = NewTextLabel(longText);
             view.Add(label);
@@ -44,7 +45,7 @@ namespace TextComponentsTest
             {
                 Text = "autoScroll info",
                 WidthSpecification = LayoutParamPolicies.MatchParent,
-                HeightSpecification = LayoutParamPolicies.MatchParent,
+                HeightSpecification = LayoutParamPolicies.WrapContent,
             };
             view.Add(button);
             button.Clicked += (s, e) =>
@@ -54,6 +55,54 @@ namespace TextComponentsTest
                 Tizen.Log.Error("NUI", "AutoScrollGap[" + label.AutoScrollGap + "] \n");
                 Tizen.Log.Error("NUI", "AutoScrollSpeed[" + label.AutoScrollSpeed + "] \n");
             };
+
+            Button buttonOff = new Button
+            {
+                Text = "scene off",
+                WidthSpecification = LayoutParamPolicies.MatchParent,
+                HeightSpecification = LayoutParamPolicies.WrapContent,
+            };
+            view.Add(buttonOff);
+            buttonOff.Clicked += (s, e) =>
+            {
+                view.Remove(label);
+            };
+
+            Button buttonAdd = new Button
+            {
+                Text = "scene add",
+                WidthSpecification = LayoutParamPolicies.MatchParent,
+                HeightSpecification = LayoutParamPolicies.WrapContent,
+            };
+            view.Add(buttonAdd);
+            buttonAdd.Clicked += (s, e) =>
+            {
+                view.Add(label);
+            };
+
+            Button buttonStart = new Button
+            {
+                Text = "start",
+                WidthSpecification = LayoutParamPolicies.MatchParent,
+                HeightSpecification = LayoutParamPolicies.WrapContent,
+            };
+            view.Add(buttonStart);
+            buttonStart.Clicked += (s, e) =>
+            {
+                label.EnableAutoScroll = true;
+            };
+
+            Button buttonStop = new Button
+            {
+                Text = "stop",
+                WidthSpecification = LayoutParamPolicies.MatchParent,
+                HeightSpecification = LayoutParamPolicies.WrapContent,
+            };
+            view.Add(buttonStop);
+            buttonStop.Clicked += (s, e) =>
+            {
+                label.EnableAutoScroll = false;
+            };
         }
 
         public TextLabel NewTextLabel(string text)
@@ -61,6 +110,7 @@ namespace TextComponentsTest
             var label = new TextLabel
             {
                 Text = text,
+                //MultiLine = true,
                 WidthSpecification = LayoutParamPolicies.MatchParent,
                 HeightSpecification = LayoutParamPolicies.WrapContent,
                 PointSize = 15.0f,
@@ -68,6 +118,7 @@ namespace TextComponentsTest
                 HorizontalAlignment = HorizontalAlignment.Begin,
                 VerticalAlignment = VerticalAlignment.Center,
                 EnableAutoScroll = true,
+                AutoScrollLoopCount = 1,
             };
             return label;
         }
