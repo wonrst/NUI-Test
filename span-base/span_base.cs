@@ -36,26 +36,80 @@ namespace TextComponentsTest
             };
             window.Add(view);
 
-            string str = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.";
+//            string str = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.";
+
+
+/*
+            var label = NewTextLabel();
+            view.Add(label);
+
+            string str = "Lorem ipsum dolor sit amet";
+            var spannedText = SpannableString.Create(str);
+
+            var redSpan = ForegroundColorSpan.Create(Color.Red);
+            var underlineSpan = UnderlineSpan.Create();
+            var fontSpan = FontSpan.Create("Ubuntu Mono",
+                                            40.0f,
+                                            FontWeightType.Light,
+                                            FontWidthType.Condensed,
+                                            FontSlantType.Italic);
+
+
+            spannedText.AttachSpan(redSpan, Tizen.NUI.Range.Create(2, 8));
+            spannedText.AttachSpan(underlineSpan, Tizen.NUI.Range.Create(12, 25));
+            spannedText.AttachSpan(fontSpan, Tizen.NUI.Range.Create(5, 15));
+
+            spannedText.AttachSpan(BoldSpan.Create(), Tizen.NUI.Range.Create(15, 25));
+            spannedText.AttachSpan(BackgroundColorSpan.Create(Color.Yellow), Tizen.NUI.Range.Create(10, 20));
+
+            label.SetSpannedText(spannedText);
+
+*/
 
             var label = NewTextLabel();
             view.Add(label);
 
+            string str = "Lorem ipsum dolor sit amet";
             var spannedText = SpannableString.Create(str);
+
             var redSpan = ForegroundColorSpan.Create(Color.Red);
             var blueSpan = ForegroundColorSpan.Create(Color.Blue);
-            var greenSpan = ForegroundColorSpan.Create(Color.Green);
-            var yellowSpan = ForegroundColorSpan.Create(Color.Yellow);
 
-            spannedText.AttachSpan(redSpan, Tizen.NUI.Range.Create(2,5));
-            spannedText.AttachSpan(blueSpan, Tizen.NUI.Range.Create(7,10));
-            spannedText.AttachSpan(greenSpan, Tizen.NUI.Range.Create(12,20));
-            spannedText.AttachSpan(yellowSpan, Tizen.NUI.Range.Create(25,35));
+            for (uint i = 0 ; i < spannedText.GetNumberOfCharacters() ; i ++)
+            {
+                if (i % 2 == 0)
+                    spannedText.AttachSpan(redSpan, Tizen.NUI.Range.Create(i, i));
+                else
+                    spannedText.AttachSpan(blueSpan, Tizen.NUI.Range.Create(i, i));
+            }
+
+            label.SetSpannedText(spannedText);
+
+            spannedText.DetachSpan(redSpan);
+
+            label.SetSpannedText(spannedText);
+
+
+/*
+            spannedText.AttachSpan(greenSpan, Tizen.NUI.Range.Create(12, 20));
+            spannedText.AttachSpan(yellowSpan, Tizen.NUI.Range.Create(25, 35));
             spannedText.AttachSpan(ForegroundColorSpan.Create(Color.Gray), Tizen.NUI.Range.Create(40,50));
+*/
 
-            TextSpannable.SetSpannedText(label, spannedText);
 
+/*
+            spannedText.AttachSpan(redSpan, Tizen.NUI.Range.Create(2, 5));
+            spannedText.AttachSpan(redSpan, Tizen.NUI.Range.Create(8, 10));
+            spannedText.AttachSpan(underlineSpan, Tizen.NUI.Range.Create(0, 15));
 
+            spannedText.AttachSpan(ForegroundColorSpan.Create(Color.Blue), Tizen.NUI.Range.Create(7, 10));
+            spannedText.AttachSpan(BoldSpan.Create(), Tizen.NUI.Range.Create(13, 18));
+
+            spannedText.AttachSpan(fontSpan, Tizen.NUI.Range.Create(4, 23));
+            spannedText.AttachSpan(fontSpan, Tizen.NUI.Range.Create(30, 40));
+            spannedText.AttachSpan(fontSpan, Tizen.NUI.Range.Create(45, 50));
+            spannedText.AttachSpan(BackgroundColorSpan.Create(Color.Green), Tizen.NUI.Range.Create(4, 23));
+*/
 
 
 
@@ -66,7 +120,7 @@ namespace TextComponentsTest
                 WidthSpecification = LayoutParamPolicies.MatchParent,
                 HeightSpecification = LayoutParamPolicies.WrapContent,
             };
-            view.Add(button);
+            //view.Add(button);
             button.Clicked += (s, e) =>
             {
                 PrintSpanInformation(spannedText);
@@ -89,6 +143,7 @@ namespace TextComponentsTest
 
             for (int i = 0 ; i < spans.Count ; i ++)
             {
+                if (spans[i] != null)
                 Tizen.Log.Error("NUI", $"Span[{i}] SpanType[{spans[i].SpanType}] Range[{ranges[i].StartIndex}, {ranges[i].EndIndex}]\n");
             }
         }
