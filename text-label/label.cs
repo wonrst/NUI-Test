@@ -111,7 +111,6 @@ namespace TextComponentsTest
                 textChanged = false;
 
                 Tizen.Log.Error("NUI", "before textChanged [" + textChanged + "] \n");
-                
                 //field2.Text = "Set\nText\nfrom\nbutton\nclick\n";
                 field2.Text = "set text";
 
@@ -127,7 +126,7 @@ namespace TextComponentsTest
                 Position2D = new Position2D(0, 460),
             };
             button2.Clicked += (s, e) =>
-            {                
+            {
                 //editor2.Text = "Set\nText\nfrom\nbutton\nclick\n";
                 editor2.Text = "set text";
                 Tizen.Log.Error("NUI", "editor2.Text [" + editor2.Text  + "] \n");
