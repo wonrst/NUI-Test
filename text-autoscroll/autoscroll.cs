@@ -31,15 +31,31 @@ namespace TextComponentsTest
                 WidthSpecification = LayoutParamPolicies.MatchParent,
                 HeightSpecification = LayoutParamPolicies.MatchParent,
                 BackgroundColor = Color.Black,
+                LayoutDirection = ViewLayoutDirectionType.RTL,
+
             };
             window.Add(view);
 
-            string shortText = "Lorem ipsum dolor";
-            //string longText = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.";
-            string longText = "Lorem ipsum dolor sit amet, consectetur adipiscing elit.";
+            //string longText = "Lorem ipsum dolor";
 
-            TextLabel label = NewTextLabel(longText);
+            //string longText = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.";
+            //string longText = "Lorem ipsum dolor sit amet, consectetur adipiscing elit.";
+            string ltr_rtl = "Hello مرحبا بالعالم";
+            string rtl_ltr = "مرحبا بالعالم Hello";
+            string ltr = "مرحبا بالعالم";
+            string rtl = "Hello world";
+
+            TextLabel label = NewTextLabel(ltr_rtl);
             view.Add(label);
+
+            TextLabel label2 = NewTextLabel(rtl_ltr);
+            view.Add(label2);
+
+            TextLabel label3 = NewTextLabel(ltr);
+            view.Add(label3);
+
+            TextLabel label4 = NewTextLabel(rtl);
+            view.Add(label4);
 
             Button button = new Button
             {
@@ -90,6 +106,9 @@ namespace TextComponentsTest
             buttonStart.Clicked += (s, e) =>
             {
                 label.EnableAutoScroll = true;
+                label2.EnableAutoScroll = true;
+                label3.EnableAutoScroll = true;
+                label4.EnableAutoScroll = true;
             };
 
             Button buttonStop = new Button
@@ -102,6 +121,39 @@ namespace TextComponentsTest
             buttonStop.Clicked += (s, e) =>
             {
                 label.EnableAutoScroll = false;
+                label2.EnableAutoScroll = false;
+                label3.EnableAutoScroll = false;
+                label4.EnableAutoScroll = false;
+            };
+
+            Button buttonMultiLineTrue = new Button
+            {
+                Text = "system lan true",
+                WidthSpecification = LayoutParamPolicies.MatchParent,
+                HeightSpecification = LayoutParamPolicies.WrapContent,
+            };
+            view.Add(buttonMultiLineTrue);
+            buttonMultiLineTrue.Clicked += (s, e) =>
+            {
+                label.MatchSystemLanguageDirection = true;
+                label2.MatchSystemLanguageDirection = true;
+                label3.MatchSystemLanguageDirection = true;
+                label4.MatchSystemLanguageDirection = true;
+            };
+
+            Button buttonMultiLineFalse = new Button
+            {
+                Text = "system lan false",
+                WidthSpecification = LayoutParamPolicies.MatchParent,
+                HeightSpecification = LayoutParamPolicies.WrapContent,
+            };
+            view.Add(buttonMultiLineFalse);
+            buttonMultiLineFalse.Clicked += (s, e) =>
+            {
+                label.MatchSystemLanguageDirection = false;
+                label2.MatchSystemLanguageDirection = false;
+                label3.MatchSystemLanguageDirection = false;
+                label4.MatchSystemLanguageDirection = false;
             };
         }
 
@@ -110,7 +162,9 @@ namespace TextComponentsTest
             var label = new TextLabel
             {
                 Text = text,
+                //MatchSystemLanguageDirection = true,
                 //MultiLine = true,
+                AutoScrollStopMode = AutoScrollStopMode.Immediate,
                 WidthSpecification = LayoutParamPolicies.MatchParent,
                 HeightSpecification = LayoutParamPolicies.WrapContent,
                 PointSize = 15.0f,
@@ -118,7 +172,7 @@ namespace TextComponentsTest
                 HorizontalAlignment = HorizontalAlignment.Begin,
                 VerticalAlignment = VerticalAlignment.Center,
                 EnableAutoScroll = true,
-                AutoScrollLoopCount = 1,
+                AutoScrollLoopCount = 0,
             };
             return label;
         }
