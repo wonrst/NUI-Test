@@ -41,20 +41,25 @@ namespace TextComponentsTest
             //string longText = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.";
             //string longText = "Lorem ipsum dolor sit amet, consectetur adipiscing elit.";
             string ltr_rtl = "Hello مرحبا بالعالم";
-            string rtl_ltr = "مرحبا بالعالم Hello";
-            string ltr = "مرحبا بالعالم";
-            string rtl = "Hello world";
+            string rtl_ltr = "مرحبا بمرحبا مرحبا مرحبا مرحبا مرحبا مرحبا مرحبا مرحبا العالم Hello...";
+            string ltr = "مرحبا بالعالم.";
+            string rtl = "Hello world...";
 
             TextLabel label = NewTextLabel(ltr_rtl);
+            label.LayoutDirection = ViewLayoutDirectionType.LTR;
             view.Add(label);
 
+            //TextLabel label2 = NewTextLabel(rtl_ltr);
             TextLabel label2 = NewTextLabel(rtl_ltr);
             view.Add(label2);
 
             TextLabel label3 = NewTextLabel(ltr);
+            label3.LayoutDirection = ViewLayoutDirectionType.RTL;
             view.Add(label3);
 
             TextLabel label4 = NewTextLabel(rtl);
+                        label4.LayoutDirection = ViewLayoutDirectionType.RTL;
+
             view.Add(label4);
 
             Button button = new Button

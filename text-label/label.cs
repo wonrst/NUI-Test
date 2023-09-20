@@ -29,109 +29,202 @@ namespace TextComponentsTest
                     CellPadding = new Size2D(10, 10),
                 },
                 WidthSpecification = LayoutParamPolicies.MatchParent,
-                HeightSpecification = 170,
-                BackgroundColor = Color.Black,
+                HeightSpecification = LayoutParamPolicies.MatchParent,
+                BackgroundColor = Color.White,
             };
             window.Add(view);
 
-
-            // NO Layout - VIEW 
-            View view2 = new View()
+            TextLabel label = new TextLabel
             {
-                Size2D = new Size2D(480, 190),
-                Position2D = new Position2D(0, 180),
-                BackgroundColor = Color.Gray,
+                Text = "Hello, world",
+                WidthSpecification = LayoutParamPolicies.MatchParent,
+                HeightSpecification = LayoutParamPolicies.WrapContent,
+                PointSize = 20.0f,
+                BackgroundColor = Color.Black,
+                TextColor = Color.White,
+                FontFamily = "SamsungOneUI",
             };
-            window.Add(view2);
+            view.Add(label);
 
-
-            // Normal label
             TextLabel label2 = new TextLabel
             {
-                Text = "Text Label in View",
+                Text = "Hello, world",
+                WidthSpecification = LayoutParamPolicies.MatchParent,
+                HeightSpecification = LayoutParamPolicies.WrapContent,
+                PointSize = 20.0f,
+                BackgroundColor = Color.Black,
+                TextColor = Color.White,
+            };
+            view.Add(label2);
+
+/*
+            TextLabel label = new TextLabel
+            {
+                Text = "&#x200f;اسم الجهاز : &#x200e;Galaxy Buds Pro (36C4)&#x200f;",
                 EnableMarkup = true,
                 MultiLine = true,
-                Size2D = new Size2D(480, 50),
-                Position2D = new Position2D(0, 10),
-                PointSize = 25.0f,
-                BackgroundColor = Color.White,
+                WidthSpecification = LayoutParamPolicies.MatchParent,
+                HeightSpecification = LayoutParamPolicies.WrapContent,
+                PointSize = 20.0f,
+                BackgroundColor = Color.Gray,
+                LayoutDirection = ViewLayoutDirectionType.RTL,
             };
-            view2.Add(label2);
-            label2.TextColor = Color.Red; // works fine
+            view.Add(label);
 
-
-            // Normal field
-            TextField field2 = new TextField
+            TextLabel label2 = new TextLabel
             {
-                Text = "Text Field in View",
+                Text = "&#x200f;اسم الجهاز : &#x200e;Galaxy Buds Pro (36C4)&#x200f;",
                 EnableMarkup = true,
-                Size2D = new Size2D(480, 50),
-                Position2D = new Position2D(0, 70),
-                MaxLength = 200,
-                PointSize = 25.0f,
-                BackgroundColor = Color.Yellow,
+                MultiLine = true,
+                WidthSpecification = LayoutParamPolicies.MatchParent,
+                HeightSpecification = LayoutParamPolicies.WrapContent,
+                PointSize = 20.0f,
+                BackgroundColor = Color.Gray,
+                LayoutDirection = ViewLayoutDirectionType.LTR,
             };
-            field2.TextColor = Color.Blue;
-            view2.Add(field2);
-            field2.TextChanged += (s, e) =>
-            {
-                Tizen.Log.Error("NUI", "Field Text Changed[" + e.TextField.Text + "] \n");
-                label2.Text = field2.Text;
-                field2.InputColor = Color.Red;
-            };
+            view.Add(label2);
 
 
-            TextEditor editor2 = new TextEditor
+            TextLabel label3 = new TextLabel
             {
-                Text = "Text Editor in View",
+                Text = "&#x200f;اسم الجهاز : &#x200e;Galaxy Buds Pro (36C4)&#x200e;",
                 EnableMarkup = true,
-                Size2D = new Size2D(480, 50),
-                PointSize = 25.0f,
-                Position2D = new Position2D(0, 130),
-                BackgroundColor = Color.White,
+                MultiLine = true,
+                WidthSpecification = LayoutParamPolicies.MatchParent,
+                HeightSpecification = LayoutParamPolicies.WrapContent,
+                PointSize = 20.0f,
+                BackgroundColor = Color.Gray,
+                LayoutDirection = ViewLayoutDirectionType.RTL,
             };
-            editor2.TextColor = Color.Blue;
-            view2.Add(editor2);
-            editor2.TextChanged += (s, e) =>
-            {
-                Tizen.Log.Error("NUI", "Editor Text Changed[" + e.TextEditor.Text + "] \n");
-                label2.Text = editor2.Text;
-                 editor2.InputColor = Color.Red; // dosen't work
-            };
+            view.Add(label3);
 
+            TextLabel label4 = new TextLabel
+            {
+                Text = "&#x200f;اسم الجهاز : &#x200e;Galaxy Buds Pro (36C4)&#x200e;",
+                EnableMarkup = true,
+                MultiLine = true,
+                WidthSpecification = LayoutParamPolicies.MatchParent,
+                HeightSpecification = LayoutParamPolicies.WrapContent,
+                PointSize = 20.0f,
+                BackgroundColor = Color.Gray,
+                LayoutDirection = ViewLayoutDirectionType.LTR,
+            };
+            view.Add(label4);
+*/
+
+            TextLabel label7 = new TextLabel
+            {
+                Text = "اسم الجهاز : Galaxy Buds Pro (36C4)",
+                EnableMarkup = true,
+                MultiLine = true,
+                WidthSpecification = LayoutParamPolicies.MatchParent,
+                HeightSpecification = LayoutParamPolicies.WrapContent,
+                PointSize = 20.0f,
+                BackgroundColor = Color.Gray,
+                LayoutDirection = ViewLayoutDirectionType.RTL,
+            };
+            view.Add(label7);
+
+
+            string test = "Hello world demo\nhello world\nhello world (مرحبا بالعالم שלום) עולם\nשלום مرحبا بالعالم עולם (hello) مرحبا بالعالم world" +
+                          " مرحبا بالعالم שלום עולם hello world hello world\nبالعالم שלום (hello) world demo (עולם)\nשלום (مرحبا بالعالم עולם) (hello)";
+     
+
+            TextLabel label5 = new TextLabel
+            {
+                Text = test,
+                //Text = "שלום עולם\n(مرحبا بالعالم)",
+                //Text = "اسم الجهاز : Galaxy Buds Pro (36C4",
+                EnableMarkup = true,
+                MultiLine = true,
+                WidthSpecification = LayoutParamPolicies.MatchParent,
+                HeightSpecification = LayoutParamPolicies.WrapContent,
+                PointSize = 15.0f,
+                BackgroundColor = Color.Gray,
+                LayoutDirection = ViewLayoutDirectionType.LTR,
+            };
+            view.Add(label5);
+
+            TextLabel label6 = new TextLabel
+            {
+                Text = "اسم الجهاز : Galaxy Buds Pro 36C4)",
+                EnableMarkup = true,
+                MultiLine = true,
+                WidthSpecification = LayoutParamPolicies.MatchParent,
+                HeightSpecification = LayoutParamPolicies.WrapContent,
+                PointSize = 20.0f,
+                BackgroundColor = Color.Gray,
+                LayoutDirection = ViewLayoutDirectionType.RTL,
+            };
+            view.Add(label6);
+
+
+            TextLabel label8 = new TextLabel
+            {
+                Text = "اسم الجهاز : Galaxy Buds Pro (36C4)(",
+                EnableMarkup = true,
+                MultiLine = true,
+                WidthSpecification = LayoutParamPolicies.MatchParent,
+                HeightSpecification = LayoutParamPolicies.WrapContent,
+                PointSize = 20.0f,
+                BackgroundColor = Color.Gray,
+                LayoutDirection = ViewLayoutDirectionType.RTL,
+            };
+            view.Add(label8);
+
+
+            TextLabel label0 = new TextLabel
+            {
+                Text = "اسم الجهاز : Galaxy Buds Pro (36C4)()[[]](}",
+                EnableMarkup = true,
+                MultiLine = true,
+                WidthSpecification = LayoutParamPolicies.MatchParent,
+                HeightSpecification = LayoutParamPolicies.WrapContent,
+                PointSize = 15.0f,
+                BackgroundColor = Color.Gray,
+                LayoutDirection = ViewLayoutDirectionType.RTL,
+            };
+            view.Add(label0);
+
+
+
+
+
+            int width = 480;
 
             var button = new Button
             {
-                Text = "Set Text to field",
-                Size2D = new Size2D(480, 50),
-                Position2D = new Position2D(0, 400),
+                //Text = "+",
+                WidthSpecification = LayoutParamPolicies.MatchParent,
+                HeightSpecification = LayoutParamPolicies.WrapContent,
             };
             button.Clicked += (s, e) =>
             {
-                textChanged = false;
-
-                Tizen.Log.Error("NUI", "before textChanged [" + textChanged + "] \n");
-                //field2.Text = "Set\nText\nfrom\nbutton\nclick\n";
-                field2.Text = "set text";
-
-                Tizen.Log.Error("NUI", "after textChanged [" + textChanged + "] \n"); // textChanged should be true
+                width += 10;
+                ///abel5.WidthSpecification = width;
+                //label6.WidthSpecification = width;
+                //label.WidthSpecification = width;
+                //label2.WidthSpecification = width;
+                label7.WidthSpecification = width;
             };
-            window.Add(button);
-
+            view.Add(button);
 
             var button2 = new Button
             {
-                Text = "Set Text to editor",
-                Size2D = new Size2D(480, 50),
-                Position2D = new Position2D(0, 460),
+                //Text = "-",
+                WidthSpecification = LayoutParamPolicies.MatchParent,
+                HeightSpecification = LayoutParamPolicies.WrapContent,
             };
             button2.Clicked += (s, e) =>
             {
-                //editor2.Text = "Set\nText\nfrom\nbutton\nclick\n";
-                editor2.Text = "set text";
-                Tizen.Log.Error("NUI", "editor2.Text [" + editor2.Text  + "] \n");
+                width -= 10;
+                //label5.WidthSpecification = width;
+                //label6.WidthSpecification = width;
+                //label.WidthSpecification = width;
+                //label2.WidthSpecification = width;
+                label7.WidthSpecification = width;
             };
-            window.Add(button2);
+            view.Add(button2);
         }
 
         [STAThread]

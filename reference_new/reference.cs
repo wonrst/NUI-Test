@@ -137,6 +137,7 @@ namespace TextComponentsTest
             var label = new TextLabel
             {
                 Text = text,
+                FontFamily = "/usr/home/wonrst.ttf",
                 WidthSpecification = LayoutParamPolicies.MatchParent,
                 HeightSpecification = LayoutParamPolicies.WrapContent,
                 PointSize = 15.0f,

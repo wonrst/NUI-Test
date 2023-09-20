@@ -38,6 +38,7 @@ namespace TextComponentsTest
                 //Text = "Lorem ipsum dolor",
                 Text = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
                 MultiLine = true,
+                PointSize = 100,
                 Size2D = new Size2D(200, 50),
                 //WidthSpecification = LayoutParamPolicies.MatchParent,
                 //HeightSpecification = LayoutParamPolicies.WrapContent,

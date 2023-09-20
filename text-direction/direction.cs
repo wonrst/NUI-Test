@@ -50,6 +50,8 @@ namespace TextComponentsTest
             };
             view.Add(label);
             label.InheritLayoutDirection = true;
+            label.LayoutDirection = ViewLayoutDirectionType.LTR;
+
 
 
             // Ellipsis label
@@ -135,12 +137,14 @@ namespace TextComponentsTest
 
 
             // Need to implement layout editor
+            /*
             TextEditor editor = new TextEditor
             {
                 Text = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
                 // Text = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
                 EnableMarkup = true,
-                WidthSpecification = LayoutParamPolicies.MatchParent,
+                WidthSpecification = 100,
+                //WidthSpecification = LayoutParamPolicies.MatchParent,
                 HeightSpecification = LayoutParamPolicies.WrapContent,
                 PointSize = 25.0f,
                 BackgroundColor = Color.White,
@@ -159,7 +163,7 @@ namespace TextComponentsTest
                 Tizen.Log.Error("NUI", "Editor Text Changed[" + e.TextEditor.Text + "] \n");
             };
 
-            view.Add(editor);
+            view.Add(editor);*/
         }
 
         public void onTextFieldTextChanged(object sender, TextField.TextChangedEventArgs e)

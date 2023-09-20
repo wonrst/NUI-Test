@@ -34,11 +34,13 @@ namespace TextComponentsTest
             };
             window.Add(view);
 
+            string rtl = "     سیٹنگیں";
+            //string rtl = "Line of Duty - فصل 3 قسط  6";
             string shortText = "Lorem ipsum dolor";
             string longText = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.";
 
             // Normal field
-            TextField field = NewTextField(longText);
+            TextField field = NewTextField(rtl);
             view.Add(field);
 
             var top = NewButton("Top");
@@ -73,8 +75,9 @@ namespace TextComponentsTest
                 //HeightSpecification = LayoutParamPolicies.WrapContent,
                 PointSize = 15.0f,
                 BackgroundColor = Color.White,
+                LayoutDirection = ViewLayoutDirectionType.RTL,
 
-                HorizontalAlignment = HorizontalAlignment.Center,
+                HorizontalAlignment = HorizontalAlignment.Begin,
                 VerticalAlignment = VerticalAlignment.Center,
             };
             setHandle(field);
