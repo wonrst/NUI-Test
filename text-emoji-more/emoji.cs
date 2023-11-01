@@ -40,7 +40,10 @@ namespace TextComponentsTest
         public static int WRAP_CONTENT = -2;
         public static bool HORIZONTAL = true;
 
-        public static string EMPTY, EMPTY_UNICODE, EMPTY_LABEL, EMPTY_DESCRIPTION = ""; 
+        public static string EMPTY = "";
+        public static string EMPTY_UNICODE = "";
+        public static string EMPTY_LABEL = "";
+        public static string EMPTY_DESCRIPTION = ""; 
 
         protected override void OnCreate()
         {
@@ -784,15 +787,25 @@ namespace TextComponentsTest
 
             AddEmoji(EMOJI_VIEW_18, FLAG_DIGIT_ARY, FLAG_DIGIT_DESC_ARY);
 
+            string LIGHT_SKIN_TONE = "\U0001F3FB";
+            string MIDIUM_LIGHT_SKIN_TONE = "\U0001F3FC";
+            string MIDIUM_SKIN_TONE = "\U0001F3FD";
+            string MIDIUM_DARK_SKIN_TONE = "\U0001F3FE";
+            string DARK_SKIN_TONE = "\U0001F3FF";
+
+            string[] SKIN_TONE_ARY = {LIGHT_SKIN_TONE, MIDIUM_LIGHT_SKIN_TONE, MIDIUM_SKIN_TONE, MIDIUM_DARK_SKIN_TONE, DARK_SKIN_TONE};
+            string[] SKIN_TONE_DESC_ARY = {"LIGHT_SKIN_TONE", "MIDIUM_LIGHT_SKIN_TONE", "MIDIUM_SKIN_TONE", "MIDIUM_DARK_SKIN_TONE", "DARK_SKIN_TONE"};
+
+            AddEmoji(EMOJI_VIEW_18, SKIN_TONE_ARY, SKIN_TONE_DESC_ARY);
+
             AddEmojiButton(EMOJI_VIEW_18, ZWNJ, "ZWNJ", "Zero Width Non Joiner");
 
-            AddEmojiButton(EMOJI_VIEW_18, VS15, "VS15", "Variation Selector 15");
+            //AddEmojiButton(EMOJI_VIEW_18, VS15, "VS15", "Variation Selector 15");
 
-
-            AddDummy(EMOJI_VIEW_18);
-            AddDummy(EMOJI_VIEW_18);
-            AddDummy(EMOJI_VIEW_18);
-            AddDummy(EMOJI_VIEW_18);
+            //AddDummy(EMOJI_VIEW_18);
+            //AddDummy(EMOJI_VIEW_18);
+            //AddDummy(EMOJI_VIEW_18);
+            //AddDummy(EMOJI_VIEW_18);
         }
 
         public void AddDummy(View parent)
