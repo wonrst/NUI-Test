@@ -40,6 +40,11 @@ namespace TextComponentsTest
             string mixColor = "default + markup color, blue->magenta + red->blue : <a href='https://www.tizen.org/'>TIZEN</a> + <a color='red' clicked-color='blue' href='https://www.tizen.org/'>TIZEN</a>";
             string propertyColor = "property color, green->yellow : <a href='https://www.tizen.org/'>TIZEN</a>";
 
+            string complexUrl = "https://www.google.com/search?q=%EB%A7%A4%EC%9A%B0+%EB%B3%B5%EC%9E%A1%ED%95%9C+url&sca_esv=592044316&rlz=1C1GCEU_koKR1039KR1039&ei=q_iAZeX8HYDm1e8Pyo2O4AQ&ved=0ahUKEwil_pqTs5qDAxUAc_UHHcqGA0wQ4dUDCBA&uact=5&oq=%EB%A7%A4%EC%9A%B0+%EB%B3%B5%EC%9E%A1%ED%95%9C+url&gs_lp=Egxnd3Mtd2l6LXNlcnAiFOunpOyasCDrs7XsnqHtlZwgdXJsMgoQABhHGNYEGLADMgoQABhHGNYEGLADMgoQABhHGNYEGLADMgoQABhHGNYEGLADMgoQABhHGNYEGLADMgoQABhHGNYEGLADMgoQABhHGNYEGLADMgoQABhHGNYEGLADMgoQABhHGNYEGLADMgoQABhHGNYEGLADSIYSUO0GWKQRcAV4AZABAZgB0AGgAfMGqgEFMS40LjG4AQPIAQD4AQHCAggQIRigARjDBOIDBBgAIEGIBgGQBgo&sclient=gws-wiz-serp";
+            string complexText = "Hello, world! <a href='"+ complexUrl +"'>go hyperlink</a>";
+
+
+
             var defaultLabel = NewLabel(defaultColor);
             view.Add(defaultLabel);
 
@@ -54,6 +59,9 @@ namespace TextComponentsTest
             propertyLabel.AnchorClickedColor = Color.Yellow;
             view.Add(propertyLabel);
 
+            var complexLabel = NewLabel(complexText);
+            view.Add(complexLabel);
+
 
             int colorIndex = 0;
             Color[] colors = new Color[] {Color.Red, Color.Orange, Color.Yellow, Color.Green, Color.Blue, Color.Pink, Color.Purple, Color.Black};
@@ -67,6 +75,7 @@ namespace TextComponentsTest
                 markupLabel.AnchorColor = colors[colorIndex];
                 mixLabel.AnchorColor = colors[colorIndex];
                 propertyLabel.AnchorColor = colors[colorIndex];
+                complexLabel.AnchorColor = colors[colorIndex];
 
                 colorButton.Text = "Color : " + colorNames[colorIndex];
 
@@ -81,6 +90,7 @@ namespace TextComponentsTest
                 markupLabel.AnchorClickedColor = colors[colorIndex];
                 mixLabel.AnchorClickedColor = colors[colorIndex];
                 propertyLabel.AnchorClickedColor = colors[colorIndex];
+                complexLabel.AnchorClickedColor = colors[colorIndex];
 
                 colorClickedButton.Text = "Clicked Color : " + colorNames[colorIndex];
 
@@ -94,14 +104,32 @@ namespace TextComponentsTest
                 defaultLabel.Text = defaultColor;
                 markupLabel.Text = markupColor;
                 propertyLabel.Text = propertyColor;
-                mixLabel.Text = mixColor;
+                mixLabel.Text = mixColor;     
+                complexLabel.Text = complexText;
+            };
+
+
+            complexLabel.FontSizeScale = 1.0f;
+
+            var scalePlusButton = NewButton("Scale Plus");
+            view.Add(scalePlusButton);
+            scalePlusButton.Clicked += (s, e) =>
+            {
+                complexLabel.FontSizeScale += 0.1f;
+            };
+
+            var scaleMinusButton = NewButton("Scale Minus");
+            view.Add(scaleMinusButton);
+            scaleMinusButton.Clicked += (s, e) =>
+            {
+                complexLabel.FontSizeScale -= 0.1f;
             };
         }
 
         private void OnAnchorClicked(object sender, AnchorClickedEventArgs e)
         {
-            Tizen.Log.Info("NUI", $"Anchor text :{(sender as TextLabel).Text} \n");
-            Tizen.Log.Info("NUI", $"Anchor href : {e.Href} \n");
+            Tizen.Log.Info("NUI", $"anchor text : {(sender as TextLabel).Text} \n");
+            Tizen.Log.Info("NUI", $"anchor href : {e.Href} \n");
         }
 
         public TextLabel NewLabel(string text)
